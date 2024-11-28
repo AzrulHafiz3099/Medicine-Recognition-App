@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_search"
+    android:layout_width="match_parent"
+    android:layout_height="844dp">
+
+    <ImageView
+        android:id="@+id/img_rectangle"
+        android:layout_width="341dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="110dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/image_orange"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@+id/img_search_normal"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="118dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/baseline_manage_search_24" />
+
+    <TextView
+        android:id="@+id/text_search_medicine"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginLeft="66dp"
+        android:layout_marginTop="119.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Search for a medicine"
+        android:textColor="#FF000000"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/text_no_recent_search"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="162.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="No recent search"
+        android:textColor="#FF000000"
+        android:textSize="12dp" />
+
+    <ImageView
+        android:id="@+id/img_clock"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="160dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/baseline_access_time_24" />
+
+    <FrameLayout
+        android:id="@+id/container_search_bar"
+        android:layout_width="411dp"
+        android:layout_height="101dp"
+        android:layout_gravity="top|left">
+
+        <ImageView
+            android:id="@+id/img_rectangle_search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <FrameLayout
+            android:id="@+id/container_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="23.49dp"
+            android:layout_marginLeft="34.52dp"
+            android:layout_marginRight="17.54dp"
+            android:layout_marginTop="14.09dp"
+            android:layout_gravity="top">
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="38.36dp"
+                android:layout_height="23.49dp"
+                android:layout_gravity="left"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="9:41"
+                android:textColor="#FF000000"
+                android:textSize="17dp" />
+
+            <ImageView
+                android:id="@+id/img_sim_single"
+                android:layout_width="20.82dp"
+                android:layout_height="14.09dp"
+                android:layout_marginLeft="288.25dp"
+                android:layout_marginRight="49.87dp"
+                android:layout_marginTop="5.87dp"
+                android:layout_marginBottom="3.52dp"
+                android:scaleType="centerInside"
+                />
+
+            <ImageView
+                android:id="@+id/img_network_wifi_full"
+                android:layout_width="20.82dp"
+                android:layout_height="14.09dp"
+                android:layout_marginLeft="312.91dp"
+                android:layout_marginRight="25.21dp"
+                android:layout_marginTop="5.87dp"
+                android:layout_marginBottom="3.52dp"
+                android:scaleType="centerInside"
+                 />
+
+            <ImageView
+                android:id="@+id/img_battery_full_uncharged"
+                android:layout_width="21.92dp"
+                android:layout_height="14.09dp"
+                android:layout_marginLeft="337.02dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="5.87dp"
+                android:layout_marginBottom="3.52dp"
+                android:scaleType="centerInside"
+                />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/text_search"
+            android:layout_width="match_parent"
+            android:layout_height="25.84dp"
+            android:layout_marginLeft="173.17dp"
+            android:layout_marginRight="173.17dp"
+            android:layout_marginTop="58.72dp"
+            android:layout_marginBottom="16.44dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Search"
+            android:textColor="#FF000000"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/img_arrow_chevron_circle_left"
+            android:layout_width="32.88dp"
+            android:layout_height="35.23dp"
+            android:layout_marginLeft="20.82dp"
+            android:layout_marginTop="58.72dp"
+            android:layout_marginBottom="7.05dp"
+            android:layout_gravity="left"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_arrow_back_ios_24" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/container_line"
+        android:layout_width="133dp"
+        android:layout_height="4.4dp"
+        android:layout_marginRight="121dp"
+        android:layout_marginBottom="2.6dp"
+        android:layout_gravity="bottom|right"
+        android:scaleType="centerInside"
+       />
+</FrameLayout>

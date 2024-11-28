@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_iphone"
+    android:layout_width="match_parent"
+    android:layout_height="844dp"
+    android:background="@drawable/container_iphone">
+
+    <FrameLayout
+        android:id="@+id/container_search_bar"
+        android:layout_width="399dp"
+        android:layout_height="100.56dp"
+        android:layout_marginLeft="-9dp"
+        android:layout_gravity="top|left">
+
+        <ImageView
+            android:id="@+id/image_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/image_rectangle"
+            android:scaleType="centerCrop" />
+
+        <FrameLayout
+            android:id="@+id/container_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="23.39dp"
+            android:layout_marginLeft="33.52dp"
+            android:layout_marginRight="17.02dp"
+            android:layout_marginTop="14.03dp"
+            android:layout_gravity="top">
+
+
+
+            <ImageView
+                android:id="@+id/image_sim"
+                android:layout_width="20.22dp"
+                android:layout_height="14.03dp"
+                android:layout_marginLeft="279.83dp"
+                android:layout_marginRight="48.41dp"
+                android:layout_marginTop="5.85dp"
+                android:layout_marginBottom="3.51dp"
+                android:scaleType="centerInside"
+              />
+
+            <ImageView
+                android:id="@+id/image_network"
+                android:layout_width="20.22dp"
+                android:layout_height="14.03dp"
+                android:layout_marginLeft="303.77dp"
+                android:layout_marginRight="24.47dp"
+                android:layout_marginTop="5.85dp"
+                android:layout_marginBottom="3.51dp"
+                android:scaleType="centerInside"
+            />
+
+            <ImageView
+                android:id="@+id/image_battery"
+                android:layout_width="21.28dp"
+                android:layout_height="14.03dp"
+                android:layout_marginLeft="327.18dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="5.85dp"
+                android:layout_marginBottom="3.51dp"
+                android:scaleType="centerInside"
+               />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/text_choose_pharmacy"
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:layout_marginLeft="103dp"
+            android:layout_marginRight="95dp"
+            android:layout_marginTop="61.5dp"
+            android:layout_marginBottom="16.06dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Choose Your Pharmacy"
+            android:textColor="#FF000000"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/image_arrow"
+            android:layout_width="31.92dp"
+            android:layout_height="35.08dp"
+            android:layout_marginLeft="20.22dp"
+            android:layout_marginTop="58.46dp"
+            android:layout_marginBottom="7.02dp"
+            android:layout_gravity="left"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_arrow_back_ios_24" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/image_map_maker"
+        android:layout_width="390dp"
+        android:layout_height="739dp"
+        android:layout_marginTop="105dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+         />
+
+    <ImageView
+        android:id="@+id/image_group"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="335dp"
+        android:layout_marginTop="691dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/baseline_keyboard_arrow_right_24" />
+
+    <FrameLayout
+        android:id="@+id/container_group"
+        android:layout_width="298dp"
+        android:layout_height="197dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="627dp"
+        android:layout_gravity="top|left">
+
+        <ImageView
+            android:id="@+id/image_rectangle_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/image_rectangle"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/image_aa_pharmacy"
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="top"
+            android:scaleType="centerCrop"
+             />
+
+        <TextView
+            android:id="@+id/text_get_direction"
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:layout_marginLeft="219dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginTop="134dp"
+            android:layout_marginBottom="49dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Get Direction "
+            android:textColor="#FF000000"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/text_rx_pharmacy"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="106.5dp"
+            android:layout_marginBottom="74.5dp"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="RX Pharmacy"
+            android:textColor="#FF000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/text_open_close"
+            android:layout_width="wrap_content"
+            android:layout_height="14dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="134dp"
+            android:layout_marginBottom="49dp"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Open | Closes 6.30 PM"
+            android:textColor="#FF000000"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/text_distance"
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:layout_marginLeft="245dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginTop="109dp"
+            android:layout_marginBottom="74dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="2.5 km"
+            android:textColor="#FFEC7B15"
+            android:textSize="10dp" />
+
+        <LinearLayout
+            android:id="@+id/container_button"
+            android:layout_width="215dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginBottom="13dp"
+            android:layout_gravity="left"
+            android:background="@drawable/image_orange"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="2dp">
+
+            <ImageView
+                android:id="@+id/image_tag"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:scaleType="centerInside"
+                />
+
+            <TextView
+                android:id="@+id/text_choose_store"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="8dp"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Choose This Store"
+                android:textColor="#000"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

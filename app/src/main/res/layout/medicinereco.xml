@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<FrameLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/container_medicine_recognition"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="844dp" >
+
+
+    <FrameLayout
+
+        android:id="@+id/container_group"
+
+        android:layout_width="199.99dp"
+
+        android:layout_height="33dp"
+
+        android:layout_marginLeft="98.01dp"
+
+        android:layout_marginBottom="120dp"
+
+        android:layout_gravity="bottom|left">
+
+
+
+        <TextView
+
+            android:id="@+id/text_scan_qr_code"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="32dp"
+
+            android:layout_marginLeft="34.99dp"
+
+            android:layout_marginTop="1dp"
+
+            android:layout_marginBottom="0dp"
+
+            android:gravity="left|center_vertical"
+
+            android:includeFontPadding="false"
+
+            android:maxLines="1"
+
+            android:singleLine="true"
+
+            android:text="Scan QR Code"
+
+            android:textColor="#FFFEF8F8"
+
+            android:textSize="26dp" />
+
+
+
+        <ImageView
+
+            android:id="@+id/image_vector"
+
+            android:layout_width="36.88dp"
+
+            android:layout_height="33dp"
+
+            android:layout_marginRight="163.11dp"
+
+            android:scaleType="centerInside"
+
+            android:src="@drawable/baseline_document_scanner_24" />
+
+    </FrameLayout>
+
+
+
+    <ImageView
+
+        android:id="@+id/image_group"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="372.28dp"
+
+        android:layout_marginLeft="23.18dp"
+
+        android:layout_marginRight="22.89dp"
+
+        android:layout_marginTop="226dp"
+
+        android:layout_marginBottom="245.72dp"
+
+        android:scaleType="centerCrop" />
+
+
+
+    <TextView
+
+        android:id="@+id/text_scan_your_drug"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="37dp"
+
+        android:layout_marginLeft="112dp"
+
+        android:layout_marginTop="74dp"
+
+        android:layout_marginBottom="-1dp"
+
+        android:layout_gravity="top|left"
+
+        android:gravity="left|center_vertical"
+
+        android:includeFontPadding="false"
+
+        android:maxLines="1"
+
+        android:singleLine="true"
+
+        android:text="Scan your drug"
+
+        android:textColor="#FF423D3D"
+
+        android:textSize="30dp" />
+
+
+
+    <Button
+
+        android:id="@+id/image_rectangle"
+
+        android:layout_width="284dp"
+
+        android:layout_height="75dp"
+        android:layout_marginLeft="53dp"
+
+        android:layout_marginTop="670dp"
+        android:backgroundTint="#FFD580"
+
+        android:layout_gravity="top|left"
+
+
+        android:scaleType="centerInside" />
+
+
+
+    <FrameLayout
+
+        android:id="@+id/container_group1"
+
+        android:layout_width="163dp"
+
+        android:layout_height="33dp"
+
+        android:layout_marginLeft="112dp"
+
+        android:layout_marginBottom="121dp"
+
+        android:layout_gravity="bottom|left">
+
+
+
+        <ImageView
+
+            android:id="@+id/image_vector1"
+
+            android:layout_width="36.88dp"
+
+            android:layout_height="33dp"
+
+            android:layout_marginRight="126.12dp"
+
+            android:scaleType="centerInside"
+
+            android:src="@drawable/baseline_document_scanner_24" />
+
+
+
+        <TextView
+
+            android:id="@+id/text_scan_drug"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="32dp"
+
+            android:layout_marginLeft="44dp"
+
+            android:layout_marginTop="1dp"
+
+            android:layout_marginBottom="0dp"
+
+            android:gravity="left|center_vertical"
+
+            android:includeFontPadding="false"
+
+            android:maxLines="1"
+            android:textColor="#000"
+
+            android:singleLine="true"
+
+            android:text="Scan Drug"
+
+
+            android:textSize="26dp" />
+
+    </FrameLayout>
+
+
+
+    <ImageView
+
+        android:id="@+id/image_group1"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="372.28dp"
+
+        android:layout_marginLeft="23.18dp"
+
+        android:layout_marginRight="22.89dp"
+
+        android:layout_marginTop="226dp"
+
+        android:layout_marginBottom="245.72dp"
+
+        android:scaleType="centerCrop"
+
+        android:src="@drawable/baseline_crop_free_24" />
+
+
+
+    <ImageView
+
+        android:id="@+id/image_vector2"
+
+        android:layout_width="6.25dp"
+
+        android:layout_height="12.5dp"
+
+        android:layout_marginLeft="44.25dp"
+
+        android:layout_marginRight="360.5dp"
+
+        android:layout_marginTop="55.75dp"
+
+        android:layout_marginBottom="775.75dp"
+
+        android:scaleType="centerInside" />
+
+
+    <ImageView
+
+        android:id="@+id/image_vector3"
+
+        android:layout_width="22.5dp"
+
+        android:layout_height="22.5dp"
+
+        android:layout_marginLeft="38.75dp"
+
+        android:layout_marginRight="349.75dp"
+
+        android:layout_marginTop="50.75dp"
+
+        android:layout_marginBottom="770.75dp"
+
+        android:scaleType="centerInside"
+
+        android:src="@drawable/baseline_arrow_back_ios_24" />
+
+</FrameLayout>

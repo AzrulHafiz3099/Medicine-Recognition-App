@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="844dp"
+    android:background="@drawable/drawable_shape">
+
+    <FrameLayout
+        android:layout_width="385dp"
+        android:layout_height="44dp"
+        android:layout_gravity="top|left">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="top"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:layout_width="69dp"
+            android:layout_height="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="top|right"
+            android:scaleType="centerInside" />
+
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginRight="71dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="top|right"
+            android:scaleType="centerInside" />
+
+        <FrameLayout
+            android:layout_width="54dp"
+            android:layout_height="21dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="13dp"
+            android:layout_gravity="top|left"
+            android:background="@drawable/drawable_shape_1">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="0.5dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside" />
+        </FrameLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="58dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/baseline_arrow_back_ios_24" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="63.5dp"
+        android:layout_marginBottom="-3.5dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Edit Profile"
+        android:textColor="#FF000000"
+        android:textSize="20dp" />
+
+    <FrameLayout
+        android:layout_width="171.47dp"
+        android:layout_height="175.97dp"
+        android:layout_marginRight="119.53dp"
+        android:layout_marginTop="108dp"
+        android:layout_gravity="top|right">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="170.3dp"
+                android:layout_marginLeft="0.55dp"
+                android:layout_marginRight="2.21dp"
+                android:layout_marginBottom="0.57dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_shape_2"
+                android:scaleType="centerCrop" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="128dp"
+            android:layout_marginRight="11.47dp"
+            android:layout_marginTop="141dp"
+            android:layout_marginBottom="2.97dp"
+            android:scaleType="centerInside" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="342dp"
+        android:layout_height="72.5dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="304.5dp"
+        android:layout_gravity="top|left"
+        android:clipToPadding="false"
+        android:gravity="left|top"
+        android:orientation="vertical"
+        android:paddingTop="3.5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginTop="-3.5dp"
+            android:layout_marginBottom="-3.5dp"
+            android:layout_gravity="left"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Name"
+            android:textColor="#FF000000"
+            android:textSize="16dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="11dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_shape_3"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:layout_gravity="left"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Jeevethaa A/P Raju"
+                android:textColor="#FF544C4C"
+                android:textSize="14dp" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="342dp"
+        android:layout_height="69dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="380dp"
+        android:layout_gravity="bottom|left"
+        android:clipToPadding="false"
+        android:gravity="left|top"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginTop="-3.5dp"
+            android:layout_marginBottom="-3.5dp"
+            android:layout_gravity="left"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Email"
+            android:textColor="#FF000000"
+            android:textSize="16dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/drawable_shape_5">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_shape_3"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="-3dp"
+                android:layout_marginBottom="-3dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="jeevethaa18@gmail.com"
+                android:textColor="#FF544C4C"
+                android:textSize="14dp" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="342dp"
+        android:layout_height="69dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="293dp"
+        android:layout_gravity="bottom|left"
+        android:clipToPadding="false"
+        android:gravity="left|top"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginTop="-3.5dp"
+            android:layout_marginBottom="-3.5dp"
+            android:layout_gravity="left"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Password"
+            android:textColor="#FF000000"
+            android:textSize="16dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/drawable_shape_3">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="-3dp"
+                android:layout_marginBottom="-3dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="************"
+                android:textColor="#FF000000"
+                android:textSize="14dp" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="342dp"
+        android:layout_height="72.5dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="-3.5dp"
+        android:layout_marginBottom="206dp"
+        android:layout_gravity="bottom|left"
+        android:clipToPadding="false"
+        android:gravity="left|top"
+        android:orientation="vertical"
+        android:paddingTop="3.5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginTop="-3.5dp"
+            android:layout_marginBottom="-3.5dp"
+            android:layout_gravity="left"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Date of Birth"
+            android:textColor="#FF000000"
+            android:textSize="16dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/drawable_shape_3"
+            android:layout_marginTop="11dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="-3dp"
+                android:layout_marginBottom="-3dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="23/05/1995"
+                android:textColor="#FF544C4C"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="310dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="9dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/baseline_calendar_month_24" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="221dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="27dp"
+        android:layout_gravity="bottom|left">
+
+        <Button
+            android:layout_width="221dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:scaleType="centerCrop"
+            android:backgroundTint="#FFD580"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="5.5dp"
+            android:layout_gravity="center"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Save Changes"
+            android:textColor="#000"
+            android:textSize="20dp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="242dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="79dp"
+        android:layout_marginBottom="98dp"
+        android:layout_gravity="bottom|left">
+
+        <Button
+            android:layout_width="221dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:scaleType="centerCrop"
+            android:backgroundTint="#FF0000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="5.5dp"
+            android:layout_gravity="center"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Delete account"
+            android:textColor="#000"
+            android:textSize="20dp" />
+    </FrameLayout>
+</FrameLayout>

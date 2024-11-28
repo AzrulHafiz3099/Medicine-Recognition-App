@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="844dp"
+    android:background="@drawable/drawable_shape">
+
+    <ImageView
+        android:layout_width="714dp"
+        android:layout_height="752dp"
+        android:layout_marginLeft="-162dp"
+        android:layout_marginTop="-411dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/drawable_shape_1"
+        android:scaleType="centerInside" />
+
+    <LinearLayout
+        android:layout_width="218dp"
+        android:layout_height="68dp"
+        android:layout_marginLeft="82dp"
+        android:layout_marginTop="157dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/drawable_shape_2"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/drawable_shape_3"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="6dp"
+            android:paddingLeft="11dp"
+            android:paddingRight="11dp"
+            android:paddingTop="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Jun 10,"
+                android:textColor="#FF000000"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="2024"
+                android:textColor="#FF000000"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:background="@drawable/drawable_shape_4"
+            android:clipToPadding="false"
+            android:gravity="left|top"
+            android:orientation="horizontal"
+            android:paddingBottom="6dp"
+            android:paddingLeft="11dp"
+            android:paddingRight="11dp"
+            android:paddingTop="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="9:41 AM"
+                android:textColor="#FF000000"
+                android:textSize="17dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginLeft="162dp"
+        android:layout_marginTop="135dp"
+        android:layout_gravity="top|left"
+        android:gravity="center_horizontal|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Today is"
+        android:textColor="#FF000000"
+        android:textSize="17dp" />
+
+    <FrameLayout
+        android:layout_width="306dp"
+        android:layout_height="380dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="259dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/drawable_shape_5">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/image_rectangle"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginLeft="29dp"
+            android:layout_marginRight="29dp"
+            android:layout_gravity="top"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="265dp"
+            android:layout_height="67dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="301dp"
+            android:layout_marginBottom="12dp"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal|top"
+            android:includeFontPadding="false"
+            android:lineHeight="22dp"
+            android:text="View your daily schedule and mark your meds when taken"
+            android:textColor="#FF544C4C"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="250dp"
+            android:layout_marginBottom="108dp"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Monitor your med schedule"
+            android:textColor="#FF000000"
+            android:textSize="17dp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/container_login"
+        android:layout_width="336dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="621dp"
+        android:layout_gravity="top|left">
+
+        <Button
+            android:id="@+id/img_login_box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#FFD580"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/text_start_order"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginLeft="98dp"
+            android:layout_marginRight="97dp"
+            android:layout_marginTop="13.5dp"
+            android:layout_marginBottom="13.5dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="ADD YOUR MEDICINE"
+            android:textColor="#000000"
+            android:textSize="14dp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="399dp"
+        android:layout_height="100.56dp"
+        android:layout_marginLeft="-9dp"
+        android:layout_gravity="top|left">
+
+        <ImageView
+            android:layout_width="476dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rectangle_3"
+            android:scaleType="centerCrop" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="23.39dp"
+            android:layout_marginLeft="33.52dp"
+            android:layout_marginRight="17.02dp"
+            android:layout_marginTop="14.03dp"
+            android:layout_gravity="top">
+
+            <TextView
+                android:layout_width="37.24dp"
+                android:layout_height="23.39dp"
+                android:layout_gravity="left"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="9:41"
+                android:textColor="#FF000000"
+                android:textSize="17dp" />
+
+            <ImageView
+                android:layout_width="20.22dp"
+                android:layout_height="14.03dp"
+                android:layout_marginLeft="279.83dp"
+                android:layout_marginRight="48.41dp"
+                android:layout_marginTop="5.85dp"
+                android:layout_marginBottom="3.51dp"
+                android:scaleType="centerInside"
+                 />
+
+            <ImageView
+                android:layout_width="20.22dp"
+                android:layout_height="14.03dp"
+                android:layout_marginLeft="303.77dp"
+                android:layout_marginRight="24.47dp"
+                android:layout_marginTop="5.85dp"
+                android:layout_marginBottom="3.51dp"
+                android:scaleType="centerInside"
+                />
+
+            <ImageView
+                android:layout_width="21.28dp"
+                android:layout_height="14.03dp"
+                android:layout_marginLeft="327.18dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="5.85dp"
+                android:layout_marginBottom="3.51dp"
+                android:scaleType="centerInside"
+                 />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25.72dp"
+            android:layout_marginLeft="151dp"
+            android:layout_marginRight="116.06dp"
+            android:layout_marginTop="63dp"
+            android:layout_marginBottom="11.83dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Drug Reminder"
+            android:textColor="#FF000000"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:layout_width="31.92dp"
+            android:layout_height="35.08dp"
+            android:layout_marginLeft="20.22dp"
+            android:layout_marginTop="58.46dp"
+            android:layout_marginBottom="7.02dp"
+            android:layout_gravity="left"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_arrow_back_ios_24" />
+    </FrameLayout>
+</FrameLayout>
