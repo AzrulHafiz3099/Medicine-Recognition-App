@@ -54,7 +54,9 @@ public class Register extends AppCompatActivity {
         }
 
         // API URL to insert the user data
-        String url = "http://192.168.0.15/MedRec/register_user.php"; // Change this URL to match your actual API location
+        //add resource file untuk letak semua url/address api(php file)
+        //String url = "http://192.168.0.15/MedRec/register_user.php"; // Change this URL to match your actual API location
+        String url = getString(R.string.api_url); // Change this URL to match your actual API location
 
         // Prepare the POST request
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Medicine Recognition App</string>
+    <string name="api_url">http://192.168.0.15/MedRec/register_user.php</string>
 </resources>
