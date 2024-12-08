@@ -7,66 +7,58 @@
     android:layout_height="match_parent"
     android:background="@drawable/drawable_shape">
 
-
     <!-- Main Frame -->
     <FrameLayout
         android:layout_width="768.62dp"
         android:layout_height="1167.93dp"
         android:layout_marginLeft="-164dp"
-        android:layout_marginTop="-146dp"
-        android:layout_gravity="top|left">
+        android:layout_marginTop="-146dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_gravity="top|left"
-            android:scaleType="centerInside"
-            android:src="@drawable/rectangle_2" />
+            android:layout_marginTop="160dp"
+            android:src="@drawable/rectangle_22" />
 
         <ImageView
             android:layout_width="639dp"
             android:layout_height="390dp"
-            android:layout_marginLeft="51.14dp"
-            android:layout_marginTop="48.44dp"
-            android:layout_gravity="top|left"
-            android:scaleType="centerInside"
-            android:src="@drawable/rectangle_1" />
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/rectangle_11" />
 
         <ImageView
-            android:layout_width="588.86dp"
-            android:layout_height="match_parent"
+            android:layout_width="491dp"
+            android:layout_height="367dp"
             android:layout_gravity="left"
-            android:layout_marginLeft="67.14dp"
-            android:layout_marginTop="748.44dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="850dp"
             android:layout_marginBottom="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/rectangle_3" />
+            android:src="@drawable/rectangle_33" />
 
         <ImageView
-            android:layout_width="299dp"
-            android:layout_height="299dp"
-            android:layout_marginLeft="230dp"
-            android:layout_marginTop="289dp"
-            android:layout_gravity="top|left"
-            android:scaleType="centerInside"
-            android:src="@drawable/beige" />
+            android:layout_width="453dp"
+            android:layout_height="269dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="200dp"
+            android:src="@drawable/logo" />
+
     </FrameLayout>
 
-    <!-- Register Form -->
+    <!-- Login Form -->
     <FrameLayout
-        android:layout_width="326.22dp"
-        android:layout_height="258.41dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="354dp"
-        android:layout_gravity="top|left"
-        android:background="@drawable/drawable_shape_1">
+        android:layout_width="402dp"
+        android:layout_height="263dp"
+        android:background="@drawable/drawable_shape_1"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="340dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="59.29dp"
-            android:layout_marginLeft="0dp"
             android:layout_gravity="top"
+            android:layout_marginLeft="0dp"
+            android:fontFamily="@font/nunito_bold"
             android:gravity="left|center_vertical"
             android:includeFontPadding="false"
             android:maxLines="1"
@@ -75,14 +67,13 @@
             android:textColor="#FFFFB041"
             android:textSize="36dp" />
 
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="18dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="64.45dp"
             android:layout_gravity="top"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="65dp"
+            android:fontFamily="@font/nunito_regular"
             android:gravity="left|center_vertical"
             android:includeFontPadding="false"
             android:maxLines="1"
@@ -93,18 +84,19 @@
 
         <EditText
             android:id="@+id/email_input"
-            android:inputType="textEmailAddress"
-            android:layout_width="298.23dp"
-            android:layout_height="35.4dp"
-            android:layout_marginTop="84.07dp"
-            android:layout_gravity="top|left"
+            android:layout_width="330dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="90dp"
             android:background="@drawable/drawable_shape_2"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="10dp"
             android:scaleType="centerInside" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="18dp"
-            android:layout_marginTop="131.71dp"
+            android:layout_marginTop="140dp"
+            android:fontFamily="@font/nunito_regular"
             android:gravity="left|center_vertical"
             android:includeFontPadding="false"
             android:maxLines="1"
@@ -115,15 +107,24 @@
 
         <EditText
             android:id="@+id/password_input"
+            android:layout_width="330dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="165dp"
+            android:background="@drawable/drawable_shape_2"
             android:inputType="textPassword"
-            android:layout_width="298.23dp"
-            android:layout_height="35.4dp"
-            android:layout_marginTop="151.33dp"
-            android:background="@drawable/drawable_shape_4"
+            android:paddingStart="10dp"
             android:scaleType="centerCrop" />
 
-
-
+        <TextView
+            android:id="@+id/forgotPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="212dp"
+            android:layout_marginTop="215dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Forgot Password?"
+            android:textColor="#FFFFB041"
+            android:textSize="14dp" />
 
     </FrameLayout>
 
@@ -131,32 +132,32 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp">
+        android:layout_marginTop="620dp"
+        android:layout_marginLeft="60dp">
 
         <Button
             android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="25dp"
             android:backgroundTint="#FFD580"
-            android:gravity="center"
+            android:fontFamily="@font/nunito_bold"
             android:onClick="onLoginButtonClick"
             android:text="Login"
-            android:textColor="#000000"
+            android:textColor="#333333"
             android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/register_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="70dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Don't have an account? Signup"
+            android:onClick="onSignupButtonClick"
+            android:textColor="#FFFFB041"
+            android:textSize="14dp" />
     </FrameLayout>
 
-    <!-- Login Text -->
-    <Button
-        android:id="@+id/signup_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        android:layout_margin="20dp"
-        android:backgroundTint="#FFD580"
-        android:gravity="left|center_vertical"
-        android:onClick="onSignupButtonClick"
-        android:text="Don't have an account? Signup"
-        android:textColor="#000"
-        android:textSize="14dp" />
 </FrameLayout>

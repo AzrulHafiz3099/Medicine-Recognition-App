@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_home_screen_one"
+    android:layout_width="match_parent"
+    android:layout_height="807dp"
+    android:background="@drawable/container_home_screen_one">
+
+    <ImageView
+        android:id="@+id/image_frame"
+        android:layout_width="77.08dp"
+        android:layout_height="24.27dp"
+        android:layout_marginLeft="26.36dp"
+        android:layout_marginTop="116.08dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside" />
+
+    <LinearLayout
+        android:id="@+id/container_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_gravity="top|left"
+        android:clipToPadding="false"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="16dp"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:paddingTop="16dp">
+
+        <ImageView
+            android:id="@+id/image_title_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/arrow_back" />
+
+        <TextView
+            android:id="@+id/container_title_text"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Add patient"
+            android:textColor="#FF000000"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/image_vector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="327dp"
+        android:layout_marginRight="56.33dp"
+        android:layout_marginTop="259dp"
+        android:src="@drawable/recycle_bin_line_icon" />
+
+    <LinearLayout
+        android:id="@+id/container_checkout_address_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="135dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|top"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_address_jeevethaa"
+            android:layout_width="296dp"
+            android:layout_height="20dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="JEEVETHAA"
+            android:textColor="#FF454545"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/text_address_asthma"
+            android:layout_width="296dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Asthma"
+            android:textColor="#FF454545"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_heading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="110dp"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingTop="9dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="9dp">
+
+        <TextView
+            android:id="@+id/text_button_add_new"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="150dp"
+            android:gravity="center"
+            android:text="+ ADD NEW"
+            android:textColor="#FF000000"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="12dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="136.5dp"
+        android:layout_marginBottom="-3.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="1"
+        android:textColor="#FF454545"
+        android:textSize="14dp" />
+
+    <LinearLayout
+        android:id="@+id/container_checkout_address_selector1"
+        android:layout_width="248dp"
+        android:layout_height="74dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="224dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|top"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/container_checkout_address_selection1"
+            android:layout_width="248dp"
+            android:layout_height="70dp"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/container_address1"
+                android:layout_width="328dp"
+                android:layout_height="38dp"
+                android:gravity="left|top"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_address_azrul"
+                    android:layout_width="296dp"
+                    android:layout_height="20dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="AZRUL"
+                    android:textColor="#FF454545"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/text_address_cough"
+                    android:layout_width="296dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Cough"
+                    android:textColor="#FF454545"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="12dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="240.5dp"
+        android:layout_marginBottom="-3.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"/>
+</FrameLayout>

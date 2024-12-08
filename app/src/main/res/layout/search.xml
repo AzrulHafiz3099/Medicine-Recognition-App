@@ -82,62 +82,6 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
-        <FrameLayout
-            android:id="@+id/container_status_bar"
-            android:layout_width="match_parent"
-            android:layout_height="23.49dp"
-            android:layout_marginLeft="34.52dp"
-            android:layout_marginRight="17.54dp"
-            android:layout_marginTop="14.09dp"
-            android:layout_gravity="top">
-
-            <TextView
-                android:id="@+id/text_time"
-                android:layout_width="38.36dp"
-                android:layout_height="23.49dp"
-                android:layout_gravity="left"
-                android:gravity="left|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="9:41"
-                android:textColor="#FF000000"
-                android:textSize="17dp" />
-
-            <ImageView
-                android:id="@+id/img_sim_single"
-                android:layout_width="20.82dp"
-                android:layout_height="14.09dp"
-                android:layout_marginLeft="288.25dp"
-                android:layout_marginRight="49.87dp"
-                android:layout_marginTop="5.87dp"
-                android:layout_marginBottom="3.52dp"
-                android:scaleType="centerInside"
-                />
-
-            <ImageView
-                android:id="@+id/img_network_wifi_full"
-                android:layout_width="20.82dp"
-                android:layout_height="14.09dp"
-                android:layout_marginLeft="312.91dp"
-                android:layout_marginRight="25.21dp"
-                android:layout_marginTop="5.87dp"
-                android:layout_marginBottom="3.52dp"
-                android:scaleType="centerInside"
-                 />
-
-            <ImageView
-                android:id="@+id/img_battery_full_uncharged"
-                android:layout_width="21.92dp"
-                android:layout_height="14.09dp"
-                android:layout_marginLeft="337.02dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginTop="5.87dp"
-                android:layout_marginBottom="3.52dp"
-                android:scaleType="centerInside"
-                />
-        </FrameLayout>
-
         <TextView
             android:id="@+id/text_search"
             android:layout_width="match_parent"

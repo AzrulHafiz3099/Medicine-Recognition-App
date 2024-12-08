@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_view_payment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/drawable_shape">
+
+    <ImageView
+        android:id="@+id/image_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginRight="345dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginBottom="758dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/arrow_back" />
+
+    <TextView
+        android:id="@+id/text_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="127.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Payment"
+        android:textColor="#FFF08626"
+        android:textSize="23dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+        <!-- Background Rectangle -->
+        <ImageView
+            android:id="@+id/image_rectangle2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/drawable_shape_4"
+            android:scaleType="centerInside" />
+
+        <!-- Main Image -->
+        <ImageView
+            android:id="@+id/image_main2"
+            android:layout_width="51dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="31dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/buyer_pay_icon" />
+
+        <!-- Text for Cash on Delivery -->
+        <TextView
+            android:id="@+id/container_group1"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginLeft="103dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:text="Cash on delivery"
+            android:textColor="#FF454545"
+            android:textSize="22dp" />
+
+        <!-- Keyboard Up Icon -->
+        <ImageView
+            android:id="@+id/image_keyboard_up1"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="355dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/baseline_arrow_forward_ios_24" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="270dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+        <!-- Background Rectangle -->
+        <ImageView
+            android:id="@+id/image_rectangle3"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/drawable_shape_4"
+            android:scaleType="centerInside" />
+
+        <!-- Main Image -->
+        <ImageView
+            android:id="@+id/image_main"
+            android:layout_width="51dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="31dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/fpx_seeklogo" />
+
+        <!-- Text (FPX) -->
+        <TextView
+            android:id="@+id/container_group2"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginLeft="108dp"
+            android:layout_marginTop="20dp"
+            android:text="FPX"
+            android:textColor="#FF454545"
+            android:textSize="22dp" />
+
+        <!-- Keyboard Up Icon -->
+        <ImageView
+            android:id="@+id/image_keyboard_up2"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="355dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/baseline_arrow_forward_ios_24" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+        <!-- Background Rectangle -->
+        <ImageView
+            android:id="@+id/image_rectangle4"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/drawable_shape_4"
+            android:scaleType="centerInside" />
+
+        <!-- Visa Icon -->
+        <ImageView
+            android:id="@+id/image_rectangle1"
+            android:layout_width="51dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="31dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/visa_icon" />
+
+        <!-- Text (Visa and Card Number) -->
+        <FrameLayout
+            android:id="@+id/container_group3"
+            android:layout_width="81dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="108dp"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/text_visa"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Visa"
+                android:textColor="#FF454545"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/text_card_number"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="25dp"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="****5645"
+                android:textColor="#FFF08626"
+                android:textSize="20dp" />
+        </FrameLayout>
+
+        <!-- Keyboard Icon -->
+        <ImageView
+            android:id="@+id/image_keyboard_up3"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="355dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/baseline_arrow_forward_ios_24" />
+
+    </FrameLayout>
+
+</FrameLayout>
