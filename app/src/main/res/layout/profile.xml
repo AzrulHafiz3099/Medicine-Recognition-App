@@ -97,6 +97,7 @@
                 android:scaleType="centerCrop" />
 
             <ImageView
+                android:id="@+id/ProfilePicture"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/drawable_shape_2"
@@ -104,6 +105,7 @@
         </FrameLayout>
 
         <ImageView
+            android:id="@+id/Update_ProfilePicture"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginLeft="128dp"
@@ -144,26 +146,27 @@
             android:layout_marginTop="11dp"
             android:layout_weight="1">
 
-            <ImageView
+            <EditText
+                android:id="@+id/Fullname"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/drawable_shape_3"
                 android:scaleType="centerCrop" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                android:layout_gravity="left"
-                android:gravity="left|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Jeevethaa A/P Raju"
-                android:textColor="#FF544C4C"
-                android:textSize="14dp" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="18dp"-->
+<!--                android:layout_marginLeft="15dp"-->
+<!--                android:layout_marginTop="7dp"-->
+<!--                android:layout_marginBottom="7dp"-->
+<!--                android:layout_gravity="left"-->
+<!--                android:gravity="left|center_vertical"-->
+<!--                android:includeFontPadding="false"-->
+<!--                android:maxLines="1"-->
+<!--                android:singleLine="true"-->
+<!--                android:text="Jeevethaa A/P Raju"-->
+<!--                android:textColor="#FF544C4C"-->
+<!--                android:textSize="14dp" />-->
         </FrameLayout>
     </LinearLayout>
 
@@ -197,26 +200,27 @@
             android:layout_marginTop="11dp"
             android:background="@drawable/drawable_shape_5">
 
-            <ImageView
+            <EditText
+                android:id="@+id/Email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/drawable_shape_3"
                 android:scaleType="centerCrop" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="-3dp"
-                android:layout_marginBottom="-3dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="left|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="jeevethaa18@gmail.com"
-                android:textColor="#FF544C4C"
-                android:textSize="14dp" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="18dp"-->
+<!--                android:layout_marginLeft="15dp"-->
+<!--                android:layout_marginTop="-3dp"-->
+<!--                android:layout_marginBottom="-3dp"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:gravity="left|center_vertical"-->
+<!--                android:includeFontPadding="false"-->
+<!--                android:maxLines="1"-->
+<!--                android:singleLine="true"-->
+<!--                android:text="jeevethaa18@gmail.com"-->
+<!--                android:textColor="#FF544C4C"-->
+<!--                android:textSize="14dp" />-->
         </FrameLayout>
     </LinearLayout>
 
@@ -250,91 +254,94 @@
             android:layout_marginTop="11dp"
             android:background="@drawable/drawable_shape_3">
 
-            <ImageView
+            <EditText
+                android:id="@+id/Password"
+                android:inputType="textPassword"
+                android:enabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="-3dp"
-                android:layout_marginBottom="-3dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="left|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="************"
-                android:textColor="#FF000000"
-                android:textSize="14dp" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="18dp"-->
+<!--                android:layout_marginLeft="15dp"-->
+<!--                android:layout_marginTop="-3dp"-->
+<!--                android:layout_marginBottom="-3dp"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:gravity="left|center_vertical"-->
+<!--                android:includeFontPadding="false"-->
+<!--                android:maxLines="1"-->
+<!--                android:singleLine="true"-->
+<!--                android:text="************"-->
+<!--                android:textColor="#FF000000"-->
+<!--                android:textSize="14dp" />-->
         </FrameLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="342dp"
-        android:layout_height="72.5dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="-3.5dp"
-        android:layout_marginBottom="206dp"
-        android:layout_gravity="bottom|left"
-        android:clipToPadding="false"
-        android:gravity="left|top"
-        android:orientation="vertical"
-        android:paddingTop="3.5dp">
+<!--    <LinearLayout-->
+<!--        android:layout_width="342dp"-->
+<!--        android:layout_height="72.5dp"-->
+<!--        android:layout_marginLeft="24dp"-->
+<!--        android:layout_marginTop="-3.5dp"-->
+<!--        android:layout_marginBottom="206dp"-->
+<!--        android:layout_gravity="bottom|left"-->
+<!--        android:clipToPadding="false"-->
+<!--        android:gravity="left|top"-->
+<!--        android:orientation="vertical"-->
+<!--        android:paddingTop="3.5dp">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="21dp"
-            android:layout_marginTop="-3.5dp"
-            android:layout_marginBottom="-3.5dp"
-            android:layout_gravity="left"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Date of Birth"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="21dp"-->
+<!--            android:layout_marginTop="-3.5dp"-->
+<!--            android:layout_marginBottom="-3.5dp"-->
+<!--            android:layout_gravity="left"-->
+<!--            android:gravity="left|center_vertical"-->
+<!--            android:includeFontPadding="false"-->
+<!--            android:maxLines="1"-->
+<!--            android:singleLine="true"-->
+<!--            android:text="Date of Birth"-->
+<!--            android:textColor="#FF000000"-->
+<!--            android:textSize="16dp" />-->
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:background="@drawable/drawable_shape_3"
-            android:layout_marginTop="11dp">
+<!--        <FrameLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="44dp"-->
+<!--            android:background="@drawable/drawable_shape_3"-->
+<!--            android:layout_marginTop="11dp">-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
+<!--            <ImageView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:scaleType="centerCrop" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="-3dp"
-                android:layout_marginBottom="-3dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="left|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="23/05/1995"
-                android:textColor="#FF544C4C"
-                android:textSize="14dp" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="18dp"-->
+<!--                android:layout_marginLeft="15dp"-->
+<!--                android:layout_marginTop="-3dp"-->
+<!--                android:layout_marginBottom="-3dp"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:gravity="left|center_vertical"-->
+<!--                android:includeFontPadding="false"-->
+<!--                android:maxLines="1"-->
+<!--                android:singleLine="true"-->
+<!--                android:text="23/05/1995"-->
+<!--                android:textColor="#FF544C4C"-->
+<!--                android:textSize="14dp" />-->
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="310dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginBottom="9dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/baseline_calendar_month_24" />
-        </FrameLayout>
-    </LinearLayout>
+<!--            <ImageView-->
+<!--                android:layout_width="24dp"-->
+<!--                android:layout_height="24dp"-->
+<!--                android:layout_marginLeft="310dp"-->
+<!--                android:layout_marginRight="8dp"-->
+<!--                android:layout_marginTop="11dp"-->
+<!--                android:layout_marginBottom="9dp"-->
+<!--                android:scaleType="centerInside"-->
+<!--                android:src="@drawable/baseline_calendar_month_24" />-->
+<!--        </FrameLayout>-->
+<!--    </LinearLayout>-->
 
     <FrameLayout
         android:layout_width="221dp"

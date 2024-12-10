@@ -140,7 +140,7 @@
             android:layout_height="35dp"
             android:layout_marginTop="240dp"
             android:background="@drawable/drawable_shape_2"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:scaleType="centerInside" />
     </FrameLayout>
