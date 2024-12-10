@@ -77,7 +77,7 @@ public class Login extends AppCompatActivity {
 
                                     Log.d("JWT_TOKEN", "JWT Token: " + token);
                                     //Intent intent = new Intent(Login.this, Homepage.class);
-                                    Intent intent = new Intent(Login.this, Homepage.class);
+                                    Intent intent = new Intent(Login.this, Profile.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
