@@ -7,172 +7,269 @@
     android:layout_height="match_parent"
     android:background="@drawable/drawable_shape">
 
+    <!-- ScrollView to make the form scrollable -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <!-- Main Frame -->
-    <FrameLayout
-        android:layout_width="768.62dp"
-        android:layout_height="1167.93dp"
-        android:layout_marginLeft="-164dp"
-        android:layout_marginTop="-146dp">
-
-        <ImageView
+        <!-- Main content inside ScrollView -->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
-            android:src="@drawable/rectangle_22" />
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="639dp"
-            android:layout_height="390dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="80dp"
-            android:src="@drawable/rectangle_11" />
+            <!-- Main Frame -->
+            <FrameLayout
+                android:layout_width="768.62dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-164dp"
+                android:layout_marginTop="-146dp">
 
-        <ImageView
-            android:layout_width="491dp"
-            android:layout_height="367dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="850dp"
-            android:layout_marginBottom="0dp"
-            android:src="@drawable/rectangle_33" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="302dp"
+                    android:layout_marginTop="160dp"
+                    android:src="@drawable/rectangle_22" />
 
-        <ImageView
-            android:layout_width="453dp"
-            android:layout_height="269dp"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="200dp"
-            android:src="@drawable/logo" />
+                <ImageView
+                    android:layout_width="639dp"
+                    android:layout_height="339dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="80dp"
+                    android:src="@drawable/rectangle_11" />
 
-        <ImageView
-            android:id="@+id/imageButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="190dp"
-            android:layout_marginTop="200dp"
-            android:onClick="backLogin"
-            app:srcCompat="@drawable/arrow_back" />
-    </FrameLayout>
+                <ImageView
+                    android:layout_width="491dp"
+                    android:layout_height="498dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginTop="850dp"
+                    android:layout_marginBottom="0dp"
+                    android:src="@drawable/rectangle_33" />
 
-    <!-- Register Form -->
-    <FrameLayout
-        android:layout_width="402dp"
-        android:layout_height="300dp"
-        android:background="@drawable/drawable_shape_1"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="340dp">
+                <ImageView
+                    android:layout_width="453dp"
+                    android:layout_height="169dp"
+                    android:layout_marginLeft="160dp"
+                    android:layout_marginTop="200dp"
+                    android:src="@drawable/logo" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="59.29dp"
-            android:layout_gravity="top"
-            android:layout_marginLeft="0dp"
-            android:fontFamily="@font/nunito_bold"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Register"
-            android:textColor="#FFFFB041"
-            android:textSize="36dp" />
+                <ImageView
+                    android:id="@+id/imageButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="190dp"
+                    android:layout_marginTop="200dp"
+                    android:onClick="backLogin"
+                    app:srcCompat="@drawable/arrow_back" />
+            </FrameLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="65dp"
-            android:layout_gravity="top"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Full Name"
-            android:textColor="#FFFFB041"
-            android:textSize="14dp" />
+            <!-- Register Form -->
+            <FrameLayout
+                android:layout_width="505dp"
+                android:layout_height="798dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="340dp"
+                android:background="@drawable/drawable_shape_1">
 
-        <EditText
-            android:id="@+id/full_name"
-            android:layout_width="330dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="90dp"
-            android:background="@drawable/drawable_shape_2"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="10dp"
-            android:scaleType="centerInside" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="59.29dp"
+                    android:layout_gravity="top"
+                    android:layout_marginLeft="0dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Register"
+                    android:textColor="#FFFFB041"
+                    android:textSize="36dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:layout_marginTop="140dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Email"
-            android:textColor="#FFFFB041"
-            android:textSize="14dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_gravity="top"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="65dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Full Name"
+                    android:textColor="#FFFFB041"
+                    android:textSize="14dp" />
 
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="330dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="165dp"
-            android:background="@drawable/drawable_shape_2"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="10dp"
-            android:scaleType="centerInside" />
+                <EditText
+                    android:id="@+id/full_name"
+                    android:layout_width="330dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="90dp"
+                    android:background="@drawable/drawable_shape_2"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:scaleType="centerInside" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:layout_marginTop="215dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Password"
-            android:textColor="#FFFFB041"
-            android:textSize="14dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="140dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Email"
+                    android:textColor="#FFFFB041"
+                    android:textSize="14dp" />
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="330dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="240dp"
-            android:background="@drawable/drawable_shape_2"
-            android:inputType="textPassword"
-            android:paddingLeft="10dp"
-            android:scaleType="centerInside" />
-    </FrameLayout>
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="330dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="165dp"
+                    android:background="@drawable/drawable_shape_2"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="10dp"
+                    android:scaleType="centerInside" />
 
-    <!-- Register Button at Bottom-Right -->
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="640dp"
-        android:layout_marginLeft="60dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="215dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Password"
+                    android:textColor="#FFFFB041"
+                    android:textSize="14dp" />
 
-        <Button
-            android:id="@+id/register_button"
-            android:layout_width="280dp"
-            android:layout_height="56dp"
-            android:layout_marginLeft="25dp"
-            android:backgroundTint="#FFD580"
-            android:fontFamily="@font/nunito_bold"
-            android:onClick="onLoginButtonClick"
-            android:text="Register"
-            android:textColor="#333333"
-            android:textSize="24dp" />
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="330dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="240dp"
+                    android:background="@drawable/drawable_shape_2"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:scaleType="centerInside" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:layout_marginLeft="80dp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Already Member? Login"
-            android:onClick="backLogin"
-            android:textColor="#FFFFB041"
-            android:textSize="14dp" />
-    </FrameLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="290dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Phone Number"
+                    android:textColor="#FFFFB041"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/phone_number"
+                    android:layout_width="330dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="315dp"
+                    android:background="@drawable/drawable_shape_2"
+                    android:inputType="phone"
+                    android:paddingLeft="10dp"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="365dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Date of Birth"
+                    android:textColor="#FFFFB041"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/date_of_birth"
+                    android:layout_width="330dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="390dp"
+                    android:background="@drawable/drawable_shape_2"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="Select Date"
+                    android:onClick="showDatePickerDialog"
+                    android:paddingLeft="10dp"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="440dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Profile Picture"
+                    android:textColor="#FFFFB041"
+                    android:textSize="14dp" />
+
+                <FrameLayout
+                    android:layout_width="330dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="465dp"
+                    android:background="@drawable/drawable_shape_3">
+
+                    <ImageView
+                        android:id="@+id/profile_picture"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="Profile Picture"
+                        android:scaleType="centerCrop" />
+
+                    <Button
+                        android:id="@+id/upload_button"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_horizontal"
+                        android:backgroundTint="#FFD580"
+                        android:fontFamily="@font/nunito_bold"
+                        android:onClick="onUploadPictureClick"
+                        android:text="Upload"
+                        android:textColor="#333333" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <!-- Register Button at Bottom-Right -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="970dp"
+                android:layout_marginLeft="60dp">
+
+                <Button
+                    android:id="@+id/register_button"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:backgroundTint="#FFD580"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Register"
+                    android:textColor="#333333"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginLeft="80dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Already Member? Login"
+                    android:onClick="backLogin"
+                    android:textColor="#FFFF"
+                    android:textSize="14dp" />
+            </FrameLayout>
+
+        </FrameLayout>
+    </ScrollView>
+
 </FrameLayout>

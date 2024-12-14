@@ -67,24 +67,13 @@
         android:layout_marginTop="621dp"
         android:layout_gravity="top|left">
 
-        <ImageView
-            android:id="@+id/image_rectangle12"
-            android:layout_width="390dp"
-            android:layout_height="533dp"
-            android:layout_marginTop="254dp"
-            android:layout_gravity="top|left"
-            android:background="@drawable/image_rectangle1"
-            android:scaleType="centerInside" />
+
+
+
+
 
         <Button
-            android:id="@+id/img_login_box"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#FFD580"
-            android:scaleType="centerCrop" />
-
-
-        <TextView
+            android:background="@drawable/image_orange"
             android:id="@+id/text_buy_now"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -145,6 +134,7 @@
         android:layout_marginTop="323dp"
         android:layout_gravity="top|left"
         android:scaleType="centerInside"
+        android:src="@drawable/logo"
         />
 
     <FrameLayout

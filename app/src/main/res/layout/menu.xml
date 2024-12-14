@@ -699,6 +699,7 @@
                         android:layout_height="match_parent"
                         android:gravity="left|top"
                         android:orientation="vertical"
+                        android:background="@drawable/image_orange"
                         android:paddingLeft="24dp"
                         android:paddingTop="24dp"
                         android:paddingRight="24dp">
@@ -820,7 +821,7 @@
                                     android:layout_width="172dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:background="@drawable/container_link2"
+
                                     android:clipToPadding="false"
                                     android:gravity="left|center_vertical"
                                     android:orientation="horizontal"
@@ -1176,9 +1177,10 @@
                 <Button
                     android:id="@+id/image_rectangle6"
                     android:layout_width="131.5dp"
-                    android:layout_height="31dp"
+                    android:layout_height="41dp"
                     android:layout_gravity="top|left"
                     android:backgroundTint="#FF0000"
+                    android:text="Logout"
                     android:scaleType="centerInside" />
 
                 <TextView

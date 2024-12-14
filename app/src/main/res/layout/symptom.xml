@@ -4,153 +4,203 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_med_suggestion"
+    android:id="@+id/container_symptoms_input"
     android:layout_width="match_parent"
-    android:layout_height="844dp"
-    >
+    android:layout_height="844dp">
 
     <FrameLayout
         android:id="@+id/container_group"
-        android:layout_width="match_parent"
+        android:layout_width="390dp"
         android:layout_height="379dp"
         android:layout_marginTop="-96dp"
-        android:layout_gravity="top">
+        android:layout_gravity="top|left">
 
         <ImageView
-            android:id="@+id/image_rectangle"
+            android:id="@+id/image_group_rectangle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/image_rectangle"
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/text_medication_description"
-            android:layout_width="359dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="6.5dp"
-            android:layout_marginTop="277dp"
-            android:layout_marginBottom="42dp"
-            android:layout_gravity="center_horizontal"
+            android:id="@+id/text_group_description"
+            android:layout_width="319dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="276dp"
+            android:layout_marginBottom="55dp"
+            android:layout_gravity="left"
             android:gravity="left|top"
             android:includeFontPadding="false"
             android:lineHeight="26.63dp"
-            android:text="Here is the preferred medication based on your symptoms:"
+            android:text="Need some drug suggestions? \nWe’ll do it for you."
             android:textColor="#FF000000"
             android:textSize="22dp" />
-
-        <ImageView
-            android:id="@+id/image_rb"
-            android:layout_width="59dp"
-            android:layout_height="43dp"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="219dp"
-            android:layout_marginBottom="117dp"
-            android:layout_gravity="left"
-            android:scaleType="centerInside" />
     </FrameLayout>
-    <FrameLayout
-        android:id="@+id/container_login"
-        android:layout_width="336dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="621dp"
-        android:layout_gravity="top|left">
-        <ImageView
-            android:id="@+id/image_rectangle1"
-            android:layout_width="390dp"
-            android:layout_height="533dp"
-            android:layout_marginTop="254dp"
-            android:layout_gravity="top|left"
-            android:background="@drawable/image_rectangle1"
-            android:scaleType="centerInside" />
 
-        <Button
-            android:id="@+id/img_login_box"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#FFD580"
-            android:scaleType="centerCrop" />
+    <ImageView
+        android:id="@+id/image_main_rectangle"
+        android:layout_width="390dp"
+        android:layout_height="533dp"
+        android:layout_marginTop="254dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/container_link"
+        android:scaleType="centerInside" />
 
+    <LinearLayout
+        android:id="@+id/container_search_button"
+        android:layout_width="330dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="769dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/image_orange"
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:onClick="searchClicked"
+        android:orientation="horizontal"
+        android:paddingBottom="7.5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="7.5dp">
 
         <TextView
-            android:id="@+id/text_buy_now"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:gravity="center"
+            android:id="@+id/text_search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:gravity="left|center_vertical"
             android:includeFontPadding="false"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="SEARCH"
+            android:text="SEARCH "
             android:textColor="#000"
             android:textSize="16dp" />
+    </LinearLayout>
 
-
-
-    </FrameLayout>
-
-
-
-
-    <ImageView
-        android:id="@+id/image_rectangle2"
-        android:layout_width="306dp"
-        android:layout_height="316dp"
+    <LinearLayout
+        android:id="@+id/container_add_symptoms_button"
+        android:layout_width="330dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="719dp"
         android:layout_gravity="top|left"
-        android:layout_marginLeft="38dp"
-        android:layout_marginTop="295dp"
-        android:background="@drawable/image_rectangle"
-        android:scaleType="centerInside" />
+        android:background="@drawable/image_orange"
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="7.5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="7.5dp"
+        android:onClick="addSymptomsClicked"
+        android:clickable="true"
+        android:focusable="true">
 
-    <TextView
-        android:id="@+id/text_medication_info"
-        android:layout_width="265dp"
-        android:layout_height="67dp"
-        android:layout_marginLeft="58dp"
-        android:layout_marginTop="529dp"
-        android:layout_gravity="top|left"
-        android:gravity="center_horizontal|top"
-        android:includeFontPadding="false"
-        android:lineHeight="22dp"
-        android:text="Dosage: 500 mg\nDosage Form: Tablet\nRecommended usage: 1 dose up to 4 times (within 24 hours)\n\nSuitable use for headache, migraine, colds and flu symptoms, fever, toothache, muscle pain\n"
-        android:textColor="#FF544C4C"
-        android:textSize="12dp" />
+        <TextView
+            android:id="@+id/text_add_symptoms_button"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="ADD ANOTHER SYMPTOMS"
+            android:textColor="#FF2C2C2C"
+            android:textSize="16dp" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/text_paracetamol"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginLeft="135dp"
-        android:layout_marginTop="488.5dp"
-        android:layout_marginBottom="-1.5dp"
-        android:layout_gravity="top|left"
-        android:gravity="center_horizontal|center_vertical"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="Paracetamol"
-        android:textColor="#FF000000"
-        android:textSize="20dp" />
-
-    <ImageView
-        android:id="@+id/image_paracetamol"
-        android:layout_width="181dp"
-        android:layout_height="153dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginTop="323dp"
-        android:layout_gravity="top|left"
-        android:scaleType="centerInside"
-        />
 
     <FrameLayout
         android:id="@+id/container_search_bar"
+        android:layout_width="331.23dp"
+        android:layout_height="68.23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="35.77dp"
+        android:layout_marginTop="334dp"
+        android:layout_marginBottom="441.77dp">
+
+        <ImageView
+            android:id="@+id/image_search_bar_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="68.23dp"
+            android:background="@drawable/container_link"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/text_search_bar_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="25.99dp"
+            android:layout_marginLeft="64.43dp"
+            android:layout_marginRight="29.96dp"
+            android:layout_marginTop="21.78dp"
+            android:layout_marginBottom="20.46dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Search for symptoms "
+            android:textColor="#FF86869E"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/image_search_icon"
+            android:layout_width="30.36dp"
+            android:layout_height="31.63dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="284.87dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18.61dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_manage_search_24" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/text_symptoms_prompt"
+        android:layout_width="264dp"
+        android:layout_height="45dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginTop="275dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="22dp"
+        android:text="Enter the symptoms that you have experienced for the past few days:"
+        android:textColor="#FF000000"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/text_note"
+        android:layout_width="319dp"
+        android:layout_height="42dp"
+        android:layout_marginRight="5.5dp"
+        android:layout_marginTop="422dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="22dp"
+        android:text="Note: It is advisable to specify the symptoms and put more than 1 symptoms so that the system will be able to perfectly suggest the medicine for you."
+        android:textColor="#FF000000"
+        android:textSize="12dp" />
+
+    <ImageView
+        android:id="@+id/image_rb"
+        android:layout_width="59dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="127dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo" />
+
+    <FrameLayout
+        android:id="@+id/container_search_bar1"
         android:layout_width="399dp"
         android:layout_height="100.56dp"
         android:layout_marginLeft="-9dp"
         android:layout_gravity="top|left">
 
         <ImageView
-            android:id="@+id/image_rectangle3"
-            android:layout_width="492dp"
+            android:id="@+id/image_search_bar_rectangle1"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/rectangle_3"
             android:scaleType="centerCrop" />
@@ -164,10 +214,21 @@
             android:layout_marginTop="14.03dp"
             android:layout_gravity="top">
 
-
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="37.24dp"
+                android:layout_height="23.39dp"
+                android:layout_gravity="left"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="9:41"
+                android:textColor="#FF000000"
+                android:textSize="17dp" />
 
             <ImageView
-                android:id="@+id/image_sim"
+                android:id="@+id/image_sim_status"
                 android:layout_width="20.22dp"
                 android:layout_height="14.03dp"
                 android:layout_marginLeft="279.83dp"
@@ -175,20 +236,21 @@
                 android:layout_marginTop="5.85dp"
                 android:layout_marginBottom="3.51dp"
                 android:scaleType="centerInside"
-                />
+                 />
 
             <ImageView
-                android:id="@+id/image_network_wifi"
+                android:id="@+id/image_network_status"
                 android:layout_width="20.22dp"
                 android:layout_height="14.03dp"
                 android:layout_marginLeft="303.77dp"
                 android:layout_marginRight="24.47dp"
                 android:layout_marginTop="5.85dp"
                 android:layout_marginBottom="3.51dp"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                 />
 
             <ImageView
-                android:id="@+id/image_battery"
+                android:id="@+id/image_battery_status"
                 android:layout_width="21.28dp"
                 android:layout_height="14.03dp"
                 android:layout_marginLeft="327.18dp"
@@ -196,7 +258,7 @@
                 android:layout_marginTop="5.85dp"
                 android:layout_marginBottom="3.51dp"
                 android:scaleType="centerInside"
-                />
+                 />
         </FrameLayout>
 
         <TextView
@@ -216,7 +278,7 @@
             android:textSize="18dp" />
 
         <ImageView
-            android:id="@+id/image_arrow_left"
+            android:id="@+id/image_back_arrow"
             android:layout_width="31.92dp"
             android:layout_height="35.08dp"
             android:layout_marginLeft="20.22dp"
@@ -224,6 +286,6 @@
             android:layout_marginBottom="7.02dp"
             android:layout_gravity="left"
             android:scaleType="centerInside"
-            android:src="@drawable/baseline_arrow_back_ios_24" />
+            android:src="@drawable/arrow_back" />
     </FrameLayout>
 </FrameLayout>
