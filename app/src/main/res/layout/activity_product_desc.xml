@@ -146,7 +146,8 @@
                                 android:layout_marginLeft="10dp"
                                 android:text="Description"
                                 android:textColor="#FF454545"
-                                android:textSize="13dp" />
+                                android:textSize="13dp"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/text_tab_dosage"

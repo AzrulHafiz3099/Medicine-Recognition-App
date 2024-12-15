@@ -234,7 +234,8 @@
                 android:layout_marginLeft="64.94dp"
                 android:layout_marginTop="380.95dp"
                 android:layout_gravity="top|left"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                android:src="@drawable/logo"/>
 
             <ImageView
                 android:id="@+id/image_loratadine"
@@ -243,7 +244,8 @@
                 android:layout_marginLeft="212.94dp"
                 android:layout_marginTop="352.95dp"
                 android:layout_gravity="top|left"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                android:src="@drawable/logo"/>
 
             <FrameLayout
                 android:id="@+id/container_status_bar"
@@ -345,6 +347,7 @@
                 android:background="@drawable/image_rectangle"
                 android:scaleType="centerInside" />
 
+
             <ImageView
                 android:id="@+id/image_rectangle4"
                 android:layout_width="152.65dp"
@@ -354,6 +357,8 @@
                 android:layout_gravity="top|left"
                 android:background="@drawable/image_rectangle"
                 android:scaleType="centerInside" />
+
+
 
             <ImageView
                 android:id="@+id/image_rectangle5"

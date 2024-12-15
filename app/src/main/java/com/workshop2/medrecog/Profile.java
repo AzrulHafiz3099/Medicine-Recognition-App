@@ -79,7 +79,7 @@ public class Profile extends AppCompatActivity {
                                             .into(profilePicture);
                                 } else {
                                     // Optionally set a default placeholder or handle empty profile picture case
-                                    profilePicture.setImageResource(R.drawable.default_profile_picture); // Replace with your placeholder image
+                                    //profilePicture.setImageResource(R.drawable.default_profile_picture); // Replace with your placeholder image
                                 }
                             } else {
                                 String message = jsonResponse.getString("message");

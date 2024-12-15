@@ -31,6 +31,9 @@ public class Login extends AppCompatActivity {
         // Set onClick listener for the Login button
         binding.loginButton.setOnClickListener(this::onLoginButtonClick);
 
+        // Set onClick listener for the Forget Password button
+        binding.forgetButton.setOnClickListener(this::onForgetButtonClick);  // Assuming you have a button with this ID in the XML
+
         // Check if the registration status message exists and show it
         String registrationStatus = getIntent().getStringExtra("REGISTRATION_STATUS");
         if (registrationStatus != null) {
@@ -124,6 +127,13 @@ public class Login extends AppCompatActivity {
     public void onSignupButtonClick(View view) {
         // Intent to navigate to the SignUpActivity (make sure the SignUpActivity is declared in AndroidManifest.xml)
         Intent intent = new Intent(Login.this, Register.class);
+        startActivity(intent);
+    }
+
+    // Function to handle Forget Password button click
+    public void onForgetButtonClick(View view) {
+        // Intent to navigate to the ForgetPass activity
+        Intent intent = new Intent(Login.this, ForgetPass.class);
         startActivity(intent);
     }
 }

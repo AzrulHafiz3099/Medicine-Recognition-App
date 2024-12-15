@@ -63,7 +63,7 @@
             android:includeFontPadding="false"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="Login"
+            android:text="Forget Password"
             android:textColor="#FFFFB041"
             android:textSize="36dp" />
 
@@ -92,40 +92,11 @@
             android:paddingLeft="10dp"
             android:scaleType="centerInside" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:layout_marginTop="140dp"
-            android:fontFamily="@font/nunito_regular"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Password"
-            android:textColor="#FFFFB041"
-            android:textSize="14dp" />
 
-        <EditText
-            android:id="@+id/password_input"
-            android:layout_width="330dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="165dp"
-            android:background="@drawable/drawable_shape_2"
-            android:inputType="textPassword"
-            android:paddingStart="10dp"
-            android:scaleType="centerCrop" />
 
-        <TextView
-            android:id="@+id/forget_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="212dp"
-            android:layout_marginTop="215dp"
-            android:fontFamily="@font/nunito_bold"
-            android:onClick="onForgetButtonClick"
-            android:text="Forgot Password?"
-            android:textColor="#FFFFB041"
-            android:textSize="14dp" />
+
+
+
 
     </FrameLayout>
 
@@ -143,8 +114,8 @@
             android:layout_marginLeft="25dp"
             android:backgroundTint="#FFD580"
             android:fontFamily="@font/nunito_bold"
-            android:onClick="onLoginButtonClick"
-            android:text="Login"
+            android:onClick="onResetButtonClick"
+            android:text="Send Reset Link"
             android:textColor="#333333"
             android:textSize="24dp" />
 
@@ -155,8 +126,8 @@
             android:layout_marginTop="70dp"
             android:layout_marginLeft="70dp"
             android:fontFamily="@font/nunito_bold"
-            android:text="Don't have an account? Signup"
-            android:onClick="onSignupButtonClick"
+            android:text="Remember password? Login"
+            android:onClick="onLoginButtonClick"
             android:textColor="#FFFFB041"
             android:textSize="14dp" />
     </FrameLayout>

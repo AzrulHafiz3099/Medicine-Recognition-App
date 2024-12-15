@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_add_reminder_timepick"
+    android:id="@+id/container_med_details_reminder"
     android:layout_width="match_parent"
     android:layout_height="844dp">
 
@@ -23,22 +23,31 @@
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/text_dosage_details"
-            android:layout_width="183dp"
+            android:id="@+id/text_medication_details"
+            android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:layout_marginLeft="128dp"
+            android:layout_marginLeft="108dp"
+            android:layout_marginRight="108dp"
             android:layout_marginTop="262.5dp"
-            android:layout_marginRight="120dp"
             android:layout_marginBottom="66.5dp"
             android:gravity="left|center_vertical"
             android:includeFontPadding="false"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="Medicine Details:"
+            android:text="Medication Details:"
             android:textColor="#FF000000"
             android:textSize="20dp" />
 
-
+        <ImageView
+            android:id="@+id/image_rb"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="123dp"
+            android:layout_marginTop="122dp"
+            android:layout_marginBottom="91dp"
+            android:layout_gravity="left"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo" />
     </FrameLayout>
 
     <ImageView
@@ -51,117 +60,98 @@
         android:scaleType="centerInside" />
 
     <LinearLayout
-        android:id="@+id/container_button_save"
+        android:id="@+id/container_button"
         android:layout_width="330dp"
-        android:layout_height="36dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="766dp"
-        android:layout_gravity="top|left"
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingBottom="7.5dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="7.5dp">
+        android:layout_height="wrap_content"
+    android:layout_marginLeft="27dp"
+    android:layout_marginTop="766dp"
+    android:layout_gravity="top|left"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingBottom="7.5dp"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingTop="7.5dp">
 
-        <TextView
-            android:id="@+id/text_button_save"
-            android:layout_width="wrap_content"
-            android:layout_height="21dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="SAVE "
-            android:textColor="#000"
-            android:textSize="16dp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/text_button"
+        android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+        android:background="@drawable/image_orange"
+    android:text="ADD"
+    android:textColor="#000"
+    android:textSize="16sp" />
+</LinearLayout>
 
     <FrameLayout
-        android:id="@+id/container_login"
-        android:layout_width="336dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="621dp"
-        android:layout_gravity="top|left">
-
-        <Button
-            android:id="@+id/img_login_box"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#FFD580"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/text_start_order"
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:layout_marginLeft="98dp"
-            android:layout_marginRight="97dp"
-            android:layout_marginTop="13.5dp"
-            android:layout_marginBottom="13.5dp"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Next"
-            android:textColor="#000000"
-            android:textSize="14dp" />
-    </FrameLayout>
-
-
-    <FrameLayout
-        android:layout_width="198.5dp"
-        android:layout_height="213.5dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="418dp"
+        android:id="@+id/container_group1"
+        android:layout_width="306dp"
+        android:layout_height="425dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="295dp"
         android:layout_gravity="top|left"
-        android:background="@drawable/drawable_shape">
-
-        <FrameLayout
-            android:id="@+id/image_material"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="-0.5dp"
-            android:layout_marginBottom="-0.5dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="232dp"
-                android:scaleType="centerCrop" />
-        </FrameLayout>
-
-        <LinearLayout
-            android:id="@+id/container_date_time_wheels"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="left|top"
-            android:orientation="vertical"
-            android:paddingBottom="18dp"
-            android:paddingLeft="20dp"
-            android:background="@drawable/image_rectangle"
-            android:paddingRight="20dp"
-            android:paddingTop="18dp">
-
-            <ImageView
-                android:id="@+id/container_frame"
-                android:layout_width="158.5dp"
-                android:layout_height="177.5dp"
-                android:scaleType="centerInside"
-                />
-        </LinearLayout>
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/container_search_bar"
-        android:layout_width="434dp"
-        android:layout_height="100.56dp"
-        android:layout_gravity="top|left"
-        android:layout_marginLeft="-9dp">
+        android:background="@drawable/container_link">
 
         <ImageView
             android:id="@+id/image_rectangle2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/text_dosage_info"
+            android:layout_width="265dp"
+            android:layout_height="67dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="234dp"
+            android:layout_marginBottom="124dp"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal|top"
+            android:includeFontPadding="false"
+            android:lineHeight="22dp"
+            android:text="Dosage: 500 mg\nDosage Form: Tablet\nRecommended usage: 1 dose up to 4 times (within 24 hours)\n\nSuitable use for headache, migraine, colds and flu symptoms, fever, toothache, muscle pain\n"
+            android:textColor="#FF544C4C"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/text_paracetamol"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginLeft="97dp"
+            android:layout_marginRight="90dp"
+            android:layout_marginTop="193.5dp"
+            android:layout_marginBottom="-1.5dp"
+            android:layout_gravity="top"
+            android:gravity="center_horizontal|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Paracetamol"
+            android:textColor="#FF000000"
+            android:textSize="20dp" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/image_paracetamol"
+        android:layout_width="181dp"
+        android:layout_height="153dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="323dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo" />
+
+    <FrameLayout
+        android:id="@+id/container_search_bar"
+        android:layout_width="399dp"
+        android:layout_height="100.56dp"
+        android:layout_marginLeft="-9dp"
+        android:layout_gravity="top|left">
+
+        <ImageView
+            android:id="@+id/image_rectangle3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/image_orange"
@@ -171,12 +161,53 @@
             android:id="@+id/container_status_bar"
             android:layout_width="match_parent"
             android:layout_height="23.39dp"
-            android:layout_gravity="top"
             android:layout_marginLeft="33.52dp"
+            android:layout_marginRight="17.02dp"
             android:layout_marginTop="14.03dp"
-            android:layout_marginRight="17.02dp">
+            android:layout_gravity="top">
 
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="37.24dp"
+                android:layout_height="23.39dp"
+                android:layout_gravity="left"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="9:41"
+                android:textColor="#FF000000"
+                android:textSize="17dp" />
 
+            <ImageView
+                android:id="@+id/image_sim"
+                android:layout_width="20.22dp"
+                android:layout_height="14.03dp"
+                android:layout_marginLeft="279.83dp"
+                android:layout_marginRight="48.41dp"
+                android:layout_marginTop="5.85dp"
+                android:layout_marginBottom="3.51dp"
+                android:scaleType="centerInside" />
+
+            <ImageView
+                android:id="@+id/image_network_wifi"
+                android:layout_width="20.22dp"
+                android:layout_height="14.03dp"
+                android:layout_marginLeft="303.77dp"
+                android:layout_marginRight="24.47dp"
+                android:layout_marginTop="5.85dp"
+                android:layout_marginBottom="3.51dp"
+                android:scaleType="centerInside" />
+
+            <ImageView
+                android:id="@+id/image_battery"
+                android:layout_width="21.28dp"
+                android:layout_height="14.03dp"
+                android:layout_marginLeft="327.18dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="5.85dp"
+                android:layout_marginBottom="3.51dp"
+                android:scaleType="centerInside" />
         </FrameLayout>
 
         <TextView
@@ -184,8 +215,8 @@
             android:layout_width="match_parent"
             android:layout_height="26dp"
             android:layout_marginLeft="144dp"
-            android:layout_marginTop="63dp"
             android:layout_marginRight="135dp"
+            android:layout_marginTop="63dp"
             android:layout_marginBottom="11.56dp"
             android:gravity="left|center_vertical"
             android:includeFontPadding="false"
@@ -196,14 +227,14 @@
             android:textSize="18dp" />
 
         <ImageView
-            android:id="@+id/image_arrow_chevron_circle_left"
+            android:id="@+id/image_arrow_chevron_left"
             android:layout_width="31.92dp"
             android:layout_height="35.08dp"
-            android:layout_gravity="left"
             android:layout_marginLeft="20.22dp"
             android:layout_marginTop="58.46dp"
             android:layout_marginBottom="7.02dp"
+            android:layout_gravity="left"
             android:scaleType="centerInside"
-            android:src="@drawable/baseline_arrow_back_ios_24" />
+            android:src="@drawable/arrow_back" />
     </FrameLayout>
 </FrameLayout>

@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/image_group"
-            android:layout_width="22.04dp"
-            android:layout_height="11.08dp"
+            android:layout_width="42.04dp"
+            android:layout_height="21.08dp"
             android:layout_marginLeft="26.63dp"
             android:layout_marginRight="329.2dp"
             android:layout_marginTop="58.08dp"
@@ -48,160 +48,8 @@
             android:textColor="#FF27214D"
             android:textSize="20dp" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="180dp"
-            android:layout_height="190dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="500dp"
-            android:layout_gravity="bottom|left"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginLeft="20dp"
-                        android:src="@drawable/logo"/>
-                    <!-- android:src="@drawable/a6" />-->
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/tick2" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/text_paracetamol"
-                    android:layout_width="wrap_content"
-                    android:layout_height="21dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:text="Paracetamol"
-                    android:layout_gravity="left"
-                    android:gravity="left|center_vertical"
-                    android:textColor="#FF27214D"
-                    android:fontFamily="@font/roboto_medium"
-                    android:textSize="16dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="18dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_gravity="left"
-                        android:gravity="left|center_vertical"
-                        android:includeFontPadding="false"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:text="RM4.60"
-                        android:textColor="#FFF08626"
-                        android:fontFamily="@font/roboto_medium"
-                        android:textSize="14dp" />
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="70dp"
-                        android:src="@drawable/baseline_add_circle_outline_24" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="180dp"
-            android:layout_height="190dp"
-            android:layout_marginBottom="500dp"
-            android:layout_marginLeft="235dp"
-            android:layout_gravity="bottom|left"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginLeft="20dp"
-                        android:src="@drawable/logo"/>
-                    <!-- android:src="@drawable/a6" />-->
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/tick2" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/text_loratadine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="21dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:text="Loratadine"
-                    android:layout_gravity="left"
-                    android:gravity="left|center_vertical"
-                    android:textColor="#FF27214D"
-                    android:fontFamily="@font/roboto_medium"
-                    android:textSize="16dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="18dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_gravity="left"
-                        android:gravity="left|center_vertical"
-                        android:includeFontPadding="false"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:text="RM5.40"
-                        android:textColor="#FFF08626"
-                        android:fontFamily="@font/roboto_medium"
-                        android:textSize="14dp" />
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="70dp"
-                        android:src="@drawable/baseline_add_circle_outline_24" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="180dp"
             android:layout_height="190dp"
@@ -376,18 +224,19 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
+                    <!-- android:src="@drawable/a6" />-->
+
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="110dp"
                         android:layout_height="110dp"
                         android:layout_marginLeft="20dp"
-                        android:src="@drawable/logo"/>
-                    <!-- android:src="@drawable/a6" />-->
+                        android:src="@drawable/logo" />
 
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:layout_marginTop="15dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/tick2" />
 
                 </LinearLayout>

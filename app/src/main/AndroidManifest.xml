@@ -66,6 +66,8 @@
         <activity android:name=".Symptom" />
         <activity android:name=".Wishlist" />
         <activity android:name=".YourOrder" />
+        <activity android:name=".ForgetPass" />
+
         <activity
             android:name=".StoreSelect"
             android:exported="true">
