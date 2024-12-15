@@ -41,6 +41,7 @@ public class Profile extends AppCompatActivity {
     }
 
     private void getUserProfile() {
+
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         String token = sharedPreferences.getString("jwt_token", "");
 
@@ -48,6 +49,9 @@ public class Profile extends AppCompatActivity {
             Toast.makeText(this, "User is not logged in", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        Log.d("JWT_TOKEN", "Token Sent in profile page: " + token);
+
 
         String url = getString(R.string.api_url); // Replace with your actual API URL
 

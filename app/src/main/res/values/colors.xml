@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_gray">#D3D3D3</color>
+    <color name="default_tab_color">#FF454545</color>
+    <color name="active_tab_color">#FF007BFF</color>  <!-- Example color -->
+
 </resources>

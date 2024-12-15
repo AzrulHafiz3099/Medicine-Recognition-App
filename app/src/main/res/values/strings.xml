@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Medicine Recognition App</string>
 
-    <string name="api_url">http://192.168.0.8/BackEnd-APi/MedRec/api_user.php</string>
+    <string name="api_url">http://192.168.0.28/BackEnd-APi/MedRec/api_user.php</string>
+    <string name="api_vendor">http://192.168.0.28/BackEnd-APi/MedRec/api_vendor.php</string>
+    <string name="api_drug_supply">http://192.168.0.28/BackEnd-APi/MedRec/api_drug_supply.php</string>
+    <string name="drug_image_url">http://192.168.0.28/BackEnd-APi/MedRec/DrugImage/</string>
+
 </resources>

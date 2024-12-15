@@ -29,11 +29,6 @@
             android:name=".Cart"
             android:exported="false" />
         <activity
-            android:name=".ProductDesc"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".StoreSelect" -->
-        <!-- android:exported="false" /> -->
-        <activity
             android:name=".Login"
             android:exported="true">
             <intent-filter>
@@ -47,8 +42,11 @@
         <activity android:name=".Addremindertimepick" />
         <activity android:name=".Delete" />
         <activity android:name=".Drugreminder" />
+        <activity android:name=".Map" />
+        <activity android:name=".MedicineReco" />
+        <activity android:name=".Menu" />
         <activity
-            android:name=".Homepage"
+            android:name=".Profile"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,10 +54,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Map" />
-        <activity android:name=".MedicineReco" />
-        <activity android:name=".Menu" />
-        <activity android:name=".Profile" />
         <activity android:name=".Register" />
         <activity android:name=".Search" />
         <activity android:name=".Suggestion" />
@@ -78,7 +72,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Homepage2"
+            android:name=".Homepage"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ProductDesc"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

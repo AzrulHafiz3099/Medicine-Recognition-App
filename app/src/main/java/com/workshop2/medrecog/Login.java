@@ -1,6 +1,7 @@
 package com.workshop2.medrecog;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -60,34 +61,32 @@ public class Login extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("API_RESPONSE", response);  // Log the raw response to check its content
-
                         try {
-                            // Check if the response is JSON (basic check for JSON format)
                             if (response.trim().startsWith("{")) {
                                 JSONObject jsonResponse = new JSONObject(response);
                                 String status = jsonResponse.getString("status");
                                 String message = jsonResponse.getString("message");
 
                                 if ("success".equals(status)) {
+                                    // Retrieve the token from the server response
                                     String token = jsonResponse.getString("token");
 
-                                    // Store the token in SharedPreferences or secure storage
-                                    getSharedPreferences("AppPrefs", MODE_PRIVATE)
-                                            .edit()
-                                            .putString("jwt_token", token)
-                                            .apply();
+                                    // Save the token in SharedPreferences
+                                    SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("jwt_token", token); // Replace old token with the new one
+                                    editor.apply();
 
-                                    Log.d("JWT_TOKEN", "JWT Token: " + token);
-                                    //Intent intent = new Intent(Login.this, Homepage.class);
-                                    Intent intent = new Intent(Login.this, Profile.class);
+                                    Log.d("JWT_TOKEN", "Token saved successfully: " + token);
+
+                                    // Navigate to another activity
+                                    Intent intent = new Intent(Login.this, Homepage.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
                                     Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                // If it's not a JSON, log the response or display an error
                                 Log.e("API_ERROR", "Response is not valid JSON: " + response);
                                 Toast.makeText(Login.this, "Invalid response from server", Toast.LENGTH_SHORT).show();
                             }
@@ -96,6 +95,7 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                         }
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override
