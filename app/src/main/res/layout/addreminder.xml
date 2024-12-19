@@ -4,220 +4,125 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_delete"
+    android:id="@+id/container_add_reminder"
     android:layout_width="match_parent"
-    android:layout_height="845.45dp">
+    android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/container_iphone_pro_x"
+        android:id="@+id/container_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/rectangle_12" />
+
+        <TextView
+            android:id="@+id/text_meds_prompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="310dp"
+            android:gravity="center"
+            android:text="What meds would you like to add?"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="#FF000000"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/image_rb"
+            android:layout_width="135dp"
+            android:layout_height="141dp"
+            android:layout_marginTop="150dp"
+            android:layout_gravity="top|center"
+            android:src="@drawable/rb_3825" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/container_search_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="0dp"
-        android:background="@drawable/container_iphone_pro_x">
+        android:layout_marginTop="390dp">
 
-        <FrameLayout
-            android:id="@+id/container_add_reminder"
+        <!-- Background Image -->
+        <ImageView
+            android:id="@+id/image_rectangle1"
             android:layout_width="match_parent"
-            android:layout_height="844dp">
+            android:layout_height="match_parent"
+            android:src="@drawable/image_rectangle1" />
 
-            <FrameLayout
-                android:id="@+id/container_group"
-                android:layout_width="390dp"
-                android:layout_height="379dp"
-                android:layout_marginTop="-16dp"
-                android:layout_gravity="top|left">
+        <!-- Search Bar -->
+        <FrameLayout
+            android:id="@+id/search_bar_frame"
+            android:layout_width="380dp"
+            android:layout_height="70dp"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/drawable_shape_6">
 
-                <ImageView
-                    android:id="@+id/image_group_rectangle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop" />
+            <!-- EditText for Search -->
+            <EditText
+                android:id="@+id/edit_search_medicine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:hint="Search for medicine"
+                android:background="@null"
+                android:textColorHint="#FF86869E"
+                android:textColor="#FF000000"
+                android:paddingLeft="50dp"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/text_meds_question"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="38dp"
-                    android:layout_marginTop="265.5dp"
-                    android:layout_marginBottom="88.5dp"
-                    android:layout_gravity="left"
-                    android:gravity="left|center_vertical"
-                    android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="What meds would you like to add?"
-                    android:textColor="#FF000000"
-                    android:textSize="20dp" />
-
-                <ImageView
-                    android:id="@+id/image_rb"
-                    android:layout_width="135dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="123dp"
-                    android:layout_marginTop="122dp"
-                    android:layout_marginBottom="116dp"
-                    android:layout_gravity="left"
-                    android:scaleType="centerCrop" />
-            </FrameLayout>
-
+            <!-- Search Icon -->
             <ImageView
-                android:id="@+id/image_main_rectangle"
-                android:layout_width="390dp"
-                android:layout_height="533dp"
-                android:layout_marginTop="311dp"
-                android:layout_gravity="top|left"
-                android:background="@drawable/image_rectangle"
-                android:scaleType="centerInside" />
+                android:id="@+id/image_search_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/image_search_icon" />
 
-            <FrameLayout
-                android:id="@+id/container_login"
-                android:layout_width="336dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="621dp"
-                android:layout_gravity="top|left">
-
-                <Button
-                    android:id="@+id/img_login_box"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="#FFD580"
-                    android:scaleType="centerCrop" />
-
-                <TextView
-                    android:id="@+id/text_button_next"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="NEXT"
-                    android:textColor="#000"
-                    android:textSize="16dp" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:id="@+id/container_search_bar"
-                android:layout_width="331.23dp"
-                android:layout_height="68.23dp"
-                android:layout_marginLeft="26dp"
-                android:layout_marginRight="32.77dp"
-                android:layout_marginTop="343dp"
-                android:layout_marginBottom="432.77dp">
-
-                <ImageView
-                    android:id="@+id/image_search_rectangle"
-                    android:layout_width="match_parent"
-                    android:layout_height="68.23dp"
-                    android:background="@drawable/image_rectangle1"
-                    android:scaleType="centerCrop" />
-
-                <TextView
-                    android:id="@+id/text_search_medicine"
-                    android:layout_width="match_parent"
-                    android:layout_height="25.99dp"
-                    android:layout_marginLeft="64.43dp"
-                    android:layout_marginRight="29.96dp"
-                    android:layout_marginTop="21.78dp"
-                    android:layout_marginBottom="20.46dp"
-                    android:gravity="left|center_vertical"
-                    android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="Search for medicine"
-                    android:textColor="#FF86869E"
-                    android:textSize="18dp" />
-
-                <ImageView
-                    android:id="@+id/image_search_icon"
-                    android:layout_width="30.36dp"
-                    android:layout_height="31.63dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="284.87dp"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginBottom="18.61dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/baseline_manage_search_24" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:id="@+id/container_search_bar1"
-                android:layout_width="399dp"
-                android:layout_height="100.56dp"
-                android:layout_marginLeft="-9dp"
-                android:layout_gravity="top|left">
-
-                <ImageView
-                    android:id="@+id/image_search_rectangle1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/rectangle_3"
-                    android:scaleType="centerCrop" />
-
-                <FrameLayout
-                    android:id="@+id/container_status_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="23.39dp"
-                    android:layout_marginLeft="33.52dp"
-                    android:layout_marginRight="17.02dp"
-                    android:layout_marginTop="14.03dp"
-                    android:layout_gravity="top">
-
-
-
-
-
-                    <ImageView
-                        android:id="@+id/image_network_wifi"
-                        android:layout_width="20.22dp"
-                        android:layout_height="14.03dp"
-                        android:layout_marginLeft="303.77dp"
-                        android:layout_marginRight="24.47dp"
-                        android:layout_marginTop="5.85dp"
-                        android:layout_marginBottom="3.51dp"
-                        android:scaleType="centerInside" />
-
-                    <ImageView
-                        android:id="@+id/image_battery"
-                        android:layout_width="21.28dp"
-                        android:layout_height="14.03dp"
-                        android:layout_marginLeft="327.18dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_marginTop="5.85dp"
-                        android:layout_marginBottom="3.51dp"
-                        android:scaleType="centerInside" />
-                </FrameLayout>
-
-                <TextView
-                    android:id="@+id/text_add_your_med"
-                    android:layout_width="match_parent"
-                    android:layout_height="26dp"
-                    android:layout_marginLeft="144dp"
-                    android:layout_marginRight="135dp"
-                    android:layout_marginTop="63dp"
-                    android:layout_marginBottom="11.56dp"
-                    android:gravity="left|center_vertical"
-                    android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="Add Your Med"
-                    android:textColor="#FF000000"
-                    android:textSize="18dp" />
-
-                <ImageView
-                    android:id="@+id/image_arrow_left"
-                    android:layout_width="31.92dp"
-                    android:layout_height="35.08dp"
-                    android:layout_marginLeft="20.22dp"
-                    android:layout_marginTop="58.46dp"
-                    android:layout_marginBottom="7.02dp"
-                    android:layout_gravity="left"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/baseline_arrow_back_ios_24" />
-            </FrameLayout>
         </FrameLayout>
+
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/rounded_button"
+            android:layout_gravity="bottom|center"
+            android:text="NEXT >>"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_bold" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/container_search_bar1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/image_rectangle2">
+
+        <TextView
+            android:id="@+id/text_add_your_med"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:gravity="center"
+            android:text="Add Your Med"
+            android:textColor="#FF000000"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/image_arrow_left"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="90dp"
+            android:src="@drawable/arrow_back" />
     </FrameLayout>
 </FrameLayout>

@@ -47,4 +47,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    // Google Play services for Maps
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    // Google Play services for Location (optional for location-based services)
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
 }

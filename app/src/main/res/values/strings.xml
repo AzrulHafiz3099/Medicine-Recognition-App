@@ -6,4 +6,10 @@
     <string name="api_drug_supply">http://192.168.0.28/BackEnd-APi/MedRec/api_drug_supply.php</string>
     <string name="drug_image_url">http://192.168.0.28/BackEnd-APi/MedRec/DrugImage/</string>
 
+    <string name="store_name_placeholder">Farmasi Placeholder</string>
+    <string name="store_distance_placeholder">0.000 km</string>
+    <string name="store_status_placeholder">Open</string>
+    <string name="store_opening_time_placeholder">Opens 00:00 AM</string>
+    <string name="get_directions">Get Directions</string>
+    <string name="select_store">Select This Store</string>
 </resources>
