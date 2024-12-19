@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,9 +15,15 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <!--API for MAP-->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAlY83QdgcqNP2Ba5w0NLSjX5K9BGyZw2k" />
+
         <activity
             android:name=".RegisterPatient"
             android:exported="false" />
@@ -29,6 +37,11 @@
             android:name=".Cart"
             android:exported="false" />
         <activity
+            android:name=".ProductDesc"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".StoreSelect" -->
+        <!-- android:exported="false" /> -->
+        <activity
             android:name=".Login"
             android:exported="true">
             <intent-filter>
@@ -38,15 +51,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddCart" />
-        <activity android:name=".Addreminder" />
-        <activity android:name=".Addremindertimepick" />
-        <activity android:name=".Delete" />
-        <activity android:name=".Drugreminder" />
-        <activity android:name=".Map" />
-        <activity android:name=".MedicineReco" />
-        <activity android:name=".Menu" />
-        <activity
-            android:name=".Profile"
+        <activity android:name=".Addreminder"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,16 +59,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register" />
-        <activity android:name=".Search" />
-        <activity android:name=".Suggestion" />
-        <activity android:name=".Symptom" />
-        <activity android:name=".Wishlist" />
-        <activity android:name=".YourOrder" />
-        <activity android:name=".ForgetPass" />
+        <activity android:name=".Addremindertimepick"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity
-            android:name=".StoreSelect"
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Delete" />
+        <activity android:name=".Drugreminder"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -80,8 +85,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Map"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MedicineReco" />
+        <activity android:name=".Menu" />
+        <activity android:name=".Profile" />
+        <activity android:name=".Register" />
+        <activity android:name=".Search" />
+        <activity android:name=".Suggestion" />
+        <activity android:name=".Symptom" />
+        <activity android:name=".Wishlist" />
+        <activity android:name=".YourOrder" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
-            android:name=".ProductDesc"
+            android:name=".StoreSelect"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Homepage2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

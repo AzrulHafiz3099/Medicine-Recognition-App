@@ -15,7 +15,7 @@ public class Addreminder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.register);
+        setContentView(R.layout.addreminder);
 
     }
 }

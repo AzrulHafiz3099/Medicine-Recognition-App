@@ -4,248 +4,178 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_add_reminder_timepick"
+    android:id="@+id/container_add_reminder"
     android:layout_width="match_parent"
-    android:layout_height="844dp">
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/container_group"
-        android:layout_width="390dp"
-        android:layout_height="354dp"
-        android:layout_marginTop="-16dp"
-        android:layout_gravity="top|left">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/image_rectangle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/image_rectangle"
-            android:scaleType="centerCrop" />
+            android:src="@drawable/rectangle_12" />
 
         <TextView
-            android:id="@+id/text_dosage_details"
+            android:id="@+id/text_meds_prompt"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginLeft="128dp"
-            android:layout_marginRight="120dp"
-            android:layout_marginTop="262.5dp"
-            android:layout_marginBottom="66.5dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="280dp"
+            android:gravity="center"
             android:text="Dosage Details:"
+            android:fontFamily="@font/nunito_bold"
             android:textColor="#FF000000"
-            android:textSize="20dp" />
+            android:textSize="25dp" />
 
         <ImageView
             android:id="@+id/image_rb"
             android:layout_width="135dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="123dp"
-            android:layout_marginTop="122dp"
-            android:layout_marginBottom="91dp"
-            android:layout_gravity="left"
-            android:scaleType="centerCrop"
-             />
-    </FrameLayout>
-
-    <ImageView
-        android:id="@+id/image_rectangle1"
-        android:layout_width="390dp"
-        android:layout_height="533dp"
-        android:layout_marginTop="311dp"
-        android:layout_gravity="top|left"
-        android:background="@drawable/image_rectangle1"
-        android:scaleType="centerInside" />
-
-    <LinearLayout
-        android:id="@+id/container_button_save"
-        android:layout_width="330dp"
-        android:layout_height="36dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="766dp"
-        android:layout_gravity="top|left"
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingBottom="7.5dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="7.5dp">
-
-        <TextView
-            android:id="@+id/text_button_save"
-            android:layout_width="wrap_content"
-            android:layout_height="21dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="SAVE "
-            android:textColor="#000"
-            android:textSize="16dp" />
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/container_login"
-        android:layout_width="336dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="621dp"
-        android:layout_gravity="top|left">
-
-        <Button
-            android:id="@+id/img_login_box"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#FFD580"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/text_start_order"
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:layout_marginLeft="98dp"
-            android:layout_marginRight="97dp"
-            android:layout_marginTop="13.5dp"
-            android:layout_marginBottom="13.5dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="ADD ANOTHER DOSE"
-            android:textColor="#000000"
-            android:textSize="14dp" />
-    </FrameLayout>
-
-
-    <TextView
-        android:id="@+id/text_when_take_dose"
-        android:layout_width="wrap_content"
-        android:layout_height="23dp"
-        android:layout_marginLeft="47dp"
-        android:layout_marginTop="337.5dp"
-        android:layout_marginBottom="-0.5dp"
-        android:layout_gravity="top|left"
-        android:gravity="left|center_vertical"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="When do you need to take the dose?"
-        android:textColor="#FF000000"
-        android:textSize="18dp" />
-
-    <TextView
-        android:id="@+id/text_dose"
-        android:layout_width="wrap_content"
-        android:layout_height="23dp"
-        android:layout_marginLeft="171dp"
-        android:layout_marginTop="377.5dp"
-        android:layout_marginBottom="-0.5dp"
-        android:layout_gravity="top|left"
-        android:gravity="left|center_vertical"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="Dose 1"
-        android:textColor="#FF000000"
-        android:textSize="18dp" />
-
-    <FrameLayout
-        android:layout_width="198.5dp"
-        android:layout_height="213.5dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="418dp"
-        android:layout_gravity="top|left"
-        android:background="@drawable/drawable_shape">
-
-        <FrameLayout
-            android:id="@+id/image_material"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="-0.5dp"
-            android:layout_marginBottom="-0.5dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-              />
-        </FrameLayout>
-
-        <LinearLayout
-            android:id="@+id/container_date_time_wheels"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="left|top"
-            android:orientation="vertical"
-            android:paddingBottom="18dp"
-            android:paddingLeft="20dp"
-            android:background="@drawable/image_rectangle"
-            android:paddingRight="20dp"
-            android:paddingTop="18dp">
-
-            <ImageView
-                android:id="@+id/container_frame"
-                android:layout_width="158.5dp"
-                android:layout_height="177.5dp"
-                android:scaleType="centerInside"
-                 />
-        </LinearLayout>
+            android:layout_height="141dp"
+            android:layout_marginTop="120dp"
+            android:layout_gravity="top|center"
+            android:src="@drawable/rb_3825" />
     </FrameLayout>
 
     <FrameLayout
         android:id="@+id/container_search_bar"
-        android:layout_width="434dp"
-        android:layout_height="100.56dp"
-        android:layout_gravity="top|left"
-        android:layout_marginLeft="-9dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="350dp">
 
+        <!-- Background Image -->
         <ImageView
-            android:id="@+id/image_rectangle2"
+            android:id="@+id/image_rectangle1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/image_orange"
-            android:scaleType="centerCrop" />
+            android:src="@drawable/image_rectangle1" />
 
-        <FrameLayout
-            android:id="@+id/container_status_bar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="23.39dp"
-            android:layout_gravity="top"
-            android:layout_marginLeft="33.52dp"
-            android:layout_marginTop="14.03dp"
-            android:layout_marginRight="17.02dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:src="@drawable/image_rectangle1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="When do you need to take the dose?"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#FF000000"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Dose 1"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#FF000000"
+                android:textSize="20dp" />
+
+            <!-- Selected Time Display -->
+                        <TextView
+                            android:id="@+id/selectedTimeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:text="Selected Time: --:-- --"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black" />
+
+            <!-- Time Picker Section -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="16dp">
+
+                <!-- Hour Picker -->
+                <NumberPicker
+                    android:id="@+id/hourPicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp" />
+
+                <!-- Minute Picker -->
+                <NumberPicker
+                    android:id="@+id/minutePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp" />
+
+                <!-- AM/PM Picker -->
+                <NumberPicker
+                    android:id="@+id/ampmPicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
 
 
-        </FrameLayout>
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="110dp"
+            android:background="@drawable/rounded_button1"
+            android:layout_gravity="bottom|center"
+            android:text="add another dose"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:fontFamily="@font/nunito_bold" />
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/rounded_button"
+            android:layout_gravity="bottom|center"
+            android:text="save"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:onClick="saveReminder"
+            android:fontFamily="@font/nunito_bold" />
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/container_search_bar1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/image_rectangle2">
 
         <TextView
             android:id="@+id/text_add_your_med"
             android:layout_width="match_parent"
-            android:layout_height="26dp"
-            android:layout_marginLeft="144dp"
-            android:layout_marginTop="63dp"
-            android:layout_marginRight="135dp"
-            android:layout_marginBottom="11.56dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="55dp"
             android:text="Add Your Med"
             android:textColor="#FF000000"
+            android:fontFamily="@font/nunito_bold"
             android:textSize="18dp" />
 
         <ImageView
-            android:id="@+id/image_arrow_chevron_circle_left"
-            android:layout_width="31.92dp"
-            android:layout_height="35.08dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20.22dp"
-            android:layout_marginTop="58.46dp"
-            android:layout_marginBottom="7.02dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/baseline_arrow_back_ios_24" />
+            android:id="@+id/image_arrow_left"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="55dp"
+            android:src="@drawable/arrow_back" />
     </FrameLayout>
 </FrameLayout>
