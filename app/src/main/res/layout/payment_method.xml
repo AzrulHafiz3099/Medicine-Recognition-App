@@ -37,6 +37,7 @@
         android:textSize="23dp" />
 
     <FrameLayout
+        android:id="@+id/payment_COD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="190dp"
@@ -84,6 +85,7 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/payment_FPX"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="270dp"
@@ -129,6 +131,7 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/payment_VISA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="350dp"

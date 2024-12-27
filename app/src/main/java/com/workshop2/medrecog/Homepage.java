@@ -104,6 +104,8 @@ public class Homepage extends AppCompatActivity {
         });
 
         getUserProfile();
+        checkOrCreateCart();
+
     }
 
     private void getUserProfile() {
@@ -355,5 +357,52 @@ public class Homepage extends AppCompatActivity {
     public void onCartButtonClick(View view) {
         Intent intent = new Intent(Homepage.this, CartProduct.class);
         startActivity(intent);
+    }
+
+    private void checkOrCreateCart() {
+        String url = getString(R.string.api_cart);  // Your API URL
+
+        // Retrieve userID from SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
+        String savedUserID = sharedPreferences.getString("UserID", "");
+
+        Log.d("ProductDesc", "Checking or creating cart and adding item for UserID: " + savedUserID);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    Log.d("ProductDesc", "Response from check/create cart and add item: " + response); // Debugging line
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
+
+                        if ("success".equals(status)) {
+                            // Either cart existed or was created
+                            String cartID = jsonResponse.getString("CartID");
+                            Log.d("ProductDesc", "Cart ID: " + cartID); // Debugging line
+
+                        } else {
+                            Log.d("ProductDesc", "Failed to check/create cart: " + jsonResponse.getString("message"));
+                            Toast.makeText(this, "Cart Created, please click Add To Cart Button again.", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        Log.e("ProductDesc", "JSON Parsing error in check/create cart and add item", e);
+                        Toast.makeText(this, "JSON Parsing error", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    Log.e("ProductDesc", "Error occurred while checking/creating cart and adding item: " + error.getMessage(), error);
+                    Toast.makeText(this, "Request error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "check_or_create_cart");
+                params.put("UserID", savedUserID);
+                return params;
+            }
+        };
+
+        Volley.newRequestQueue(this).add(stringRequest);
     }
 }

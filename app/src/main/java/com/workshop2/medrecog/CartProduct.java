@@ -79,6 +79,29 @@ public class CartProduct extends AppCompatActivity {
                 finish(); // Optional: To close the ProductDesc activity if needed
             }
         });
+
+        // Set click listener for the Pay button
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the total price from the TextView (or any other relevant data)
+                String totalPrice = textSubTotal.getText().toString();  // Get the formatted total price
+                String cartID = ""; // Initialize an empty cartID
+
+                // Assuming that cartList has the cart item data, get the cartID from the first item in the list
+                if (!cartList.isEmpty()) {
+                    cartID = cartList.get(0).getCartID(); // Get the first cartID (if applicable)
+                }
+
+                // Pass total price, userID, and cartID to the PaymentMethod activity
+                Intent intent = new Intent(CartProduct.this, PaymentMethod.class);
+                String totalPriceWithoutRM = totalPrice.replace("RM", "").trim();
+                intent.putExtra("TOTAL_PRICE", totalPriceWithoutRM);  // Pass the total price
+                intent.putExtra("USER_ID", savedUserID);     // Pass the user ID
+                intent.putExtra("CART_ID", cartID);         // Pass the cartID
+                startActivity(intent);  // Start the PaymentMethod activity
+            }
+        });
     }
 
     private void fetchCartItems(String userID) {
@@ -167,5 +190,7 @@ public class CartProduct extends AppCompatActivity {
         textSubTotal.setText("RM" + totalPriceFormatted);  // Update the subtotal price
         btnPay.setText("RM" + totalPriceFormatted);  // Update the subtotal price
     }
+
+
 }
 
