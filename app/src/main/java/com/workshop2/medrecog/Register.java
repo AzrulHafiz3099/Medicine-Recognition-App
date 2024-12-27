@@ -61,6 +61,8 @@ public class Register extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d("RegisterResponse", response);  // Log the raw response
+
                         try {
                             // Parse the API response
                             JSONObject jsonResponse = new JSONObject(response);
@@ -68,20 +70,20 @@ public class Register extends AppCompatActivity {
                             String message = jsonResponse.getString("message");
 
                             if ("success".equals(status)) {
-                                // Registration successful, navigate to the Login activity
-                                Intent intent = new Intent(Register.this, Login.class);
-                                intent.putExtra("REGISTRATION_STATUS", message);
-                                startActivity(intent);
-                                finish();
+                                // Registration successful, retrieve UserID and proceed
+                                String userID = jsonResponse.getString("UserID"); // Get UserID from the response
+                                Log.d("UserID : ", userID);
+                                createCart(userID); // Call addCart API after successful registration
                             } else {
                                 // Show error message from the API response
                                 Toast.makeText(Register.this, message, Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Toast.makeText(Register.this, "Error parsing response", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this, "Error parsing response register: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -105,4 +107,56 @@ public class Register extends AppCompatActivity {
         // Add the request to the Volley queue
         Volley.newRequestQueue(Register.this).add(stringRequest);
     }
+
+    private void createCart(String userID) {
+        String url = getString(R.string.api_cart); // Replace this with the addCart API URL
+
+        StringRequest cartRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("CartResponse", response);  // Log the full response for debugging
+
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            String status = jsonResponse.getString("status");
+                            Log.d("Status : ", status);
+
+                            if ("success".equals(status)) {
+                                Toast.makeText(Register.this, "User successfully registered!", Toast.LENGTH_SHORT).show();
+                                // Proceed to next screen
+                                Intent intent = new Intent(Register.this, Login.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                String message = jsonResponse.has("message") ? jsonResponse.getString("message") : "Unknown error";
+                                Toast.makeText(Register.this, message, Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(Register.this, "Error parsing response cart", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Register.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("CartError", "Error occurred", error);
+                    }
+                }) {
+            @Override
+            protected java.util.Map<String, String> getParams() {
+                java.util.Map<String, String> params = new java.util.HashMap<>();
+                params.put("action", "addCart"); // Specify the action for adding cart
+                params.put("UserID", userID); // Pass the UserID received after registration
+                return params;
+            }
+        };
+
+        // Add the request to the Volley queue
+        Volley.newRequestQueue(Register.this).add(cartRequest);
+    }
+
 }

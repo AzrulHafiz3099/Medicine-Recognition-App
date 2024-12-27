@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class ProductDesc extends AppCompatActivity {
 
-    private String supplyID;
+    private String supplyID,userID;
     private LinearLayout containerDescriptionDetails, containerDosageDetails, containerManufacturerDetails, containerSideEffectsDetails;
     private TextView textTabDescription, textTabDosage, textTabManufacturer, textTabSideEffects;
 
@@ -79,16 +79,22 @@ public class ProductDesc extends AppCompatActivity {
 
         text_side_effects = findViewById(R.id.text_side_effects);
 
-
-
         // Get the SupplyID passed from Homepage
         supplyID = getIntent().getStringExtra("SupplyID");
+        userID = getIntent().getStringExtra("userID");
 
         // Log the received SupplyID
         if (supplyID != null) {
             Log.d("ProductDesc", "Received SupplyID: " + supplyID);
         } else {
             Log.d("ProductDesc", "No SupplyID received");
+        }
+
+        // Log the received userID
+        if (userID != null) {
+            Log.d("ProductDesc", "Received userID: " + userID);
+        } else {
+            Log.d("ProductDesc", "No userID received");
         }
 
         // By default, show Description details and highlight the Description tab
@@ -111,7 +117,9 @@ public class ProductDesc extends AppCompatActivity {
                 finish(); // Optional: To close the ProductDesc activity if needed
             }
         });
+
     }
+
 
     // Toggle visibility for Description section
     public void toggleDescription(View view) {
@@ -197,7 +205,8 @@ public class ProductDesc extends AppCompatActivity {
                             if ("success".equals(status)) {
                                 JSONObject drugDetails = jsonResponse.getJSONObject("drugDetails");
 
-                                // Log the drug details
+                                // Retrieve the DrugID and other drug details
+                                String drugID = drugDetails.getString("DrugID");  // Capture the DrugID
                                 String quantity = drugDetails.getString("Quantity");
                                 String brandName = drugDetails.getString("BrandName");
                                 String genericName = drugDetails.getString("GenericName");
@@ -210,7 +219,8 @@ public class ProductDesc extends AppCompatActivity {
                                 double price = drugDetails.getDouble("Price");
                                 String imageUrl = getString(R.string.drug_image_url) + drugDetails.getString("DrugImage"); // Build image URL
 
-                                // Log all the drug details
+                                // Log the drug details for debugging
+                                Log.d("drugID", "Drug ID: " + drugID);
                                 Log.d("DrugDetails", "Quantity: " + quantity);
                                 Log.d("DrugDetails", "Brand Name: " + brandName);
                                 Log.d("DrugDetails", "Generic Name: " + genericName);
@@ -223,25 +233,42 @@ public class ProductDesc extends AppCompatActivity {
                                 Log.d("DrugDetails", "Price: " + price);
 
                                 // Set the values to the UI
-                                ((TextView) findViewById(R.id.txtQuantity)).setText("Items: " + quantity);
-                                ((TextView) findViewById(R.id.txtGenericName)).setText(genericName);
-                                ((TextView)findViewById(R.id.txtPrice)).setText("RM " + String.valueOf(price));
+                                txtQuantity.setText("Items: " + quantity);
+                                txtGenericName.setText(genericName);
+                                txtPrice.setText("RM " + price);
 
                                 // Load the image using Glide
                                 Glide.with(ProductDesc.this)
                                         .load(imageUrl)  // The image URL
                                         .placeholder(R.drawable.default_profile_picture)  // Placeholder image
-                                        .into((ImageView) findViewById(R.id.DrugImageView));
+                                        .into(DrugImageView);
 
                                 // Set the text values to other TextViews as well
-                                ((TextView) findViewById(R.id.text_description_BrandName)).setText(brandName);
-                                ((TextView) findViewById(R.id.text_description_GenericName)).setText(genericName);
-                                ((TextView) findViewById(R.id.text_description_ActiveIngredient)).setText(activeIngredient);
-                                ((TextView) findViewById(R.id.text_dosage_Dosage)).setText(dosage);
-                                ((TextView) findViewById(R.id.text_dosage_DosageForm)).setText(dosageForm);
-                                ((TextView) findViewById(R.id.text_manufacturer_Manufacturer)).setText(manufacturer);
-                                ((TextView) findViewById(R.id.text_manufacturer_ManufactureDate)).setText(manufactureDate);
-                                ((TextView) findViewById(R.id.text_side_effects)).setText(sideEffects);
+                                text_description_BrandName.setText(brandName);
+                                text_description_GenericName.setText(genericName);
+                                text_description_ActiveIngredient.setText(activeIngredient);
+                                text_dosage_Dosage.setText(dosage);
+                                text_dosage_DosageForm.setText(dosageForm);
+                                text_manufacturer_Manufacturer.setText(manufacturer);
+                                text_manufacturer_ManufactureDate.setText(manufactureDate);
+                                text_side_effects.setText(sideEffects);
+
+                                // Pass the drugID to the "Add to Cart" logic
+                                findViewById(R.id.container_button_add_to_cart).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (userID != null && supplyID != null && drugID != null) {
+                                            // Remove "RM " from the price before parsing it
+                                            String priceText = txtPrice.getText().toString().replace("RM ", "").trim();
+                                            double price = Double.parseDouble(priceText);
+
+                                            // Now, pass drugID to checkOrCreateCart
+                                            checkOrCreateCart(userID, drugID, genericName, imageUrl, 1, price);
+                                        } else {
+                                            Toast.makeText(ProductDesc.this, "UserID, SupplyID, or DrugID is missing", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
 
                             } else {
                                 String message = jsonResponse.getString("message");
@@ -272,5 +299,104 @@ public class ProductDesc extends AppCompatActivity {
         // Add the request to the Volley queue
         Volley.newRequestQueue(this).add(stringRequest);
     }
+
+
+    private void checkOrCreateCart(final String userID, final String drugID, final String genericName, final String drugImage, final int quantity, final double price) {
+        String url = getString(R.string.api_cart);  // Your API URL
+
+        Log.d("ProductDesc", "Checking or creating cart and adding item for UserID: " + userID);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    Log.d("ProductDesc", "Response from check/create cart and add item: " + response); // Debugging line
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
+
+                        if ("success".equals(status)) {
+                            // Either cart existed or was created
+                            String cartID = jsonResponse.getString("CartID");
+                            Log.d("ProductDesc", "Cart ID: " + cartID); // Debugging line
+                            // Proceed to add the item to the cart
+                            addToCart(cartID, drugID, genericName, drugImage, quantity, price);
+                        } else {
+                            Log.d("ProductDesc", "Failed to check/create cart: " + jsonResponse.getString("message"));
+                            Toast.makeText(this, "Cart Created, please click Add To Cart Button again.", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        Log.e("ProductDesc", "JSON Parsing error in check/create cart and add item", e);
+                        Toast.makeText(this, "JSON Parsing error", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    Log.e("ProductDesc", "Error occurred while checking/creating cart and adding item: " + error.getMessage(), error);
+                    Toast.makeText(this, "Request error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "check_or_create_cart");
+                params.put("UserID", userID);
+                return params;
+            }
+        };
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+
+    private void addToCart(final String cartID, final String drugID, final String genericName, final String drugImage, final int quantity, final double price) {
+        String url = getString(R.string.api_cart_item);
+
+        Log.d("ProductDesc", "Adding item to cart. CartID: " + cartID + ", DrugID: " + drugID);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    Log.d("ProductDesc", "Response from adding item to cart: " + response); // Debugging line
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
+
+                        if ("success".equals(status)) {
+                            Log.d("ProductDesc", "Item successfully added to cart"); // Debugging line
+                            Toast.makeText(this, "Item added to cart", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.d("ProductDesc", "Failed to add item to cart: " + jsonResponse.getString("message")); // Debugging line
+                            Toast.makeText(this, "Cart Created, please click Add To Cart Button again.", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        Log.e("ProductDesc", "JSON Parsing error in addToCart", e); // Debugging line
+                        Toast.makeText(this, "JSON Parsing error", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    Log.e("ProductDesc", "Error occurred while adding item to cart: " + error.getMessage(), error); // Debugging line
+                    Toast.makeText(this, "Request error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "add_cart_item");
+                params.put("CartID", cartID);
+                params.put("DrugID", drugID);
+                params.put("GenericName", genericName);
+                params.put("DrugImage", drugImage);
+                params.put("Quantity", "1");
+                params.put("Price", String.valueOf(price));
+                return params;
+            }
+        };
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+
+
+
+
+
+
 
 }

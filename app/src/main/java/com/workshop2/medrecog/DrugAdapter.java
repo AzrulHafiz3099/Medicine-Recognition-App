@@ -19,10 +19,13 @@ public class DrugAdapter extends RecyclerView.Adapter<DrugAdapter.ViewHolder> {
 
     private Context context;
     private List<Drug> drugList;
+    private String userID; // Add a userID field
 
-    public DrugAdapter(Context context, List<Drug> drugList) {
+    // Update the constructor to include userID
+    public DrugAdapter(Context context, List<Drug> drugList, String userID) {
         this.context = context;
         this.drugList = drugList;
+        this.userID = userID; // Initialize userID
     }
 
     @NonNull
@@ -48,6 +51,7 @@ public class DrugAdapter extends RecyclerView.Adapter<DrugAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductDesc.class);
             intent.putExtra("SupplyID", drug.getId()); // Pass SupplyID to the next activity
+            intent.putExtra("userID", userID); // Pass userID to the next activity
             context.startActivity(intent);
         });
     }
@@ -69,3 +73,4 @@ public class DrugAdapter extends RecyclerView.Adapter<DrugAdapter.ViewHolder> {
         }
     }
 }
+

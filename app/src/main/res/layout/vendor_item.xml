@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/drawable_shape"
+    android:gravity="left|top"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:layout_marginBottom="10dp"
+    android:paddingBottom="5dp"
+    android:paddingTop="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="left|top"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/baseline_store_24" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:gravity="left|top"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/vendor_fullname"
+                android:layout_width="match_parent"
+                android:layout_height="21dp"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Vendor Fullname"
+                android:textColor="#FF27272A"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/vendor_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="3"
+                android:ellipsize="none"
+                android:singleLine="false"
+                android:text="Vendor Address"
+                android:lineSpacingExtra="4dp"
+                android:textColor="#FF808089"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/vendor_contact"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_marginTop="4dp"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Vendor Contact Number"
+                android:textColor="#FF808089"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/vendor_email"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_marginTop="4dp"
+                android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Vendor Email"
+                android:textColor="#FF808089"
+                android:textSize="12dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
