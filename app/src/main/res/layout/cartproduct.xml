@@ -79,6 +79,37 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="20dp" />
 
+    <LinearLayout
+        android:id="@+id/container_is_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/container_is_empty"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="39dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:paddingTop="40dp">
+
+        <ImageView
+            android:id="@+id/img_shopping_bag"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/bag_shopping_solid" />
+
+        <TextView
+            android:id="@+id/txt_no_item"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginTop="12dp"
+            android:text="No item in your cart"
+            android:textColor="#FF4A4747"
+            android:textSize="16dp" />
+    </LinearLayout>
+
     <!-- Subtotal and Total Section -->
     <LinearLayout
         android:id="@+id/container_frame13"

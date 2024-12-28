@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class CartProduct extends AppCompatActivity {
     private TextView txtZero, textSubTotal;
     private ImageView imageBack;
     private Button btnPay;
+    private LinearLayout emptyCartLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,8 @@ public class CartProduct extends AppCompatActivity {
         String savedUserID = sharedPreferences.getString("UserID", "");
 
         recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView    .setLayoutManager(new LinearLayoutManager(this));
+        emptyCartLayout = findViewById(R.id.container_is_empty);
 
         txtZero = findViewById(R.id.txt_zero);
         textSubTotal = findViewById(R.id.text_sub_total_value);
@@ -79,6 +82,15 @@ public class CartProduct extends AppCompatActivity {
                 finish(); // Optional: To close the ProductDesc activity if needed
             }
         });
+
+        String totalPrice = textSubTotal.getText().toString();  // Get the formatted total price
+
+        // Check if totalPrice is "0" or "0.00" or "RM 0" or "RM 0.00"
+        if (totalPrice.equals("0") || totalPrice.equals("0.00") || totalPrice.equals("RM 0") || totalPrice.equals("RM 0.00")) {
+            btnPay.setClickable(false);  // Disable the button if the price is 0 or 0.00
+        } else {
+            btnPay.setClickable(true);   // Enable the button if the price is not 0
+        }
 
         // Set click listener for the Pay button
         btnPay.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +159,17 @@ public class CartProduct extends AppCompatActivity {
                                 String totalPriceFormatted = String.format("%.2f", totalPrice);
                                 textSubTotal.setText("RM" + totalPriceFormatted);
                                 btnPay.setText("RM" + totalPriceFormatted);
+
+                                updatePayButtonState("RM" + totalPriceFormatted);
+
+                                // If cart is empty, show the empty cart layout, otherwise show the RecyclerView
+                                if (cartList.isEmpty()) {
+                                    recyclerView.setVisibility(View.GONE);
+                                    emptyCartLayout.setVisibility(View.VISIBLE);
+                                } else {
+                                    recyclerView.setVisibility(View.VISIBLE);
+                                    emptyCartLayout.setVisibility(View.GONE);
+                                }
                             } else {
                                 Toast.makeText(CartProduct.this, "Failed to fetch cart items.", Toast.LENGTH_SHORT).show();
                             }
@@ -189,7 +212,28 @@ public class CartProduct extends AppCompatActivity {
         String totalPriceFormatted = String.format("%.2f", totalPrice);
         textSubTotal.setText("RM" + totalPriceFormatted);  // Update the subtotal price
         btnPay.setText("RM" + totalPriceFormatted);  // Update the subtotal price
+
+        updatePayButtonState(totalPriceFormatted); // Check if the total price is 0 or not
     }
+
+    public void showEmptyCartView() {
+        recyclerView.setVisibility(View.GONE);
+        emptyCartLayout.setVisibility(View.VISIBLE);
+    }
+
+    // Add this helper method to handle the button's state based on price
+    private void updatePayButtonState(String totalPrice) {
+        // Remove the "RM" part before checking
+        String totalPriceWithoutRM = totalPrice.replace("RM", "").trim();
+
+        // Check if the totalPrice is "0" or "0.00"
+        if (totalPriceWithoutRM.equals("0") || totalPriceWithoutRM.equals("0.00")) {
+            btnPay.setClickable(false);  // Disable the button if the price is 0 or 0.00
+        } else {
+            btnPay.setClickable(true);   // Enable the button if the price is not 0
+        }
+    }
+
 
 
 }

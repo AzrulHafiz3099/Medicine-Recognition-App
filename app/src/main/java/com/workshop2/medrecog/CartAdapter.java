@@ -102,6 +102,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                                 notifyItemRangeChanged(position, cartList.size());
                                 Toast.makeText(context, "Item removed from cart", Toast.LENGTH_SHORT).show();
                                 updateCartSummary();  // Update subtotal and item count
+
+                                // Check if the cart is empty and update the UI accordingly
+                                if (cartList.isEmpty()) {
+                                    // Call method in CartProduct activity to handle empty cart
+                                    if (context instanceof CartProduct) {
+                                        ((CartProduct) context).showEmptyCartView();
+                                    }
+                                }
+
                             } else {
                                 Toast.makeText(context, "Failed to remove item", Toast.LENGTH_SHORT).show();
                             }
@@ -129,6 +138,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         queue.add(stringRequest);
     }
 
+
     private void updateQuantity(String cartItemID, int newQuantity, int position) {
         String url = context.getString(R.string.api_cart_item); // API URL
 
@@ -146,6 +156,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                                 notifyItemChanged(position); // Refresh the item in RecyclerView
                                 Toast.makeText(context, "Quantity updated", Toast.LENGTH_SHORT).show();
                                 updateCartSummary();  // Update subtotal and item count
+
                             } else {
                                 Toast.makeText(context, "Failed to update quantity", Toast.LENGTH_SHORT).show();
                             }
