@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/drawable_shape">
+
+    <!-- Back Button -->
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="70dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/arrow_back" />
+
+    <!-- Image Banner -->
+    <ImageView
+        android:layout_width="302dp"
+        android:layout_height="164dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/thanks" />
+
+    <!-- Content Layout -->
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Order ID -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Your Order ID:"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/orderId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ORD16526"
+                android:fontFamily="@font/nunito_regular"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Pharmacy -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Pharmacy:"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/pharmacyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ayer Keroh"
+                android:fontFamily="@font/nunito_regular"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Medicine -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Medicine:"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/medicineName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paracetamol"
+                android:fontFamily="@font/nunito_regular"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Quantity -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Quantity:"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:fontFamily="@font/nunito_regular"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Price -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Price:"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RM4.90"
+                android:fontFamily="@font/nunito_regular"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Total -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Total:"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/totalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RM4.90"
+                android:fontFamily="@font/nunito_regular"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Payment Method -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Payment Method:"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/paymentMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COD"
+                android:fontFamily="@font/nunito_regular"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
