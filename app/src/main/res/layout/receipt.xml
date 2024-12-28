@@ -9,6 +9,7 @@
 
     <!-- Back Button -->
     <ImageView
+        android:id="@+id/img_back"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginLeft="40dp"
@@ -68,7 +69,7 @@
                 android:textColor="#000000"
                 android:textSize="14sp" />
             <TextView
-                android:id="@+id/pharmacyName"
+                android:id="@+id/vendor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ayer Keroh"
@@ -91,7 +92,7 @@
                 android:textColor="#000000"
                 android:textSize="14sp" />
             <TextView
-                android:id="@+id/medicineName"
+                android:id="@+id/GenericName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Paracetamol"

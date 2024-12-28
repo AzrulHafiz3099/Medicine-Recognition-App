@@ -1,8 +1,10 @@
 package com.workshop2.medrecog;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
@@ -31,12 +33,15 @@ public class PaymentMethod extends AppCompatActivity {
     private String totalPrice;
     private String userID;
     private String cartID;
+    private ImageView imageBack;
     private FrameLayout paymentCODButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_method);
+
+        imageBack = findViewById(R.id.img_back);
 
         // Get the data passed from the CartProduct activity
         Intent intent = getIntent();
@@ -56,6 +61,17 @@ public class PaymentMethod extends AppCompatActivity {
         paymentCODButton.setOnClickListener(v -> {
             // Call the method to process the COD payment
             processCODPayment();
+        });
+
+        // Set click listener on the image_icon
+        imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent to go back to Homepage activity
+                Intent intent = new Intent(PaymentMethod.this, Cart.class);
+                startActivity(intent);
+                finish(); // Optional: To close the ProductDesc activity if needed
+            }
         });
     }
 
@@ -126,7 +142,8 @@ public class PaymentMethod extends AppCompatActivity {
 
                             if ("success".equals(status)) {
                                 //testing
-                                Intent intent = new Intent(PaymentMethod.this, Homepage.class);
+                                Intent intent = new Intent(PaymentMethod.this, Receipt.class);
+                                intent.putExtra("CART_ID", cartID);
                                 startActivity(intent);
                                 // Cart status updated successfully
                                 //Toast.makeText(PaymentMethod.this, "Cart status updated to completed", Toast.LENGTH_SHORT).show();
