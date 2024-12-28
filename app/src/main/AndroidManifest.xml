@@ -18,8 +18,10 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-        <!--API for MAP-->
+        <activity
+            android:name=".Receipt"
+            android:exported="false" />
+        <!-- API for MAP -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAlY83QdgcqNP2Ba5w0NLSjX5K9BGyZw2k" />
@@ -51,7 +53,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddCart" />
-        <activity android:name=".Addreminder"
+        <activity
+            android:name=".Addreminder"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -59,7 +62,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Addremindertimepick"
+        <activity
+            android:name=".Addremindertimepick"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,7 +72,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Delete" />
-        <activity android:name=".Drugreminder"
+        <activity
+            android:name=".Drugreminder"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -85,7 +90,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Map"
+        <activity
+            android:name=".Map"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -101,7 +107,9 @@
         <activity android:name=".Suggestion" />
         <activity android:name=".Symptom" />
         <activity android:name=".Wishlist" />
-        <activity android:name=".YourOrder" android:exported="true">
+        <activity
+            android:name=".YourOrder"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
