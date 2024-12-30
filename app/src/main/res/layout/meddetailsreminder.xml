@@ -75,12 +75,12 @@
     android:paddingTop="7.5dp">
 
     <Button
-        android:id="@+id/text_button"
-        android:layout_width="wrap_content"
+    android:id="@+id/btnAdd"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
-        android:background="@drawable/image_orange"
-    android:text="ADD"
+    android:background="@drawable/image_orange"
+    android:text="ADD REMINDER"
     android:textColor="#000"
     android:textSize="16sp" />
 </LinearLayout>
@@ -101,22 +101,97 @@
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/text_dosage_info"
+            android:id="@+id/textView_dosage"
             android:layout_width="265dp"
-            android:layout_height="67dp"
+            android:layout_height="15dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="234dp"
+            android:layout_marginTop="230dp"
             android:layout_marginBottom="124dp"
             android:layout_gravity="left"
             android:gravity="center_horizontal|top"
             android:includeFontPadding="false"
             android:lineHeight="22dp"
-            android:text="Dosage: 500 mg\nDosage Form: Tablet\nRecommended usage: 1 dose up to 4 times (within 24 hours)\n\nSuitable use for headache, migraine, colds and flu symptoms, fever, toothache, muscle pain\n"
+            android:text="Dosage"
+            android:textStyle="bold"
+            android:textColor="#FF544C4C"
+            android:textSize="12dp" />
+        <TextView
+            android:id="@+id/txt_Dosage"
+            android:layout_width="265dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="250dp"
+            android:layout_marginBottom="124dp"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal|top"
+            android:includeFontPadding="false"
+            android:lineHeight="22dp"
+            android:text="660 mg"
             android:textColor="#FF544C4C"
             android:textSize="12dp" />
 
         <TextView
-            android:id="@+id/text_paracetamol"
+            android:id="@+id/textView_dosageForm"
+            android:layout_width="265dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginBottom="124dp"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal|top"
+            android:includeFontPadding="false"
+            android:lineHeight="22dp"
+            android:text="Dosage Form"
+            android:textStyle="bold"
+            android:textColor="#FF544C4C"
+            android:textSize="12dp" />
+        <TextView
+            android:id="@+id/txt_DosageForm"
+            android:layout_width="265dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="290dp"
+            android:layout_marginBottom="124dp"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal|top"
+            android:includeFontPadding="false"
+            android:lineHeight="22dp"
+            android:text="Tablet"
+            android:textColor="#FF544C4C"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textView_dosageUsage"
+            android:layout_width="265dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="310dp"
+            android:layout_marginBottom="124dp"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal|top"
+            android:includeFontPadding="false"
+            android:lineHeight="22dp"
+            android:text="Recommended Usage"
+            android:textStyle="bold"
+            android:textColor="#FF544C4C"
+            android:textSize="12dp" />
+        <TextView
+            android:id="@+id/txt_DosageUsage"
+            android:layout_width="265dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="330dp"
+            android:layout_marginBottom="124dp"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal|top"
+            android:includeFontPadding="false"
+            android:lineHeight="22dp"
+            android:text="1 dose up to 4 times"
+            android:textColor="#FF544C4C"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/txtGenericName"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_marginLeft="97dp"
@@ -134,7 +209,7 @@
     </FrameLayout>
 
     <ImageView
-        android:id="@+id/image_paracetamol"
+        android:id="@+id/img_drugImage"
         android:layout_width="181dp"
         android:layout_height="153dp"
         android:layout_marginLeft="104dp"
@@ -227,7 +302,7 @@
             android:textSize="18dp" />
 
         <ImageView
-            android:id="@+id/image_arrow_chevron_left"
+            android:id="@+id/img_back"
             android:layout_width="31.92dp"
             android:layout_height="35.08dp"
             android:layout_marginLeft="20.22dp"

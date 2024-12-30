@@ -4,6 +4,7 @@
     <string name="api_url">http://192.168.0.28/BackEnd-APi/MedRec/api_user.php</string>
     <string name="api_vendor">http://192.168.0.28/BackEnd-APi/MedRec/api_vendor.php</string>
     <string name="api_drug_supply">http://192.168.0.28/BackEnd-APi/MedRec/api_drug_supply.php</string>
+    <string name="api_drug_details">http://192.168.0.28/BackEnd-APi/MedRec/api_drug_details.php</string>
     <string name="drug_image_url">http://192.168.0.28/BackEnd-APi/MedRec/DrugImage/</string>
     <string name="api_cart">http://192.168.0.28/BackEnd-APi/MedRec/api_cart.php</string>
     <string name="api_cart_item">http://192.168.0.28/BackEnd-APi/MedRec/api_cart_item.php</string>
@@ -12,6 +13,7 @@
     <string name="api_patient">http://192.168.0.28/BackEnd-APi/MedRec/api_patient.php</string>
     <string name="api_symptom">http://192.168.0.28/BackEnd-APi/MedRec/api_symptom.php</string>
     <string name="api_drug_header">http://192.168.0.28/BackEnd-APi/MedRec/api_drug_header.php</string>
+    <string name="api_reminder">http://192.168.0.28/BackEnd-APi/MedRec/api_reminder.php</string>
 
     <string name="store_name_placeholder">Farmasi Placeholder</string>
     <string name="store_distance_placeholder">0.000 km</string>

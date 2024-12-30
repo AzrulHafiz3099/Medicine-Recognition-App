@@ -93,7 +93,7 @@
             android:layout_marginBottom="50dp"
             android:background="@drawable/rounded_button"
             android:layout_gravity="bottom|center"
-            android:text="NEXT >>"
+            android:text="NEXT"
             android:textAllCaps="true"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
@@ -118,7 +118,7 @@
             android:textSize="18dp" />
 
         <ImageView
-            android:id="@+id/image_arrow_left"
+            android:id="@+id/img_back"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginLeft="20dp"

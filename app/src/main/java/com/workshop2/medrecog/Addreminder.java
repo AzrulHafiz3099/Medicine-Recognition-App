@@ -1,17 +1,16 @@
 package com.workshop2.medrecog;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
@@ -26,18 +25,22 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
-
 public class Addreminder extends AppCompatActivity {
 
-    private String patientID, title, description, date, time, symptomID, drugID;
+    private String patientID, title, description, date, time, symptomID;
     private Spinner spinnerDrug;
+    private Button buttonNext;
+    private List<String> drugIDs = new ArrayList<>();
+    private ImageView imgBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addreminder);
 
-        spinnerDrug = (findViewById(R.id.spinner_drug));
+        spinnerDrug = findViewById(R.id.spinner_drug);
+        buttonNext = findViewById(R.id.button_next);
+        imgBack = findViewById(R.id.img_back);
 
         Intent intent = getIntent();
         patientID = intent.getStringExtra("patientID");
@@ -46,6 +49,7 @@ public class Addreminder extends AppCompatActivity {
         date = intent.getStringExtra("date");
         time = intent.getStringExtra("time");
         symptomID = intent.getStringExtra("symptomID");
+
         Log.d("AddReminder", "Patient ID: " + patientID);
         Log.d("AddReminder", "Title: " + title);
         Log.d("AddReminder", "Description: " + description);
@@ -54,6 +58,33 @@ public class Addreminder extends AppCompatActivity {
         Log.d("AddReminder", "Symptom ID: " + symptomID);
 
         fetchDrugs(symptomID);
+
+        buttonNext.setOnClickListener(v -> {
+            int selectedPosition = spinnerDrug.getSelectedItemPosition();
+            if (selectedPosition == 0) {
+                // User selected the placeholder
+                Toast.makeText(Addreminder.this, "Please select a valid medicine.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String selectedDrugID = drugIDs.get(selectedPosition - 1); // Adjusting index for placeholder
+
+            // Navigate to MedDetailsReminder.java
+            Intent medDetailsIntent = new Intent(Addreminder.this, MedDetailsReminder.class);
+            medDetailsIntent.putExtra("patientID", patientID);
+            medDetailsIntent.putExtra("title", title);
+            medDetailsIntent.putExtra("description", description);
+            medDetailsIntent.putExtra("date", date);
+            medDetailsIntent.putExtra("time", time);
+            medDetailsIntent.putExtra("symptomID", symptomID);
+            medDetailsIntent.putExtra("drugID", selectedDrugID);
+            startActivity(medDetailsIntent);
+        });
+
+        imgBack.setOnClickListener(v -> {
+            Intent intent1 = new Intent(Addreminder.this, Drugreminder.class);
+            startActivity(intent1);
+        });
     }
 
     private void fetchDrugs(String symptomID) {
@@ -74,8 +105,9 @@ public class Addreminder extends AppCompatActivity {
                             for (int i = 0; i < drugsArray.length(); i++) {
                                 JSONObject drug = drugsArray.getJSONObject(i);
                                 String genericName = drug.getString("GenericName");
-                                drugID = drug.getString("DrugID");
+                                String drugID = drug.getString("DrugID");
                                 genericNames.add(genericName);
+                                drugIDs.add(drugID);
                                 Log.d("AddReminder", "Drug ID: " + drugID);
                             }
 
