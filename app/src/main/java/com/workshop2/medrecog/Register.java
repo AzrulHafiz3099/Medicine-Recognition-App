@@ -1,10 +1,12 @@
 package com.workshop2.medrecog;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +20,8 @@ import com.android.volley.toolbox.Volley;
 import com.workshop2.medrecog.databinding.RegisterBinding;
 
 import org.json.JSONObject;
+
+import java.util.Calendar;
 
 public class Register extends AppCompatActivity {
 
@@ -33,6 +37,32 @@ public class Register extends AppCompatActivity {
 
         // Set onClick listener for the Register button
         binding.registerButton.setOnClickListener(this::onRegisterButtonClick);
+
+        // Set onClick listener for the Date of Birth field
+        binding.dateOfBirth.setOnClickListener(this::showDatePickerDialog);
+    }
+
+    // Function to show the DatePickerDialog
+    public void showDatePickerDialog(View view) {
+        // Get the current date
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Create and show the DatePickerDialog
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
+                        // Set the selected date in the EditText
+                        String date = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                        binding.dateOfBirth.setText(date);
+                    }
+                },
+                year, month, day);
+
+        datePickerDialog.show();
     }
 
     // Function to handle Register button click
@@ -40,9 +70,10 @@ public class Register extends AppCompatActivity {
         String fullName = binding.fullName.getText().toString().trim();
         String email = binding.email.getText().toString().trim();
         String password = binding.password.getText().toString().trim();
+        String dateOfBirth = binding.dateOfBirth.getText().toString().trim();
 
         // Validate inputs
-        if (fullName.isEmpty() || email.isEmpty() || password.isEmpty()) {
+        if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() || dateOfBirth.isEmpty()) {
             Toast.makeText(Register.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -100,6 +131,7 @@ public class Register extends AppCompatActivity {
                 params.put("full_name", fullName);
                 params.put("email", email);
                 params.put("password", password);
+                params.put("date_of_birth", dateOfBirth); // Add Date of Birth parameter
                 return params;
             }
         };
@@ -158,5 +190,4 @@ public class Register extends AppCompatActivity {
         // Add the request to the Volley queue
         Volley.newRequestQueue(Register.this).add(cartRequest);
     }
-
 }

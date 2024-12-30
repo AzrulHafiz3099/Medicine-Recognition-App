@@ -1,20 +1,24 @@
 package com.workshop2.medrecog;
 
-import android.os.Bundle;
+public class Symptom {
+    private String symptomID;
+    private String description;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+    public Symptom(String symptomID, String description) {
+        this.symptomID = symptomID;
+        this.description = description;
+    }
 
-public class Symptom extends AppCompatActivity {
+    public String getSymptomID() {
+        return symptomID;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.register);
-
+    public String toString() {
+        return description; // We want to show the description in the Spinner
     }
 }

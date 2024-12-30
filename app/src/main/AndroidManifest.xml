@@ -30,8 +30,17 @@
             android:name=".RegisterPatient"
             android:exported="false" />
         <activity
-            android:name=".AddPatient"
+            android:name=".UpdatePatient"
             android:exported="false" />
+        <activity
+            android:name=".AddPatient"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".PaymentMethod"
             android:exported="false" />
