@@ -11,6 +11,7 @@
     <string name="api_receipt">http://192.168.0.28/BackEnd-APi/MedRec/api_receipt.php</string>
     <string name="api_patient">http://192.168.0.28/BackEnd-APi/MedRec/api_patient.php</string>
     <string name="api_symptom">http://192.168.0.28/BackEnd-APi/MedRec/api_symptom.php</string>
+    <string name="api_drug_header">http://192.168.0.28/BackEnd-APi/MedRec/api_drug_header.php</string>
 
     <string name="store_name_placeholder">Farmasi Placeholder</string>
     <string name="store_distance_placeholder">0.000 km</string>

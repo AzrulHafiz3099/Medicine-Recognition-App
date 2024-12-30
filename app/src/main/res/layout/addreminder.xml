@@ -62,8 +62,8 @@
             android:background="@drawable/drawable_shape_6">
 
             <!-- EditText for Search -->
-            <EditText
-                android:id="@+id/edit_search_medicine"
+            <Spinner
+                android:id="@+id/spinner_drug"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="16dp"
