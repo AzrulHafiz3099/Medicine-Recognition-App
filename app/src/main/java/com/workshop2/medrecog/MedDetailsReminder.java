@@ -1,5 +1,9 @@
 package com.workshop2.medrecog;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
@@ -23,10 +33,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class MedDetailsReminder extends AppCompatActivity {
 
-    private String patientID, title, description, date, time, symptomID, drugID;
+    private String patientID, title, description, date, time, symptomID, drugID, name;
     private ImageView drugImage, imgBack;
     private TextView genericName, dosage, dosageForm, dosageUsage;
     private Button btnAdd;
@@ -44,8 +55,13 @@ public class MedDetailsReminder extends AppCompatActivity {
         dosageUsage = findViewById(R.id.txt_DosageUsage);
         btnAdd = findViewById(R.id.btnAdd);
 
+        // Create Notification Channel (For Android 8.0 and higher)
+        createNotificationChannel();
+
+        // Get intent data
         Intent intent = getIntent();
         patientID = intent.getStringExtra("patientID");
+        name = intent.getStringExtra("name");
         title = intent.getStringExtra("title");
         description = intent.getStringExtra("description");
         date = intent.getStringExtra("date");
@@ -54,6 +70,7 @@ public class MedDetailsReminder extends AppCompatActivity {
         drugID = intent.getStringExtra("drugID");
 
         Log.d("MedDetailsReminder", "Patient ID: " + patientID);
+        Log.d("MedDetailsReminder", "Name: " + name);
         Log.d("MedDetailsReminder", "Title: " + title);
         Log.d("MedDetailsReminder", "Description: " + description);
         Log.d("MedDetailsReminder", "Date: " + date);
@@ -66,6 +83,7 @@ public class MedDetailsReminder extends AppCompatActivity {
         imgBack.setOnClickListener(v -> {
             Intent intent1 = new Intent(MedDetailsReminder.this, Addreminder.class);
             intent1.putExtra("patientID", patientID);
+            intent1.putExtra("name", name);
             intent1.putExtra("title", title);
             intent1.putExtra("description", description);
             intent1.putExtra("date", date);
@@ -75,7 +93,6 @@ public class MedDetailsReminder extends AppCompatActivity {
         });
 
         btnAdd.setOnClickListener(v -> addReminder());
-
     }
 
     private void fetchDrugDetails(String drugID) {
@@ -145,10 +162,35 @@ public class MedDetailsReminder extends AppCompatActivity {
                         String status = jsonResponse.getString("status");
 
                         if ("success".equals(status)) {
+
+                            String reminderID = jsonResponse.getString("ReminderID");
+                            Log.d("ReminderID", "Reminder ID: " + reminderID);
+
+                            // Get the reminder time and convert it to the delay
+                            long delayMillis = calculateDelay(time); // You'll need to calculate the delay in milliseconds
+
+
+                            // Create input data for the worker
+                            Data inputData = new Data.Builder()
+                                    .putString("title", title)
+                                    .putString("description", description)
+                                    .putString("patientID", patientID)
+                                    .putString("reminderID", reminderID)
+                                    .putString("name", name)
+                                    .build();
+
+                            // Create a OneTimeWorkRequest to schedule the alarm
+                            OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(ReminderWorker.class)
+                                    .setInitialDelay(delayMillis, TimeUnit.MILLISECONDS)
+                                    .setInputData(inputData)
+                                    .build();
+
+                            // Schedule the work
+                            WorkManager.getInstance(MedDetailsReminder.this).enqueue(workRequest);
+
                             Toast.makeText(MedDetailsReminder.this, "Reminder added successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MedDetailsReminder.this, Drugreminder.class);
                             startActivity(intent);
-
 
                         } else {
                             String message = jsonResponse.getString("message");
@@ -193,5 +235,45 @@ public class MedDetailsReminder extends AppCompatActivity {
         }
     }
 
+    private long calculateDelay(String reminderTime) {
+        try {
+            String formattedDate = convertDateToDatabaseFormat(date);
+            // Combine the date and time into a single datetime string
+            String combinedDateTime = formattedDate + " " + reminderTime; // 'date' should already be in "yyyy-MM-dd" format
+            Log.d ("CombinedDateTime", combinedDateTime);
+            // Parse the combined datetime
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
+            Date reminderDate = format.parse(combinedDateTime);
 
+            // Calculate the delay in milliseconds from the current time
+            if (reminderDate != null) {
+                long currentTimeMillis = System.currentTimeMillis();
+                long reminderTimeMillis = reminderDate.getTime();
+
+                // Ensure the reminder time is in the future, if not, adjust to the next day
+                if (reminderTimeMillis < currentTimeMillis) {
+                    reminderTimeMillis += TimeUnit.DAYS.toMillis(1); // Add one day if the reminder time is in the past
+                }
+
+                return reminderTimeMillis - currentTimeMillis;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0; // Default delay if there's an error
+    }
+
+
+    private void createNotificationChannel() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            CharSequence name = "Reminder Channel";
+            String description = "Channel for medication reminders";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("reminder_channel", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
 }

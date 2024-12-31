@@ -54,4 +54,6 @@ dependencies {
     // Google Play services for Location (optional for location-based services)
     implementation 'com.google.android.gms:play-services-location:18.0.0'
 
+    implementation "androidx.work:work-runtime:2.8.0" // Check for the latest version
+
 }

@@ -41,7 +41,7 @@ public class Drugreminder extends AppCompatActivity {
     private TextView dateTextView, timeTextView;
     private EditText edtTextTitle, edtTextDesc;
     private Button buttonNext;
-    private String userID, symptomID;
+    private String userID, symptomID, name;
     private Spinner patientSpinner;
 
     // List to store patient names and full patient data
@@ -121,12 +121,15 @@ public class Drugreminder extends AppCompatActivity {
             // Get the selected patient data
             Patient selectedPatient = (Patient) patientSpinner.getSelectedItem();
             String patientID = selectedPatient != null ? selectedPatient.getPatientID() : "";
+            String patientName = selectedPatient != null ? selectedPatient.getName() : "";
             Log.d("Drugreminder", "Patient ID in drug reminder : " + patientID);
+            Log.d("Drugreminder", "Patient Name in drug reminder: " + patientName);
 
 
             // Create the intent and pass the data to the next activity
             Intent intent = new Intent(Drugreminder.this, Addreminder.class);
             intent.putExtra("patientID", patientID);
+            intent.putExtra("name", patientName);
             intent.putExtra("title", title);
             intent.putExtra("description", description);
             intent.putExtra("date", date);
@@ -163,7 +166,7 @@ public class Drugreminder extends AppCompatActivity {
                                     JSONObject patientObj = patients.getJSONObject(i);
 
                                     String patientID = patientObj.getString("PatientID");
-                                    String name = patientObj.getString("Name");
+                                    name = patientObj.getString("Name");
                                     int age = patientObj.getInt("Age");
                                     String gender = patientObj.getString("Gender");
                                     String address = patientObj.getString("Address");

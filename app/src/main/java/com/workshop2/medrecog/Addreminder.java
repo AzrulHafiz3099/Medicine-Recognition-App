@@ -27,7 +27,7 @@ import java.util.List;
 
 public class Addreminder extends AppCompatActivity {
 
-    private String patientID, title, description, date, time, symptomID;
+    private String patientID, title, description, date, time, symptomID, name;
     private Spinner spinnerDrug;
     private Button buttonNext;
     private List<String> drugIDs = new ArrayList<>();
@@ -44,6 +44,7 @@ public class Addreminder extends AppCompatActivity {
 
         Intent intent = getIntent();
         patientID = intent.getStringExtra("patientID");
+        name = intent.getStringExtra("name");
         title = intent.getStringExtra("title");
         description = intent.getStringExtra("description");
         date = intent.getStringExtra("date");
@@ -56,6 +57,7 @@ public class Addreminder extends AppCompatActivity {
         Log.d("AddReminder", "Date: " + date);
         Log.d("AddReminder", "Time: " + time);
         Log.d("AddReminder", "Symptom ID: " + symptomID);
+        Log.d("AddReminder", "Name: " + name);
 
         fetchDrugs(symptomID);
 
@@ -72,6 +74,7 @@ public class Addreminder extends AppCompatActivity {
             // Navigate to MedDetailsReminder.java
             Intent medDetailsIntent = new Intent(Addreminder.this, MedDetailsReminder.class);
             medDetailsIntent.putExtra("patientID", patientID);
+            medDetailsIntent.putExtra("name", name);
             medDetailsIntent.putExtra("title", title);
             medDetailsIntent.putExtra("description", description);
             medDetailsIntent.putExtra("date", date);
