@@ -9,138 +9,137 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:orientation="vertical">
 
-        <!-- Title -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+    <!-- Title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/img_back"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/arrow_back" />
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/arrow_back" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="16dp"
-                android:layout_weight="1"
-                android:text="Add patient"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <!-- Name Input -->
-        <EditText
-            android:id="@+id/input_name"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Name"
-            android:padding="12dp"
-            android:background="@drawable/drawable_shape_3"
-            android:layout_marginTop="20dp" />
-
-        <!-- Age Input -->
-        <EditText
-            android:id="@+id/input_age"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Age"
-            android:padding="12dp"
-            android:inputType="number"
-            android:background="@drawable/drawable_shape_3"
-            android:layout_marginTop="30dp" />
-
-        <!-- Gender -->
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gender"
-            android:textSize="19dp"
-            android:layout_marginTop="30dp"
-            android:textColor="#000000" />
-
-        <RadioGroup
-            android:id="@+id/gender_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-
-            <RadioButton
-                android:id="@+id/male"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="19dp"
-                android:text="Male"
-                android:layout_marginEnd="16dp" />
-
-            <RadioButton
-                android:id="@+id/female"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="19dp"
-                android:text="Female" />
-        </RadioGroup>
-
-        <!-- Address Input -->
-        <EditText
-            android:id="@+id/input_address"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Address"
-            android:padding="12dp"
-            android:background="@drawable/drawable_shape_3"
-            android:layout_marginTop="30dp" />
-
-        <!-- Medical History -->
-        <EditText
-            android:id="@+id/input_medical_history"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Medical history"
-            android:padding="12dp"
-            android:background="@drawable/drawable_shape_3"
-            android:layout_marginTop="30dp" />
-
-        <!-- Symptoms Dropdown -->
-        <Spinner
-            android:id="@+id/symptom_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:padding="10dp"
-            android:background="@drawable/drawable_shape_3"
-            android:layout_marginTop="30dp" />
-
-        <!-- Phone Number -->
-        <EditText
-            android:id="@+id/input_phone"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Phone number"
-            android:padding="12dp"
-            android:inputType="phone"
-            android:background="@drawable/drawable_shape_3"
-            android:layout_marginTop="30dp" />
-
-        <!-- Save Button -->
-        <Button
-            android:id="@+id/button_save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SAVE"
-            android:backgroundTint="#FFC107"
-            android:textColor="#FFFFFF"
-            android:padding="12dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:text="Add patient"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
-</ScrollView>
+
+    <!-- Name Input -->
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:hint="Name"
+    android:padding="12dp"
+    android:background="@drawable/drawable_shape_3"
+    android:layout_marginTop="20dp" />
+
+    <!-- Age Input -->
+    <EditText
+        android:id="@+id/input_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:hint="Age"
+    android:padding="12dp"
+    android:inputType="number"
+    android:background="@drawable/drawable_shape_3"
+    android:layout_marginTop="30dp" />
+
+    <!-- Gender -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textSize="19dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#000000" />
+
+    <RadioGroup
+        android:id="@+id/gender_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:text="Male"
+            android:layout_marginEnd="16dp" />
+
+        <RadioButton
+            android:id="@+id/female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:text="Female" />
+    </RadioGroup>
+
+    <!-- Address Input -->
+    <EditText
+        android:id="@+id/input_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:hint="Address"
+    android:padding="12dp"
+    android:background="@drawable/drawable_shape_3"
+    android:layout_marginTop="30dp" />
+
+    <!-- Medical History -->
+    <EditText
+        android:id="@+id/input_medical_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:hint="Medical history"
+    android:padding="12dp"
+    android:background="@drawable/drawable_shape_3"
+    android:layout_marginTop="30dp" />
+
+    <!-- Symptoms Dropdown -->
+    <Spinner
+        android:id="@+id/symptom_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/drawable_shape_3"
+    android:layout_marginTop="30dp" />
+
+    <!-- Phone Number -->
+    <EditText
+        android:id="@+id/input_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:hint="Phone number"
+    android:padding="12dp"
+    android:inputType="phone"
+    android:background="@drawable/drawable_shape_3"
+    android:layout_marginTop="30dp" />
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:backgroundTint="#FFC107"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold" />
+</LinearLayout>
+    </ScrollView>

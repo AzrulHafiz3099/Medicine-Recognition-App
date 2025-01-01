@@ -111,7 +111,16 @@ public class AddPatient extends AppCompatActivity {
                                     String name = patientObj.getString("Name");
                                     String gender = patientObj.getString("Gender");
                                     String address = patientObj.getString("Address");
-                                    int age = patientObj.getInt("Age"); // Get integer age
+                                    String ageString = patientObj.getString("Age");
+
+                                    // Try to parse age as integer
+                                    int age = 0;
+                                    try {
+                                        age = Integer.parseInt(ageString);
+                                    } catch (NumberFormatException e) {
+                                        Log.e("PatientsResponseError", "Invalid age format: " + ageString, e);
+                                        age = -1;  // You could set a default or error value here
+                                    }
 
                                     patientList.add(new Patient(patientID, name, age, gender, address, medicalHistory, phoneNumber));
                                 }
@@ -127,6 +136,7 @@ public class AddPatient extends AppCompatActivity {
                             Toast.makeText(AddPatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                         }
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override

@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MedDetailsReminder extends AppCompatActivity {
 
-    private String patientID, title, description, date, time, symptomID, drugID, name;
+    private String patientID, title, description, date, time, symptomID, drugID, name, dosageUsageText, dosageFormText,  genericNameText;
     private ImageView drugImage, imgBack;
     private TextView genericName, dosage, dosageForm, dosageUsage;
     private Button btnAdd;
@@ -111,10 +111,10 @@ public class MedDetailsReminder extends AppCompatActivity {
                             String imageUrl = getString(R.string.drug_image_url) + drugDetails.getString("DrugImage");
                             Log.d("imageurl", "imageurl: " + imageUrl);
 
-                            String genericNameText = drugDetails.getString("GenericName");
+                            genericNameText = drugDetails.getString("GenericName");
                             String dosageText = drugDetails.getString("Dosage");
-                            String dosageFormText = drugDetails.getString("Dosage_Form");
-                            String dosageUsageText = drugDetails.getString("DosageUsage");
+                            dosageFormText = drugDetails.getString("Dosage_Form");
+                            dosageUsageText = drugDetails.getString("DosageUsage");
 
                             // Load the image using Glide
                             Glide.with(MedDetailsReminder.this)
@@ -162,13 +162,11 @@ public class MedDetailsReminder extends AppCompatActivity {
                         String status = jsonResponse.getString("status");
 
                         if ("success".equals(status)) {
-
                             String reminderID = jsonResponse.getString("ReminderID");
                             Log.d("ReminderID", "Reminder ID: " + reminderID);
 
                             // Get the reminder time and convert it to the delay
                             long delayMillis = calculateDelay(time); // You'll need to calculate the delay in milliseconds
-
 
                             // Create input data for the worker
                             Data inputData = new Data.Builder()
@@ -177,6 +175,9 @@ public class MedDetailsReminder extends AppCompatActivity {
                                     .putString("patientID", patientID)
                                     .putString("reminderID", reminderID)
                                     .putString("name", name)
+                                    .putString("genericName", genericNameText)
+                                    .putString("dosageForm", dosageFormText)
+                                    .putString("dosageUsage", dosageUsageText)
                                     .build();
 
                             // Create a OneTimeWorkRequest to schedule the alarm
@@ -194,6 +195,8 @@ public class MedDetailsReminder extends AppCompatActivity {
 
                         } else {
                             String message = jsonResponse.getString("message");
+                            Log.d("Response", response);
+                            Log.d("MedDetailsReminder", "message " + message);
                             Toast.makeText(MedDetailsReminder.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
@@ -211,13 +214,14 @@ public class MedDetailsReminder extends AppCompatActivity {
                 params.put("Description", description);
                 params.put("GenericName", genericName.getText().toString());
                 params.put("ReminderDate", formattedDate);
-                params.put("ReminderTime", time);
+                params.put("ReminderTime", convertTo24HourFormat(time)); // Convert time to 24-hour format
                 return params;
             }
         };
 
         Volley.newRequestQueue(this).add(stringRequest);
     }
+
 
     private String convertDateToDatabaseFormat(String inputDate) {
         try {
@@ -235,11 +239,29 @@ public class MedDetailsReminder extends AppCompatActivity {
         }
     }
 
+    private String convertTo24HourFormat(String time) {
+        try {
+            // Parse the 12-hour time format (e.g., 8:33 PM)
+            SimpleDateFormat inputFormat = new SimpleDateFormat("h:mm a", Locale.ENGLISH);
+            Date date = inputFormat.parse(time);
+
+            // Format it to 24-hour time format (e.g., 20:33:00)
+            SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+            return outputFormat.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return time; // Return the original time if parsing fails
+        }
+    }
+
+
     private long calculateDelay(String reminderTime) {
         try {
             String formattedDate = convertDateToDatabaseFormat(date);
+
+            String formattedReminderTime = convertTo24HourFormat(reminderTime);
             // Combine the date and time into a single datetime string
-            String combinedDateTime = formattedDate + " " + reminderTime; // 'date' should already be in "yyyy-MM-dd" format
+            String combinedDateTime = formattedDate + " " + formattedReminderTime; // 'date' should already be in "yyyy-MM-dd" format
             Log.d ("CombinedDateTime", combinedDateTime);
             // Parse the combined datetime
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);

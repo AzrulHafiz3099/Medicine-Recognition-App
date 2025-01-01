@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ReminderWorker extends Worker {
 
-    private String patientID, reminderID, name;
+    private String patientID, reminderID, name, geenericName,dosageForm,dosageUsage;
 
     public ReminderWorker(Context context, WorkerParameters workerParams) {
         super(context, workerParams);
@@ -40,6 +40,10 @@ public class ReminderWorker extends Worker {
         patientID = getInputData().getString("patientID");
         reminderID = getInputData().getString("reminderID");
         name = getInputData().getString("name");
+        geenericName = getInputData().getString("genericName");
+        dosageForm = getInputData().getString("dosageForm");
+        dosageUsage = getInputData().getString("dosageUsage");
+
 
         Log.d("ReminderWorker", "Title: " + title);
         Log.d("ReminderWorker", "Description: " + description);
@@ -57,8 +61,8 @@ public class ReminderWorker extends Worker {
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         Notification notification = new NotificationCompat.Builder(getApplicationContext(), "reminder_channel")
-                .setContentTitle(title + "for patient : " + name)
-                .setContentText("for patient : " + name +"\n " + description)
+                .setContentTitle(title)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(description + "\nReminder for : " + name + "\nPlease take medication immediately." + "\nMedicine : " + geenericName + "\nRecommended Dosage : " + dosageUsage))
                 .setSmallIcon(R.drawable.ic_notification)
                 .build();
 
