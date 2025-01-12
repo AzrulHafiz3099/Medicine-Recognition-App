@@ -34,6 +34,8 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
     private RecyclerView recyclerView;
     private List<LocationItem> locationList;
 
+    private Location myCurrentLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,14 +59,17 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
                 "",
                 "Open",
                 "9:00 AM - 9:00 PM",
-                new LatLng(2.3129091626382845, 102.28258970706436)
+                new LatLng(2.3127839011974167, 102.28256742721523),
+                R.drawable.farmasi_duriantunggal
+
         ));
         locationList.add(new LocationItem(
                 "Farmasi NK Melaka",
                 "",
                 "Closed",
                 "9:00 AM - 10:00 PM",
-                new LatLng(2.3115518820214085, 102.27989326755211)
+                new LatLng(2.3113589516536104, 102.27986996771712),
+                R.drawable.farmasi_nk
         ));
 
         LocationAdapter adapter = new LocationAdapter(locationList, new LocationAdapter.OnItemClickListener() {
@@ -110,6 +115,34 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
         });
 
         requestLocationPermission();
+    }
+
+
+    private void onGetDirectionsClick(int position) {
+        if (myCurrentLocation != null) {
+            LatLng destination = locationList.get(position).getLatLng();
+
+            // Construct the Google Maps intent
+            Uri gmmIntentUri = Uri.parse("google.navigation:q=" + destination.latitude + "," + destination.longitude + "&mode=d"); // "d" for driving
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+
+            // Check if Google Maps is installed
+            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(mapIntent);
+            } else {
+                // Handle the case where Google Maps is not installed
+                Toast.makeText(this, "Google Maps is not installed.", Toast.LENGTH_SHORT).show();
+                // Optionally, redirect to the Play Store
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.apps.maps")));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps.maps")));
+                }
+            }
+        } else {
+            Toast.makeText(Map.this, "Waiting for current location...", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

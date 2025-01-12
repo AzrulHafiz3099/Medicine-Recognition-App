@@ -2,6 +2,7 @@ package com.workshop2.medrecog.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 

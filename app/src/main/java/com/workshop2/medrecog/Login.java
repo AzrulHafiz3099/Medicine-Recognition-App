@@ -106,7 +106,8 @@ public class Login extends AppCompatActivity {
                         } else if (error.getMessage() != null) {
                             errorMessage = error.getMessage();
                         }
-                        Toast.makeText(Login.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
+                            //binding.registerButton.setText("Error: " + errorMessage);
                     }
                 }) {
             @Override
