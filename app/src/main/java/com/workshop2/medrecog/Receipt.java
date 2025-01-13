@@ -10,11 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,9 +28,8 @@ import java.util.Map;
 
 public class Receipt extends AppCompatActivity {
 
-    private String cartID, paymentMethod, billCode, cartIDFPX;
+    private String cartID, paymentMethod, billCode, cartIDFPX, userID;
     private TextView txtOrderId, txtVendor, txtGenericName, txtQuantity, txtPrice, txtTotal, txtPaymentMethod;
-
     private ImageView imageBack;
 
     @Override
@@ -42,6 +37,7 @@ public class Receipt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.receipt);
 
+        // Initialize UI elements
         txtOrderId = findViewById(R.id.orderId);
         txtVendor = findViewById(R.id.vendor);
         txtGenericName = findViewById(R.id.GenericName);
@@ -49,134 +45,121 @@ public class Receipt extends AppCompatActivity {
         txtPrice = findViewById(R.id.price);
         txtTotal = findViewById(R.id.totalPrice);
         txtPaymentMethod = findViewById(R.id.paymentMethod);
-
         imageBack = findViewById(R.id.img_back);
 
-        // Get data from the intent
+        // Retrieve intent data
         cartID = getIntent().getStringExtra("CART_ID");
-
         paymentMethod = getIntent().getStringExtra("PAYMENT_METHOD");
 
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         cartIDFPX = sharedPreferences.getString("cartIDFPX", null);
         billCode = sharedPreferences.getString("billCode", null);
 
-        Log.d("SharedPrefs", "CartIDFPX: " + cartIDFPX + ", BillCode: " + billCode);
+        SharedPreferences sharedPreferences2 = getSharedPreferences("UserPreferences", MODE_PRIVATE);
+        userID = sharedPreferences2.getString("UserID", null);
 
-        // Call appropriate method based on payment method
+        Log.d("SharedPrefs", "CartIDFPX: " + cartIDFPX + ", BillCode: " + billCode + "USER : " + userID);
+
+        // Call appropriate receipt method based on payment method
         if ("COD".equals(paymentMethod)) {
-            Log.d("Receipt", "CART_ID: " + cartID);
-            addReceipt(); // Call the receipt method for COD
-        } else {
-            addReceiptFPX(); // Pass BillCode to the FPX receipt
-            Log.d("BillCode", "BILLCODE :" + billCode);
-            Log.d("CartID", "CARTID :" + cartIDFPX);
+            addReceipt(); // Call COD-specific receipt method
         }
 
-        // Set click listener on the image_icon
-        imageBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Intent to go back to Homepage activity
-                Intent intent = new Intent(Receipt.this, Homepage.class);
-                startActivity(intent);
-                finish(); // Optional: To close the ProductDesc activity if needed
-            }
-        });
-
+        // Handle incoming FPX intent data
         handleIncomingIntent(getIntent());
-    }
 
+        // Back button listener
+        imageBack.setOnClickListener(v -> {
+            Intent intent = new Intent(Receipt.this, Homepage.class);
+            startActivity(intent);
+            finish();
+        });
+    }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        setIntent(intent); // Update intent
-        handleIncomingIntent(intent); // Handle new intent
+        setIntent(intent);
+        handleIncomingIntent(intent);
     }
 
     private void handleIncomingIntent(Intent intent) {
         Uri data = intent.getData();
-        if (data != null && data.getScheme().equals("yourapp") && data.getHost().equals("payment-complete")) {
-            // Process the payment result (e.g., confirm the payment, show receipt)
-            String paymentStatus = data.getQueryParameter("status"); // Retrieve the payment status
-            Log.d("FPX PAYMENT STATUS", "FPX PAYMENT STATUS: " + paymentStatus);
-            //String cartID = data.getQueryParameter("cartID"); // Retrieve the cartID
-            //String billCode = data.getQueryParameter("BillCode");
+        if (data != null) {
+            Log.d("PAYMENT URI", "Received URI: " + data.toString());
 
-            Log.d("SharedPrefs", "CartIDFPX: " + cartIDFPX + ", BillCode: " + billCode);
+            if (data.getScheme().equals("yourapp") && data.getHost().equals("payment-complete")) {
+                String statusId = data.getQueryParameter("status_id");
+                String cartID = data.getQueryParameter("cartID");
 
-            // Log or use the CartID for your needs
-            if (cartID != null) {
-                Log.d("Payment", "CartIDFPX: " + cartIDFPX); // Log the CartID for debugging
-                Log.d("Payment", "BillCode: " + billCode);
-                // You can now use the cartID, for example, load the receipt or display relevant data
+                Log.d("PAYMENT STATUS", "Extracted status_id: " + statusId);
+                Log.d("PAYMENT CARTID", "Extracted cartID: " + cartID);
+
+                if (statusId != null) {
+                    switch (statusId) {
+                        case "1": // success
+                            Toast.makeText(this, "Payment Successful!", Toast.LENGTH_SHORT).show();
+                            addReceiptFPX();
+                            updatePaymentStatus(cartID, "1");  // Update status to 'success'
+                            break;
+                        case "2": // pending
+                            Toast.makeText(this, "Payment Pending. Please wait.", Toast.LENGTH_SHORT).show();
+                            break;
+                        case "3": // failed
+                            updateCartStatusFailed(cartID);
+                            Toast.makeText(this, "Payment Failed. Please try again.", Toast.LENGTH_SHORT).show();
+                            updatePaymentStatus(cartID, "3");  // Update status to 'failed'
+                            Intent intent2 = new Intent(Receipt.this, Homepage.class);
+                            startActivity(intent2);
+                            break;
+                        default:
+                            Log.e("PAYMENT ERROR", "Unknown status_id: " + statusId);
+                            break;
+                    }
+                } else {
+                    Log.e("PAYMENT ERROR", "Status ID is null. Check the URI structure.");
+                }
+            } else {
+                Log.e("PAYMENT ERROR", "Unexpected URI: " + data.toString());
             }
+        } else {
+            Log.e("PAYMENT ERROR", "No data found in the intent.");
         }
     }
 
 
-    private void addReceipt(){
+
+
+
+    private void addReceipt() {
         String url = getString(R.string.api_receipt);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            // Parse the response as an object first
-                            JSONObject jsonResponse = new JSONObject(response);
-                            String status = jsonResponse.getString("status");
-                            String message = jsonResponse.getString("message");
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
+                        String message = jsonResponse.getString("message");
 
-                            if ("success".equals(status)) {
-                                // Since the receipt is an array, use getJSONArray instead of getJSONObject
-                                JSONArray receiptArray = jsonResponse.getJSONArray("receipt");
+                        if ("success".equals(status)) {
+                            JSONArray receiptArray = jsonResponse.getJSONArray("receipt");
 
-                                if (receiptArray.length() > 0) {
-                                    // Use the first element of the array if you expect only one receipt
-                                    JSONObject receipt = receiptArray.getJSONObject(0);
-
-                                    // Extract the receipt details from the response
-                                    String orderID = receipt.getString("OrderID");
-                                    String genericNames = receipt.getString("GenericNames");
-                                    String quantities = receipt.getString("Quantities");
-                                    String paymentDate = receipt.getString("PaymentDate");
-                                    String totalAmount = receipt.getString("TotalAmount");
-                                    String paymentMethod = receipt.getString("PaymentMethod");
-                                    String vendor = receipt.getString("Vendor");
-
-                                    // Set the UI elements with the received data
-                                    txtOrderId.setText(orderID);
-                                    txtVendor.setText(vendor);
-                                    txtGenericName.setText(genericNames);
-                                    txtQuantity.setText(quantities);
-                                    txtPrice.setText(totalAmount);
-                                    txtTotal.setText(totalAmount);
-                                    txtPaymentMethod.setText(paymentMethod);
-
-                                } else {
-                                    // Handle failure when the array is empty
-                                    Toast.makeText(Receipt.this, "No receipt found", Toast.LENGTH_SHORT).show();
-                                }
-
+                            if (receiptArray.length() > 0) {
+                                JSONObject receipt = receiptArray.getJSONObject(0);
+                                updateReceiptUI(receipt);
                             } else {
-                                // Handle failure
-                                Toast.makeText(Receipt.this, "Failed to add receipt: " + message, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "No receipt found", Toast.LENGTH_SHORT).show();
                             }
-                        } catch (JSONException e) {
-                            Log.e("CartUpdateError", "JSON Parsing error", e);
+                        } else {
+                            Toast.makeText(this, "(COD) Failed to add receipt: " + message, Toast.LENGTH_SHORT).show();
                         }
+                    } catch (JSONException e) {
+                        Log.e("AddReceiptError", "JSON Parsing error", e);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("AddReceiptError", "Volley error", error);
-                    }
-                }) {
+                error -> Log.e("AddReceiptError", "Volley error", error)) {
             @Override
-            protected java.util.Map<String, String> getParams() {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("action", "addReceipt");
                 params.put("cartID", cartID);
@@ -184,75 +167,40 @@ public class Receipt extends AppCompatActivity {
             }
         };
 
-        // Add the request to the request queue
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(stringRequest);
     }
 
-    private void addReceiptFPX(){
-        Toast.makeText(Receipt.this, "THIS IS FPX", Toast.LENGTH_SHORT).show();
-        Log.d("DATA IN ADD RECEIPT FPX", "DATA IN ADD RECEIPT FPX"+"CartIDFPX: " + cartIDFPX + ", BillCode: " + billCode);
-
+    private void addReceiptFPX() {
         String url = getString(R.string.api_receipt);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            // Parse the response as an object first
-                            JSONObject jsonResponse = new JSONObject(response);
-                            String status = jsonResponse.getString("status");
-                            String message = jsonResponse.getString("message");
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
+                        String message = jsonResponse.getString("message");
 
-                            if ("success".equals(status)) {
-                                // Since the receipt is an array, use getJSONArray instead of getJSONObject
-                                JSONArray receiptArray = jsonResponse.getJSONArray("receipt");
+                        if ("success".equals(status)) {
+                            updateCartStatus();
+                            JSONArray receiptArray = jsonResponse.getJSONArray("receipt");
 
-                                if (receiptArray.length() > 0) {
-                                    // Use the first element of the array if you expect only one receipt
-                                    JSONObject receipt = receiptArray.getJSONObject(0);
-
-                                    // Extract the receipt details from the response
-                                    String orderID = receipt.getString("OrderID");
-                                    String genericNames = receipt.getString("GenericNames");
-                                    String quantities = receipt.getString("Quantities");
-                                    String paymentDate = receipt.getString("PaymentDate");
-                                    String totalAmount = receipt.getString("TotalAmount");
-                                    String paymentMethod = receipt.getString("PaymentMethod");
-                                    String vendor = receipt.getString("Vendor");
-
-                                    // Set the UI elements with the received data
-                                    txtOrderId.setText(orderID);
-                                    txtVendor.setText(vendor);
-                                    txtGenericName.setText(genericNames);
-                                    txtQuantity.setText(quantities);
-                                    txtPrice.setText(totalAmount);
-                                    txtTotal.setText(totalAmount);
-                                    txtPaymentMethod.setText(paymentMethod);
-
-                                } else {
-                                    // Handle failure when the array is empty
-                                    Toast.makeText(Receipt.this, "No receipt found", Toast.LENGTH_SHORT).show();
-                                }
-
+                            if (receiptArray.length() > 0) {
+                                JSONObject receipt = receiptArray.getJSONObject(0);
+                                updateReceiptUI(receipt);
                             } else {
-                                // Handle failure
-                                Toast.makeText(Receipt.this, "Failed to add receipt: " + message, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "No receipt found", Toast.LENGTH_SHORT).show();
                             }
-                        } catch (JSONException e) {
-                            Log.e("CartUpdateError", "JSON Parsing error", e);
+                        } else {
+                            Toast.makeText(this, "(FPX) Failed to add receipt: " + message, Toast.LENGTH_SHORT).show();
                         }
+                    } catch (JSONException e) {
+                        Log.e("AddReceiptFPXError", "JSON Parsing error", e);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("AddReceiptError", "Volley error", error);
-                    }
-                }) {
+                error -> Log.e("AddReceiptFPXError", "Volley error", error)) {
             @Override
-            protected java.util.Map<String, String> getParams() {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("action", "addReceiptFPX");
                 params.put("cartIDFPX", cartIDFPX);
@@ -261,9 +209,121 @@ public class Receipt extends AppCompatActivity {
             }
         };
 
-        // Add the request to the request queue
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(stringRequest);
     }
 
+    private void updateCartStatus() {
+        String url = getString(R.string.api_cart);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
+                        String message = jsonResponse.getString("message");
+
+                        if ("success".equals(status)) {
+                            Toast.makeText(this, "Cart updated successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "Failed to update cart: " + message, Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        Log.e("CartUpdateError", "JSON Parsing error", e);
+                    }
+                },
+                error -> Log.e("CartUpdateError", "Volley error", error)) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "updateCart");
+                params.put("cartID", cartIDFPX);
+                params.put("userID", userID);
+                return params;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(stringRequest);
+    }
+
+    private void updateCartStatusFailed(String cartID) {
+        String url = getString(R.string.api_cart);
+
+        Log.d("UPDATE CART FAILED", cartID);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
+                        String message = jsonResponse.getString("message");
+
+                        if ("success".equals(status)) {
+                            Toast.makeText(this, "Cart updated successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "Failed to update cart: " + message, Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        Log.e("CartUpdateError", "JSON Parsing error", e);
+                    }
+                },
+                error -> Log.e("CartUpdateError", "Volley error", error)) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "updateCartFailed");
+                params.put("cartID", cartID);
+                params.put("userID", userID);
+                return params;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(stringRequest);
+    }
+
+    private void updatePaymentStatus(final String cartID, final String statusId) {
+        String url = getString(R.string.api_order);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
+                        String message = jsonResponse.getString("message");
+
+                        if ("success".equals(status)) {
+                            Log.d("PaymentUpdate", "Payment status updated successfully.");
+                        } else {
+                            Log.e("PaymentUpdate", "Failed to update payment status: " + message);
+                        }
+                    } catch (JSONException e) {
+                        Log.e("PaymentUpdateError", "JSON Parsing error", e);
+                    }
+                },
+                error -> Log.e("PaymentUpdateError", "Volley error", error)) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "updatePaymentStatus");
+                params.put("cartID", cartID);
+                params.put("statusId", statusId);  // statusId: '1' for success, '3' for failed
+                return params;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(stringRequest);
+    }
+
+    private void updateReceiptUI(JSONObject receipt) throws JSONException {
+        txtOrderId.setText(receipt.getString("OrderID"));
+        txtVendor.setText(receipt.getString("Vendor"));
+        txtGenericName.setText(receipt.getString("GenericNames"));
+        txtQuantity.setText(receipt.getString("Quantities"));
+        txtPrice.setText(receipt.getString("TotalAmount"));
+        txtTotal.setText(receipt.getString("TotalAmount"));
+        txtPaymentMethod.setText(receipt.getString("PaymentMethod"));
+    }
 }
