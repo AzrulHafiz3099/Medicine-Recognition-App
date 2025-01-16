@@ -27,16 +27,15 @@
                 <FrameLayout
                     android:id="@+id/container_iphone_x"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content">
 
                     <!-- Menu Icon -->
                     <ImageView
                         android:id="@+id/image_group"
-                        android:layout_width="22.04dp"
-                        android:layout_height="11.08dp"
+                        android:layout_width="22dp"
+                        android:layout_height="11dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="58.08dp"
+                        android:layout_marginTop="58dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/baseline_menu_24"
                         android:contentDescription="Menu Icon" />
@@ -44,10 +43,9 @@
                     <!-- Wishlist Icon -->
 
                     <LinearLayout
-                        android:layout_width="344dp"
-                        android:layout_height="53dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="20dp"
                         android:layout_marginTop="210dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
@@ -64,11 +62,10 @@
                         <!-- Spinner -->
                         <Spinner
                             android:id="@+id/spinner_vendor"
-                            android:layout_width="303dp"
-                            android:layout_height="66dp"
-                            android:layout_gravity="center_vertical" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
-
                     <!-- Greeting Text -->
                     <TextView
                         android:id="@+id/container_group1"
@@ -93,42 +90,40 @@
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginEnd="0dp"
                         android:layout_marginTop="280dp"
                         android:paddingEnd="8dp"
                         app:cardCornerRadius="38dp" />
 
                     <FrameLayout
                         android:id="@+id/container_group15"
-                        android:layout_width="46.15dp"
-                        android:layout_height="42.16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="top|right"
                         android:layout_marginTop="40dp"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginEnd="30dp"
                         android:onClick="onCartButtonClick">
 
                         <ImageView
                             android:id="@+id/image_shopping_basket"
-                            android:layout_width="24.08dp"
-                            android:layout_height="24.08dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="top|left"
-                            android:layout_marginLeft="9.06dp"
+                            android:layout_marginStart="9dp"
                             android:src="@drawable/baseline_add_shopping_cart_24"
                             android:contentDescription="Cart Icon" />
+
 
                         <TextView
                             android:id="@+id/text_my_basket"
                             android:layout_width="wrap_content"
-                            android:layout_height="15.16dp"
-                            android:layout_gravity="left"
-                            android:layout_marginLeft="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="27dp"
-                            android:gravity="left|center_vertical"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:gravity="center"
                             android:includeFontPadding="false"
                             android:text="My basket"
                             android:textColor="#FF27214D"
-                            android:textSize="10dp" />
+                            android:textSize="10sp" />
                     </FrameLayout>
                 </FrameLayout>
             </FrameLayout>

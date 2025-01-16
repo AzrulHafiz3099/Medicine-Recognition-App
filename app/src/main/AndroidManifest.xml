@@ -8,6 +8,15 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Declare camera hardware as not required -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,6 +29,11 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <!-- If you're using CameraX, enable this -->
+        <meta-data
+            android:name="androidx.camera.default.*"
+            android:value="default" />
+
         <activity android:name=".Receipt"
             android:exported="true">
             <intent-filter>
@@ -127,7 +141,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MedicineReco" />
+        <activity
+            android:name=".MedicineReco"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Menu" />
         <activity android:name=".Profile" />
         <activity android:name=".Register" />

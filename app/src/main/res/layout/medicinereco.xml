@@ -76,7 +76,7 @@
 
         <!-- Button background -->
         <Button
-            android:id="@+id/image_rectangle"
+            android:id="@+id/btn_scan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="#FFD580"
