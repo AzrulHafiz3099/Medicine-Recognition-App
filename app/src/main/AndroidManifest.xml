@@ -5,17 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <!-- Declare camera hardware as not required -->
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
-
-
 
     <application
         android:allowBackup="true"
@@ -29,23 +19,18 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <!-- If you're using CameraX, enable this -->
-        <meta-data
-            android:name="androidx.camera.default.*"
-            android:value="default" />
-
-        <activity android:name=".Receipt"
+        <activity
+            android:name=".OrderList"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="yourapp" android:host="payment-complete" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <!-- API for MAP -->
+        <activity
+            android:name=".Receipt"
+            android:exported="false" /> <!-- API for MAP -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAlY83QdgcqNP2Ba5w0NLSjX5K9BGyZw2k" />
@@ -59,11 +44,11 @@
         <activity
             android:name=".AddPatient"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".PaymentMethod"
@@ -141,15 +126,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MedicineReco"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MedicineReco" />
         <activity android:name=".Menu" />
         <activity android:name=".Profile" />
         <activity android:name=".Register" />

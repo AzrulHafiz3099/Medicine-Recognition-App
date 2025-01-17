@@ -1,13 +1,18 @@
 package com.workshop2.medrecog.adapter;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.workshop2.medrecog.R;
+
 
 import java.util.List;
 
@@ -38,6 +43,16 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         holder.itemView.setOnClickListener(v -> listener.onItemClick(position));
         holder.getDirectionsButton.setOnClickListener(v -> listener.onGetDirectionsClick(position));
         holder.selectStoreButton.setOnClickListener(v -> listener.onSelectStoreClick(position));
+
+        int drawableId = item.getImageDrawableId();
+        if (drawableId != 0) { // Check if a drawable ID is set
+            holder.storeImage.setImageResource(drawableId);
+        } else {
+            // Optional: Set a placeholder image if the URL is null or empty
+            holder.storeImage.setImageDrawable(new ColorDrawable(Color.GRAY)); // Replace with your placeholder
+        }
+
+
     }
 
     @Override
@@ -54,6 +69,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
     public static class LocationViewHolder extends RecyclerView.ViewHolder {
         TextView storeName, storeDistance, storeStatus, storeOpeningTime;
         TextView getDirectionsButton, selectStoreButton;
+        ImageView storeImage;
 
         public LocationViewHolder(View itemView) {
             super(itemView);
@@ -63,6 +79,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
             storeOpeningTime = itemView.findViewById(R.id.store_opening_time);
             getDirectionsButton = itemView.findViewById(R.id.get_directions_button);
             selectStoreButton = itemView.findViewById(R.id.select_store_button);
+            storeImage = itemView.findViewById(R.id.store_image);
         }
     }
 }
