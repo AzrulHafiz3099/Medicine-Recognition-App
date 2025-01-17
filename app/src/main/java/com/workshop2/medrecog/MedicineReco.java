@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -33,11 +34,28 @@ public class MedicineReco extends AppCompatActivity {
 
     private ImageView imageGroup1;
     private TextRecognizer textRecognizer;
+    private ImageView imageBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medicinereco);
+
+        imageBack = findViewById(R.id.img_back); // Find the imageIcon
+
+        // Handle back button behavior with the new API
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Custom logic for back press
+                finish(); // Close the activity
+            }
+        });
+
+        // Set an OnClickListener for the back button
+        imageBack.setOnClickListener(v -> {
+            onBackPressed(); // Call the overridden onBackPressed method
+        });
 
         imageGroup1 = findViewById(R.id.image_group1);
         Button btnScan = findViewById(R.id.btn_scan);

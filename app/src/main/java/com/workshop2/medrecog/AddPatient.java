@@ -1,13 +1,16 @@
 package com.workshop2.medrecog;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -37,11 +40,30 @@ public class AddPatient extends AppCompatActivity {
     private List<Patient> patientList;
     private String userID;
     private Button btnAddNew;
+    private ImageView imageBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_patient);
+
+        imageBack = findViewById(R.id.img_back); // Find the imageIcon
+
+        // Handle back button behavior with the new API
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Custom logic for back press
+                finish(); // Close the activity
+            }
+        });
+
+        // Set an OnClickListener for the back button
+        imageBack.setOnClickListener(v -> {
+            onBackPressed(); // Call the overridden onBackPressed method
+        });
+
+
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -50,7 +72,10 @@ public class AddPatient extends AppCompatActivity {
         patientAdapter = new PatientAdapter(this, patientList);
         recyclerView.setAdapter(patientAdapter);
 
-        userID = "US_0002";
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
+        userID = sharedPreferences.getString("UserID", "");
+        //userID = "US_0002";
+
         // Sample data
         fetchPatients();
 

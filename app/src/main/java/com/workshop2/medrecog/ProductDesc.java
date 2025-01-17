@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -107,15 +108,18 @@ public class ProductDesc extends AppCompatActivity {
             Toast.makeText(this, "Error: No SupplyID passed", Toast.LENGTH_SHORT).show();
         }
 
-        // Set click listener on the image_icon
-        imageIcon.setOnClickListener(new View.OnClickListener() {
+        // Handle back button behavior with the new API
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
-            public void onClick(View v) {
-                // Intent to go back to Homepage activity
-                Intent intent = new Intent(ProductDesc.this, Homepage.class);
-                startActivity(intent);
-                finish(); // Optional: To close the ProductDesc activity if needed
+            public void handleOnBackPressed() {
+                // Custom logic for back press
+                finish(); // Close the activity
             }
+        });
+
+        // Set an OnClickListener for the back button
+        imageIcon.setOnClickListener(v -> {
+            onBackPressed(); // Call the overridden onBackPressed method
         });
 
     }

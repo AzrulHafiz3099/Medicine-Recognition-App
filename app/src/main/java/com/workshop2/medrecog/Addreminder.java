@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -84,9 +85,18 @@ public class Addreminder extends AppCompatActivity {
             startActivity(medDetailsIntent);
         });
 
+        // Handle back button behavior with the new API
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Custom logic for back press
+                finish(); // Close the activity
+            }
+        });
+
+        // Set an OnClickListener for the back button
         imgBack.setOnClickListener(v -> {
-            Intent intent1 = new Intent(Addreminder.this, Drugreminder.class);
-            startActivity(intent1);
+            onBackPressed(); // Call the overridden onBackPressed method
         });
     }
 

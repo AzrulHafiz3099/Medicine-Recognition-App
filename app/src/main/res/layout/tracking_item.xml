@@ -53,6 +53,26 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/order_placed_date" />
 
+<TextView
+    android:id="@+id/payment_method"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:textSize="14sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/order_items" />
+
+<TextView
+    android:id="@+id/payment_status"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:textSize="14sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/payment_method" />
+
 <LinearLayout
     android:id="@+id/status_container"
     android:layout_width="match_parent"
@@ -61,7 +81,7 @@
     android:orientation="vertical"
     android:visibility="gone"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/order_items">
+    app:layout_constraintTop_toBottomOf="@+id/payment_status">
 
 </LinearLayout>
 

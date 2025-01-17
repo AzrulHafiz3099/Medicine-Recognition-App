@@ -54,7 +54,7 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:id="@+id/img_vector1"
+                    android:id="@+id/img_back"
                     android:layout_width="24.66dp"
                     android:layout_height="25.9dp"
                     android:layout_marginLeft="16.17dp"

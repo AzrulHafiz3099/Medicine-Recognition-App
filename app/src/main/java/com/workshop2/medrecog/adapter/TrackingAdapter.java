@@ -1,5 +1,9 @@
 package com.workshop2.medrecog.adapter;
 
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,13 +38,33 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TrackingItem item = trackingItems.get(position);
 
-        holder.orderNumber.setText(item.orderNumber);
+        holder.orderNumber.setText("Order ID: " + item.orderNumber);
         holder.orderPlacedDate.setText(item.placedDate);
-        holder.orderItems.setText("Items: " + item.itemCount + " | Total: " + item.itemTotal);
+        holder.orderItems.setText("Items: " + item.itemCount + " | Total: RM" + item.itemTotal);
+
+        // Display payment method
+        holder.paymentMethod.setText("Payment Method: " + item.paymentMethod);
+
+        // Display payment status with colored text
+        String paymentStatusText = "Payment Status: " + item.paymentStatus;
+        SpannableString spannableStatus = new SpannableString(paymentStatusText);
+
+        int start = paymentStatusText.indexOf(item.paymentStatus);
+        int end = start + item.paymentStatus.length();
+
+        // Apply color based on payment status
+        if ("Success".equals(item.paymentStatus)) {
+            spannableStatus.setSpan(new ForegroundColorSpan(Color.parseColor("#4CAF50")), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        } else if ("Pending".equals(item.paymentStatus)) {
+            spannableStatus.setSpan(new ForegroundColorSpan(Color.parseColor("#FF9800")), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        } else if ("Failed".equals(item.paymentStatus)) {
+            spannableStatus.setSpan(new ForegroundColorSpan(Color.parseColor("#D32F2F")), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        holder.paymentStatus.setText(spannableStatus);  // Set the SpannableString to TextView
 
         // Clear previous status items
         holder.statusContainer.removeAllViews();
-
 
         // Dynamically add status items to the LinearLayout
         for (TrackingStep step : item.trackingSteps) {
@@ -75,16 +99,19 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
         });
     }
 
+
+
     @Override
     public int getItemCount() {
         return trackingItems.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView orderNumber;
         TextView orderPlacedDate;
         TextView orderItems;
+        TextView paymentStatus;  // Add this
+        TextView paymentMethod;
         LinearLayout statusContainer;
         ImageView dropdownArrow;
 
@@ -94,8 +121,11 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
             orderNumber = itemView.findViewById(R.id.order_number);
             orderPlacedDate = itemView.findViewById(R.id.order_placed_date);
             orderItems = itemView.findViewById(R.id.order_items);
+            paymentStatus = itemView.findViewById(R.id.payment_status); // Initialize this
+            paymentMethod = itemView.findViewById(R.id.payment_method);
             statusContainer = itemView.findViewById(R.id.status_container);
             dropdownArrow = itemView.findViewById(R.id.dropdown_arrow);
         }
     }
+
 }

@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -72,15 +73,18 @@ public class CartProduct extends AppCompatActivity {
             Toast.makeText(this, "UserID not found. Please log in.", Toast.LENGTH_SHORT).show();
         }
 
-        // Set click listener on the image_icon
-        imageBack.setOnClickListener(new View.OnClickListener() {
+        // Handle back button behavior with the new API
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
-            public void onClick(View v) {
-                // Intent to go back to Homepage activity
-                Intent intent = new Intent(CartProduct.this, Homepage.class);
-                startActivity(intent);
-                finish(); // Optional: To close the ProductDesc activity if needed
+            public void handleOnBackPressed() {
+                // Custom logic for back press
+                finish(); // Close the activity
             }
+        });
+
+        // Set an OnClickListener for the back button
+        imageBack.setOnClickListener(v -> {
+            onBackPressed(); // Call the overridden onBackPressed method
         });
 
         String totalPrice = textSubTotal.getText().toString();  // Get the formatted total price

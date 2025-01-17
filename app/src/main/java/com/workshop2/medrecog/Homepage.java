@@ -8,11 +8,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +40,10 @@ import java.util.Map;
 
 public class Homepage extends AppCompatActivity {
 
+    private DrawerLayout drawerLayout;
+
+    private ImageView menuIcon;
+
     private ImageView imageIcon;
     private TextView profileName;
     private Spinner spinner;
@@ -46,6 +54,8 @@ public class Homepage extends AppCompatActivity {
     private List<Drug> drugList; // This will hold the drug data
     private String vendorIdFromIntent; // To store VendorID passed from the previous activity
     private String userID;
+
+    private LinearLayout container_profile, container_patient, container_drugReminder, container_symptomsDetector, container_drugSearch, container_medRecognition, container_vendor, container_yourOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +75,33 @@ public class Homepage extends AppCompatActivity {
         Intent intent = getIntent();
         vendorIdFromIntent = intent.getStringExtra("VendorID");
 
+        // Initialize DrawerLayout and menu icon
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+
+        menuIcon = findViewById(R.id.image_group); // Menu icon
+        imageIcon = findViewById(R.id.image_icon);
+
         // Set up RecyclerView with GridLayoutManager
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 columns
         adapter = new DrugAdapter(this, drugList, null);
         recyclerView.setAdapter(adapter);
 
-        // Fetch vendor data
+        // Menu icon click listener to open sidebar
+
+        menuIcon.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
+        // Back button functionality for closing the sidebar
+
+        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener(){
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+
+                super.onDrawerClosed(drawerView);
+            }
+        });
+
+                // Fetch vendor data
         fetchVendors();
 
         // Fetch drug data (initially with sample data)
@@ -105,6 +136,62 @@ public class Homepage extends AppCompatActivity {
 
         getUserProfile();
         checkOrCreateCart();
+
+        container_profile = findViewById(R.id.container_profile);
+        container_drugReminder = findViewById(R.id.container_drugReminder);
+        container_symptomsDetector = findViewById(R.id.container_symptomsDetector);
+        container_drugSearch = findViewById(R.id.container_drugSearch);
+        container_medRecognition = findViewById(R.id.container_medRecognition);
+        container_vendor = findViewById(R.id.container_vendor);
+        container_yourOrder = findViewById(R.id.container_yourOrder);
+        container_patient = findViewById(R.id.container_patient);
+
+
+        // Set click listeners for each LinearLayout
+        container_profile.setOnClickListener(view -> {
+            Log.d("MenuActivity", "Profile clicked");
+            Intent intent2 = new Intent(Homepage.this, Profile.class);
+            startActivity(intent2);
+        });
+
+        // Set click listeners for each LinearLayout
+        container_patient.setOnClickListener(view -> {
+            Log.d("MenuActivity", "Drug Reminder clicked");
+            Intent intent2 = new Intent(Homepage.this, AddPatient.class);
+            startActivity(intent2);
+        });
+
+        // Set click listeners for each LinearLayout
+        container_drugReminder.setOnClickListener(view -> {
+            Log.d("MenuActivity", "Drug Reminder clicked");
+            Intent intent2 = new Intent(Homepage.this, Drugreminder.class);
+            startActivity(intent2);
+        });
+
+        container_symptomsDetector.setOnClickListener(view -> {
+//            Intent intent2 = new Intent(Menu.this, SymptomsDetectorActivity.class);
+//            startActivity(intent2);
+        });
+
+        container_drugSearch.setOnClickListener(view -> {
+            Intent intent2 = new Intent(Homepage.this, Search.class);
+            startActivity(intent2);
+        });
+
+        container_medRecognition.setOnClickListener(view -> {
+            Intent intent2 = new Intent(Homepage.this, MedicineReco.class);
+            startActivity(intent2);
+        });
+
+        container_vendor.setOnClickListener(view -> {
+            Intent intent2 = new Intent(Homepage.this, StoreSelect.class);
+            startActivity(intent2);
+        });
+
+        container_yourOrder.setOnClickListener(view -> {
+            Intent intent2 = new Intent(Homepage.this, OrderList.class);
+            startActivity(intent2);
+        });
 
     }
 

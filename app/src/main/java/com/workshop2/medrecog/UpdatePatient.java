@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -78,15 +79,18 @@ public class UpdatePatient extends AppCompatActivity {
             }
         });
 
-        // Set click listener on the image_icon
-        imageBack.setOnClickListener(new View.OnClickListener() {
+        // Handle back button behavior with the new API
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
-            public void onClick(View v) {
-                // Intent to go back to Homepage activity
-                Intent intent = new Intent(UpdatePatient.this, AddPatient.class);
-                startActivity(intent);
-                finish(); // Optional: To close the activity if needed
+            public void handleOnBackPressed() {
+                // Custom logic for back press
+                finish(); // Close the activity
             }
+        });
+
+        // Set an OnClickListener for the back button
+        imageBack.setOnClickListener(v -> {
+            onBackPressed(); // Call the overridden onBackPressed method
         });
 
     }

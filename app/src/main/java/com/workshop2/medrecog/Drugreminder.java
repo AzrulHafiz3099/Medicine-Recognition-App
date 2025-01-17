@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,10 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -43,6 +46,8 @@ public class Drugreminder extends AppCompatActivity {
     private Button buttonNext;
     private String userID, symptomID, name;
     private Spinner patientSpinner;
+    private ImageView imageBack;
+
 
     // List to store patient names and full patient data
     private List<Patient> patientList = new ArrayList<>();
@@ -52,7 +57,26 @@ public class Drugreminder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drugreminder);
 
-        userID = "US_0002";  // Replace with the actual user ID
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
+        userID = sharedPreferences.getString("UserID", "");
+
+        imageBack = findViewById(R.id.img_back); // Find the imageIcon
+
+        // Handle back button behavior with the new API
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Custom logic for back press
+                finish(); // Close the activity
+            }
+        });
+
+        // Set an OnClickListener for the back button
+        imageBack.setOnClickListener(v -> {
+            onBackPressed(); // Call the overridden onBackPressed method
+        });
+
+        //userID = "US_0002";  // Replace with the actual user ID
 
         // Initialize the TextViews
         dateTextView = findViewById(R.id.dateTextView);

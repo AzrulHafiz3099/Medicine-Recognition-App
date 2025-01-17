@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.work.Data;
@@ -80,16 +81,30 @@ public class MedDetailsReminder extends AppCompatActivity {
 
         fetchDrugDetails(drugID);
 
+//        imgBack.setOnClickListener(v -> {
+//            Intent intent1 = new Intent(MedDetailsReminder.this, Addreminder.class);
+//            intent1.putExtra("patientID", patientID);
+//            intent1.putExtra("name", name);
+//            intent1.putExtra("title", title);
+//            intent1.putExtra("description", description);
+//            intent1.putExtra("date", date);
+//            intent1.putExtra("time", time);
+//            intent1.putExtra("symptomID", symptomID);
+//            startActivity(intent1);
+//        });
+
+        // Handle back button behavior with the new API
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Custom logic for back press
+                finish(); // Close the activity
+            }
+        });
+
+        // Set an OnClickListener for the back button
         imgBack.setOnClickListener(v -> {
-            Intent intent1 = new Intent(MedDetailsReminder.this, Addreminder.class);
-            intent1.putExtra("patientID", patientID);
-            intent1.putExtra("name", name);
-            intent1.putExtra("title", title);
-            intent1.putExtra("description", description);
-            intent1.putExtra("date", date);
-            intent1.putExtra("time", time);
-            intent1.putExtra("symptomID", symptomID);
-            startActivity(intent1);
+            onBackPressed(); // Call the overridden onBackPressed method
         });
 
         btnAdd.setOnClickListener(v -> addReminder());
