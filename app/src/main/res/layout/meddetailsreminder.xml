@@ -232,59 +232,6 @@
             android:background="@drawable/image_orange"
             android:scaleType="centerCrop" />
 
-        <FrameLayout
-            android:id="@+id/container_status_bar"
-            android:layout_width="match_parent"
-            android:layout_height="23.39dp"
-            android:layout_marginLeft="33.52dp"
-            android:layout_marginRight="17.02dp"
-            android:layout_marginTop="14.03dp"
-            android:layout_gravity="top">
-
-            <TextView
-                android:id="@+id/text_time"
-                android:layout_width="37.24dp"
-                android:layout_height="23.39dp"
-                android:layout_gravity="left"
-                android:gravity="left|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="9:41"
-                android:textColor="#FF000000"
-                android:textSize="17dp" />
-
-            <ImageView
-                android:id="@+id/image_sim"
-                android:layout_width="20.22dp"
-                android:layout_height="14.03dp"
-                android:layout_marginLeft="279.83dp"
-                android:layout_marginRight="48.41dp"
-                android:layout_marginTop="5.85dp"
-                android:layout_marginBottom="3.51dp"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:id="@+id/image_network_wifi"
-                android:layout_width="20.22dp"
-                android:layout_height="14.03dp"
-                android:layout_marginLeft="303.77dp"
-                android:layout_marginRight="24.47dp"
-                android:layout_marginTop="5.85dp"
-                android:layout_marginBottom="3.51dp"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:id="@+id/image_battery"
-                android:layout_width="21.28dp"
-                android:layout_height="14.03dp"
-                android:layout_marginLeft="327.18dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginTop="5.85dp"
-                android:layout_marginBottom="3.51dp"
-                android:scaleType="centerInside" />
-        </FrameLayout>
-
         <TextView
             android:id="@+id/text_add_your_med"
             android:layout_width="match_parent"

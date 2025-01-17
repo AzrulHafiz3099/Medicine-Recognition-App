@@ -395,12 +395,4 @@ public class ProductDesc extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(stringRequest);
     }
-
-
-
-
-
-
-
-
 }
