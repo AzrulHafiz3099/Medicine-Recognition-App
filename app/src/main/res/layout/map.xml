@@ -19,7 +19,7 @@
 
         <!-- Back Button -->
         <ImageButton
-            android:id="@+id/back_button"
+            android:id="@+id/back_button_map"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="8dp"

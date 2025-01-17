@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -115,6 +116,16 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
         });
 
         requestLocationPermission();
+
+        // 1. Find the LinearLayout by its ID
+        ImageView arrowback = findViewById(R.id.back_button_map);
+
+        // 2. Set the click listener using a lambda expression
+        arrowback.setOnClickListener(v -> {
+            // This code will execute when the LinearLayout is clicked
+            Intent intent = new Intent(Map.this, Homepage.class);
+            startActivity(intent);
+        });
     }
 
 
