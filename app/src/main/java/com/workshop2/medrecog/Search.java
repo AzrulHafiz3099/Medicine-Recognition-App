@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -42,6 +43,7 @@ public class Search extends AppCompatActivity {
     private TextView medicineName, medicineDetails, noResultTextView;
     private ImageView medicineImage;
     private View medicineDetailsCard;
+    private ImageView imageBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,15 +113,17 @@ public class Search extends AppCompatActivity {
         });
 
 
-        // 1. Find the LinearLayout by its ID
-        ImageView arrowback = findViewById(R.id.backButton);
+        imageBack = findViewById(R.id.img_back); // Find the imageIcon
 
-        // 2. Set the click listener using a lambda expression
-        arrowback.setOnClickListener(v -> {
-            // This code will execute when the LinearLayout is clicked
-            Intent intent = new Intent(Search.this, Homepage.class);
-            startActivity(intent);
+        // Handle back button behavior with the new API
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish(); // Close the activity
+            }
         });
+
+        imageBack.setOnClickListener(v -> onBackPressed());
     }
 
     // Fetch suggestions from the backend based on query

@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -30,6 +31,7 @@ public class Suggestion extends AppCompatActivity {
     private ImageView medicineImage;
     private RequestQueue requestQueue;
     private View medicineDetailsCard;
+    private ImageView imageBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +56,17 @@ public class Suggestion extends AppCompatActivity {
             Toast.makeText(this, "Error: No medicine selected", Toast.LENGTH_SHORT).show();
         }
 
-        // 1. Find the LinearLayout by its ID
-        ImageView arrowback = findViewById(R.id.backButton);
+        imageBack = findViewById(R.id.img_back); // Find the imageIcon
 
-        // 2. Set the click listener using a lambda expression
-        arrowback.setOnClickListener(v -> {
-            // This code will execute when the LinearLayout is clicked
-            Intent intent = new Intent(Suggestion.this, Search.class);
-            startActivity(intent);
+        // Handle back button behavior with the new API
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish(); // Close the activity
+            }
         });
+
+        imageBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void fetchMedicineDetails(String medicineName) {
