@@ -62,7 +62,7 @@
         <activity android:name=".Delete" />
         <activity android:name=".Drugreminder" android:exported="true" />
         <activity android:name=".Homepage" android:exported="true" />
-        <activity android:name=".Map" android:exported="true" />
+        <activity android:name=".VendorMap" android:exported="true" />
         <activity android:name=".CartProduct" android:exported="true" />
         <activity android:name=".MedicineReco" android:exported="true" />
         <activity android:name=".Menu" />

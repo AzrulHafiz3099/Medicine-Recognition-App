@@ -33,6 +33,7 @@
     <string name="api_drug_supply">https://www.etourmersing.com/BackEnd-APi/MedRec/api_drug_supply.php</string>
     <string name="api_drug_details">https://www.etourmersing.com/BackEnd-APi/MedRec/api_drug_details.php</string>
     <string name="drug_image_url">https://www.etourmersing.com/BackEnd-APi/MedRec/DrugImage/</string>
+    <string name="vendor_image_url">https://www.etourmersing.com/BackEnd-APi/MedRec/ProfilePicture/</string>
     <string name="api_cart">https://www.etourmersing.com/BackEnd-APi/MedRec/api_cart.php</string>
     <string name="api_cart_item">https://www.etourmersing.com/BackEnd-APi/MedRec/api_cart_item.php</string>
     <string name="api_order">https://www.etourmersing.com/BackEnd-APi/MedRec/api_order.php</string>

@@ -1,7 +1,5 @@
 package com.workshop2.medrecog.adapter;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.workshop2.medrecog.R;
-
 
 import java.util.List;
 
@@ -35,6 +32,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
     @Override
     public void onBindViewHolder(LocationViewHolder holder, int position) {
         LocationItem item = locationList.get(position);
+
         holder.storeName.setText(item.getName());
         holder.storeDistance.setText(item.getDistance());
         holder.storeStatus.setText(item.getStatus());
@@ -44,15 +42,12 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         holder.getDirectionsButton.setOnClickListener(v -> listener.onGetDirectionsClick(position));
         holder.selectStoreButton.setOnClickListener(v -> listener.onSelectStoreClick(position));
 
-        int drawableId = item.getImageDrawableId();
-        if (drawableId != 0) { // Check if a drawable ID is set
-            holder.storeImage.setImageResource(drawableId);
-        } else {
-            // Optional: Set a placeholder image if the URL is null or empty
-            holder.storeImage.setImageDrawable(new ColorDrawable(Color.GRAY)); // Replace with your placeholder
-        }
-
-
+        // Load image using Glide
+        Glide.with(holder.itemView.getContext())
+                .load(item.getImageUrl()) // Use the image URL
+                .placeholder(R.drawable.placeholder_image) // Optional: placeholder while loading
+                .error(R.drawable.error_image) // Optional: error placeholder
+                .into(holder.storeImage);
     }
 
     @Override

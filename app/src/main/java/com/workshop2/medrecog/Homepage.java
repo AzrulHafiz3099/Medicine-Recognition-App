@@ -21,13 +21,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.auth0.android.jwt.JWT;
-import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -116,6 +113,7 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 // Intent to navigate to StoreSelect activity
                 Intent intent = new Intent(Homepage.this, StoreSelect.class);
+                intent.putExtra("action","Homepage");
                 startActivity(intent);
             }
         });
@@ -185,6 +183,7 @@ public class Homepage extends AppCompatActivity {
 
         container_vendor.setOnClickListener(view -> {
             Intent intent2 = new Intent(Homepage.this, StoreSelect.class);
+            intent2.putExtra("action","VendorMap");
             startActivity(intent2);
         });
 

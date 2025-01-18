@@ -34,6 +34,7 @@ public class StoreSelect extends AppCompatActivity {
     private VendorAdapter vendorAdapter;
     private List<Vendor> vendorList;
     private ImageView imageBack;
+    private String action; // Store the action passed in the Intent
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,9 @@ public class StoreSelect extends AppCompatActivity {
         imageBack.setOnClickListener(v -> {
             onBackPressed(); // Call the overridden onBackPressed method
         });
+
+        // Retrieve the action passed in the Intent
+        action = getIntent().getStringExtra("action");
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -96,9 +100,12 @@ public class StoreSelect extends AppCompatActivity {
                                     String address = vendor.getString("Address");
                                     String contactNumber = vendor.getString("ContactNumber");
                                     String email = vendor.getString("Email");
+                                    String latitude = vendor.getString("Latitude");
+                                    String longitude = vendor.getString("Longitude");
+                                    String profilePicture = vendor.getString("ProfilePicture");
 
                                     // Add the vendor to the list
-                                    vendorList.add(new Vendor(id, fullname, address, contactNumber, email));
+                                    vendorList.add(new Vendor(id, fullname, address, contactNumber, email, latitude, longitude, profilePicture));
                                 }
 
                                 // Notify the adapter that data has changed
@@ -130,5 +137,23 @@ public class StoreSelect extends AppCompatActivity {
 
         // Add the request to the Volley queue
         Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    // Handle the RecyclerView item click event
+    public void onVendorItemClick(Vendor vendor) {
+        Intent intent;
+        if ("Homepage".equals(action)) {
+            // If action is Homepage, go to Homepage.class
+            intent = new Intent(StoreSelect.this, Homepage.class);
+            intent.putExtra("VendorID", vendor.getId());
+        } else if ("VendorMap".equals(action)) {
+            // If action is VendorMap, go to VendorMap.class
+            intent = new Intent(StoreSelect.this, VendorMap.class);
+            intent.putExtra("VendorID", vendor.getId());
+        } else {
+            // Handle default case (optional)
+            return;
+        }
+        startActivity(intent);
     }
 }
