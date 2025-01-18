@@ -17,7 +17,7 @@
         android:layout_gravity="center_horizontal"
         android:includeFontPadding="false"
         android:lineHeight="26.63dp"
-        android:text="Here is the preferred medication based on your symptoms:"
+        android:text="Here is the medication detail based on your search:"
         android:textColor="#FF000000"
         android:textSize="22dp" />
 

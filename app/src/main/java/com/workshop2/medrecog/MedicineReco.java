@@ -116,6 +116,11 @@ public class MedicineReco extends AppCompatActivity {
                         String extractedText = visionText.getText();
                         if (!extractedText.isEmpty()) {
                             Toast.makeText(this, "Extracted Text: " + extractedText, Toast.LENGTH_LONG).show();
+
+                            // Send the extracted text to the Search activity
+                            Intent intent = new Intent(MedicineReco.this, Search.class);
+                            intent.putExtra("extractedText", extractedText); // Pass the extracted text
+                            startActivity(intent);
                         } else {
                             Toast.makeText(this, "No text found in the image", Toast.LENGTH_SHORT).show();
                         }
@@ -125,6 +130,7 @@ public class MedicineReco extends AppCompatActivity {
             Log.e("TextRecognition", "Error processing image: " + e.getMessage());
         }
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

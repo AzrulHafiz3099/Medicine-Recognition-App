@@ -44,7 +44,7 @@
     <string name="api_reminder">https://www.etourmersing.com/BackEnd-APi/MedRec/api_reminder.php</string>
     <string name="api_toyyibpay">https://www.etourmersing.com/BackEnd-APi/MedRec/api_toyyibpay.php</string>
     <string name="api_suggestion">https://www.etourmersing.com/BackEnd-APi/MedRec/api_suggestion.php?query=</string>
-    <string name="api_search">https://www.etourmersing.com/BackEnd-APi/MedRec/api_search.php?name=</string>
+    <string name="api_search">https://www.etourmersing.com/BackEnd-APi/MedRec/api_search.php</string>
 
 
     <string name="store_name_placeholder">Farmasi Placeholder</string>

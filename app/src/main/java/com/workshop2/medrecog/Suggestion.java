@@ -2,6 +2,7 @@ package com.workshop2.medrecog;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,13 +48,16 @@ public class Suggestion extends AppCompatActivity {
         // Initialize Volley RequestQueue
         requestQueue = Volley.newRequestQueue(this);
 
-        // Get the selected medicine name from the Intent
+        // Get the selected medicine name and drug ID from the Intent
         String selectedMedicine = getIntent().getStringExtra("medicineName");
+        String drugId = getIntent().getStringExtra("drugId");
+        Log.d("SuggestionActivity", "Selected Medicine: " + selectedMedicine);
+        Log.d("SuggestionActivity", "Drug ID: " + drugId);
 
-        if (selectedMedicine != null) {
-            fetchMedicineDetails(selectedMedicine); // Fetch the details
+        if (drugId != null) {
+            fetchMedicineDetails(drugId); // Fetch the details using drugId
         } else {
-            Toast.makeText(this, "Error: No medicine selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error: No drug ID found", Toast.LENGTH_SHORT).show();
         }
 
         imageBack = findViewById(R.id.img_back); // Find the imageIcon
@@ -69,8 +73,13 @@ public class Suggestion extends AppCompatActivity {
         imageBack.setOnClickListener(v -> onBackPressed());
     }
 
-    private void fetchMedicineDetails(String medicineName) {
-        String url = getString(R.string.api_search) + medicineName;
+
+    private void fetchMedicineDetails(String drugId) {
+        // Use the drugId to build the URL for fetching medicine details
+        String url = getString(R.string.api_search) + "?drugId=" + drugId; // Make sure the query parameter is drugId
+        Log.d("API URL", "URL: " + url);
+
+
         medicineDetailsCard.setVisibility(View.VISIBLE);
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -78,38 +87,37 @@ public class Suggestion extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            // Use local variable directly for text setting
-                            TextView medicineNameTextView = findViewById(R.id.medicineName); // Local TextView
-                            String name = response.getString("BrandName");
-                            medicineNameTextView.setText(name);  // Use local TextView
+                            Log.d("API Response", "Response: " + response.toString());
 
+                            // Set medicine name
+                            String name = response.getString("BrandName");
+                            medicineName.setText(name);
+
+                            // Set medicine details
                             String details = "Generic Name: " + response.getString("GenericName") + "\n" +
                                     "Dosage: " + response.getString("Dosage") + "\n" +
                                     "Manufacturer: " + response.getString("Manufacturer") + "\n" +
                                     "Side Effects: " + response.getString("SideEffects");
-                            TextView medicineDetailsTextView = findViewById(R.id.medicineDetails);  // Local TextView
-                            medicineDetailsTextView.setText(details);  // Use local TextView
+                            medicineDetails.setText(details);
 
-                            // Load the image with Glide
-                            ImageView medicineImage = findViewById(R.id.medicineImage); // Local ImageView
+                            // Load the image using Glide
                             Glide.with(Suggestion.this)
-                                    .load("http://192.168.0.16/BackEnd-APi/MedRec/DrugImage/" + response.getString("DrugImage"))
+                                    .load(getString(R.string.drug_image_url) + response.getString("DrugImage"))
                                     .into(medicineImage);
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            TextView medicineDetailsTextView = findViewById(R.id.medicineDetails);
-                            medicineDetailsTextView.setText("Error fetching details");
+                            medicineDetails.setText("Error fetching details");
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        TextView medicineDetailsTextView = findViewById(R.id.medicineDetails);
-                        medicineDetailsTextView.setText("Error fetching details");
+                        medicineDetails.setText("Error fetching details");
                     }
                 });
 
         requestQueue.add(request);
     }
+
 }

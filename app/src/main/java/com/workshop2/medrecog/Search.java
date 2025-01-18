@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 
@@ -62,6 +63,15 @@ public class Search extends AppCompatActivity {
         // Initialize Volley RequestQueue
         requestQueue = Volley.newRequestQueue(this);
 
+        // Get the extracted text passed from the MedicineReco activity
+        String extractedText = getIntent().getStringExtra("extractedText");
+
+        // Set the extracted text into the search query EditText
+        if (extractedText != null && !extractedText.isEmpty()) {
+            searchQuery.setText(extractedText); // Set the text to the EditText
+            fetchSuggestions(extractedText); // Trigger the search based on the extracted text
+        }
+
         // Set up the adapter for ListView
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, suggestions);
         suggestionsList.setAdapter(adapter);
@@ -98,13 +108,17 @@ public class Search extends AppCompatActivity {
             }
         });
 
-        // On item click, fetch details for the selected suggestion
         suggestionsList.setOnItemClickListener((parent, view, position, id) -> {
             String selectedMedicine = suggestions.get(position);
 
-            // Start the SuggestionActivity and pass the medicine name
+            // Extract the ID from the selected item
+            String[] parts = selectedMedicine.split(" \\(ID: ");
+            String drugId = parts[1].replace(")", ""); // Extracting ID
+
+            // Start the SuggestionActivity and pass the medicine name and drug ID
             Intent intent = new Intent(Search.this, Suggestion.class);
             intent.putExtra("medicineName", selectedMedicine);
+            intent.putExtra("drugId", drugId);  // Pass the drug ID
             startActivity(intent);
 
             // Clear the suggestions list
@@ -127,49 +141,65 @@ public class Search extends AppCompatActivity {
     }
 
     // Fetch suggestions from the backend based on query
+    // Fetch suggestions from the backend based on query
     private void fetchSuggestions(String query) {
-        // Clear details when a new search is initiated
-        medicineDetails.setText(""); // Clear the details text
+        // Clear previous suggestions
+        suggestions.clear();
+        adapter.notifyDataSetChanged();
 
         // Set up the URL for the API request with the query parameter
         String url = getString(R.string.api_suggestion) + query;
-        //String url = "http://192.168.0.16/BackEnd-APi/MedRec/api_suggestion.php?query=" + query;
 
-        // Create a new JsonArrayRequest to fetch suggestions from the API
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONArray>() {
+        // Create a new StringRequest to fetch suggestions from the API
+        StringRequest request = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONArray response) {
-                        suggestions.clear(); // Clear previous suggestions
+                    public void onResponse(String response) {
+                        Log.d("API Response", "Response: " + response);
 
-                        // Check if the response is empty
-                        if (response.length() == 0) {
-                            noResultTextView.setText("No Result Found");
-                            noResultTextView.setVisibility(View.VISIBLE);
-                            suggestionsList.setVisibility(View.GONE); // Hide the ListView
-                        } else {
-                            try {
-                                for (int i = 0; i < response.length(); i++) {
-                                    suggestions.add(response.getString(i)); // Add each suggestion to the list
+                        try {
+                            // Parse the response as a JSONArray
+                            JSONArray responseArray = new JSONArray(response);
+
+                            // Check if the response is empty
+                            if (responseArray.length() == 0) {
+                                noResultTextView.setText("No Result Found");
+                                noResultTextView.setVisibility(View.VISIBLE);
+                                suggestionsList.setVisibility(View.GONE); // Hide the ListView
+                            } else {
+                                for (int i = 0; i < responseArray.length(); i++) {
+                                    JSONObject suggestion = responseArray.getJSONObject(i);
+
+                                    // Fetch the drug ID and other details
+                                    String drugId = suggestion.getString("DrugHeaderID");
+                                    String brandName = suggestion.getString("BrandName");
+                                    String genericName = suggestion.getString("GenericName");
+                                    String symptomDescription = suggestion.getString("SymptomDescription");
+
+                                    // Format the suggestion text to include the ID
+                                    String suggestionText = brandName + " - " + genericName + " - " +
+                                            symptomDescription + " (ID: " + drugId + ")";
+
+                                    // Add each suggestion to the list
+                                    suggestions.add(suggestionText);
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+
+                                // Notify the adapter that the data has changed
+                                adapter.notifyDataSetChanged();
+                                noResultTextView.setVisibility(View.GONE); // Hide "No Result Found" message
+                                suggestionsList.setVisibility(View.VISIBLE); // Show the ListView
                             }
-                            // Notify the adapter that the data has changed, so the ListView can update
-                            adapter.notifyDataSetChanged();
-                            noResultTextView.setVisibility(View.GONE); // Hide "No Result Found" message
-                            suggestionsList.setVisibility(View.VISIBLE); // Show the ListView
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(Search.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Log error and show a toast message for error handling
                         Log.e("API Error", "Error fetching suggestions", error);
                         Toast.makeText(Search.this, "Error fetching suggestions", Toast.LENGTH_SHORT).show();
-
-                        // Hide the ListView in case of an error
                         suggestionsList.setVisibility(View.GONE);
                     }
                 });
@@ -178,11 +208,12 @@ public class Search extends AppCompatActivity {
         requestQueue.add(request);
     }
 
+
+
+
     // Fetch and show details of the selected medicine
-    // Inside the fetchMedicineDetails method
     private void fetchMedicineDetails(String medicineName) {
         String url = getString(R.string.api_search) + medicineName;
-        //String url = "http://192.168.0.16/BackEnd-APi/MedRec/api_search.php?name=" + medicineName;
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -223,5 +254,4 @@ public class Search extends AppCompatActivity {
 
         requestQueue.add(request);
     }
-
 }
