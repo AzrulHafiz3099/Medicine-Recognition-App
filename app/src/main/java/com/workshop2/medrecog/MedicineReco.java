@@ -1,6 +1,7 @@
 package com.workshop2.medrecog;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -113,23 +114,46 @@ public class MedicineReco extends AppCompatActivity {
             InputImage inputImage = InputImage.fromBitmap(photo, 0);
             textRecognizer.process(inputImage)
                     .addOnSuccessListener(visionText -> {
-                        String extractedText = visionText.getText();
-                        if (!extractedText.isEmpty()) {
-                            Toast.makeText(this, "Extracted Text: " + extractedText, Toast.LENGTH_LONG).show();
+                        final String extractedText = visionText.getText();  // Declare as final
+                        // Log the extracted text to debug
+                        Log.d("TextRecognition", "Extracted Text: " + extractedText);
 
-                            // Send the extracted text to the Search activity
-                            Intent intent = new Intent(MedicineReco.this, Search.class);
-                            intent.putExtra("extractedText", extractedText); // Pass the extracted text
-                            startActivity(intent);
+                        // Ensure extracted text is not empty or invalid
+                        if (extractedText != null && !extractedText.trim().isEmpty()) {
+                            // Clean up the extracted text if needed
+                            final String cleanedText = extractedText.trim();  // Remove extra spaces or newlines
+
+                            // Show an AlertDialog with Yes/No options
+                            new AlertDialog.Builder(MedicineReco.this)
+                                    .setTitle("Extracted Text")
+                                    .setMessage("Is this the text you want to search?\n\n" + cleanedText)
+                                    .setPositiveButton("Yes", (dialog, which) -> {
+                                        // If the user clicks "Yes", pass the extracted text to Search2
+                                        Intent intent = new Intent(MedicineReco.this, Search2.class);
+                                        intent.putExtra("extractedText", cleanedText); // Pass the cleaned text
+                                        startActivity(intent);
+                                    })
+                                    .setNegativeButton("No", (dialog, which) -> {
+                                        // If the user clicks "No", just dismiss the dialog and stay on the current page
+                                        dialog.dismiss();
+                                    })
+                                    .show();
+
                         } else {
                             Toast.makeText(this, "No text found in the image", Toast.LENGTH_SHORT).show();
                         }
                     })
-                    .addOnFailureListener(e -> Log.e("TextRecognition", "Error: " + e.getMessage()));
+                    .addOnFailureListener(e -> {
+                        Log.e("TextRecognition", "Error: " + e.getMessage());
+                        Toast.makeText(this, "Text recognition failed", Toast.LENGTH_SHORT).show();
+                    });
         } catch (Exception e) {
             Log.e("TextRecognition", "Error processing image: " + e.getMessage());
         }
     }
+
+
+
 
 
     @Override

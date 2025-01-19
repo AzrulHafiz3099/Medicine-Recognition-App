@@ -27,6 +27,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
+
+        <activity android:name=".Receipt"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="yourapp" android:host="payment-complete" />
+            </intent-filter>
+        </activity>
+
         <!-- CameraX Metadata -->
         <meta-data
             android:name="androidx.camera.default.*"
@@ -49,7 +60,6 @@
 
         <!-- Other Activities -->
         <activity android:name=".OrderList" android:exported="true" />
-        <activity android:name=".Receipt" android:exported="false" />
         <activity android:name=".RegisterPatient" android:exported="false" />
         <activity android:name=".UpdatePatient" android:exported="false" />
         <activity android:name=".AddPatient" android:exported="true" />
@@ -69,6 +79,7 @@
         <activity android:name=".Profile" />
         <activity android:name=".Register" />
         <activity android:name=".Search" />
+        <activity android:name=".Search2" />
         <activity android:name=".Suggestion" />
         <activity android:name=".Symptom" />
         <activity android:name=".Wishlist" />

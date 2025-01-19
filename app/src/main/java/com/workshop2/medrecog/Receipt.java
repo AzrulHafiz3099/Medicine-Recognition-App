@@ -128,9 +128,6 @@ public class Receipt extends AppCompatActivity {
     }
 
 
-
-
-
     private void addReceipt() {
         String url = getString(R.string.api_receipt);
 
@@ -147,6 +144,7 @@ public class Receipt extends AppCompatActivity {
                             if (receiptArray.length() > 0) {
                                 JSONObject receipt = receiptArray.getJSONObject(0);
                                 updateReceiptUI(receipt);
+                                updateDrugQuantity(cartID);
                             } else {
                                 Toast.makeText(this, "No receipt found", Toast.LENGTH_SHORT).show();
                             }
@@ -188,6 +186,7 @@ public class Receipt extends AppCompatActivity {
                             if (receiptArray.length() > 0) {
                                 JSONObject receipt = receiptArray.getJSONObject(0);
                                 updateReceiptUI(receipt);
+                                updateDrugQuantity(cartIDFPX);
                             } else {
                                 Toast.makeText(this, "No receipt found", Toast.LENGTH_SHORT).show();
                             }
@@ -316,6 +315,47 @@ public class Receipt extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(stringRequest);
     }
+
+    private void updateDrugQuantity(String cartID) {
+        String url = getString(R.string.api_drug_supply);
+
+        // Request to get drug quantities from cart
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    Log.d("DrugQuantityUpdate", "Response: " + response);
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
+
+                        // Log the cartID received in the response
+                        String cartIDT = jsonResponse.getString("cartID");
+                        Log.d("DrugQuantityUpdate", "Received CartID: " + cartIDT);
+
+                        if ("success".equals(status)) {
+                            //Toast.makeText(this, "Drug quantities updated successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "Failed to update drug quantities", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        Log.e("DrugQuantityUpdate", "JSON Parsing error", e);
+                    }
+                },
+                error -> Log.e("DrugQuantityUpdate", "Volley error", error)) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "updateDrugQuantity");
+                params.put("cartID", cartID);
+                return params;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(stringRequest);
+    }
+
+
 
     private void updateReceiptUI(JSONObject receipt) throws JSONException {
         txtOrderId.setText(receipt.getString("OrderID"));

@@ -30,7 +30,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Search extends AppCompatActivity {
+public class Search2 extends AppCompatActivity {
 
     private EditText searchQuery;
     private ListView suggestionsList;
@@ -63,12 +63,20 @@ public class Search extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, suggestions);
         suggestionsList.setAdapter(adapter);
 
-        // Get the extracted text from MedicineReco activity
+        // Inside your onCreate() or any other method where you need to update the UI
         String extractedText = getIntent().getStringExtra("extractedText");
         if (extractedText != null && !extractedText.isEmpty()) {
-            searchQuery.setText(extractedText);
+            // Using runOnUiThread to make sure UI updates happen on the main thread
+            runOnUiThread(() -> {
+                searchQuery.setText(extractedText);
+                searchQuery.setSelection(extractedText.length()); // Set cursor at the end
+            });
             fetchSuggestions(extractedText); // Automatically search when text is available
+        } else {
+            Toast.makeText(Search2.this, "No extracted text found", Toast.LENGTH_SHORT).show();
         }
+
+
 
         // Add TextWatcher to handle dynamic suggestion fetching
         searchQuery.addTextChangedListener(new TextWatcher() {
@@ -87,7 +95,7 @@ public class Search extends AppCompatActivity {
                     medicineDetailsCard.setVisibility(View.GONE);
                     noResultTextView.setVisibility(View.GONE);
 
-                    Glide.with(Search.this).clear(medicineImage);
+                    Glide.with(Search2.this).clear(medicineImage);
                     medicineImage.setVisibility(View.GONE);
                 } else {
                     fetchSuggestions(query);
@@ -106,7 +114,7 @@ public class Search extends AppCompatActivity {
             String[] parts = selectedMedicine.split(" \\(ID: ");
             String drugId = parts[1].replace(")", "");
 
-            Intent intent = new Intent(Search.this, Suggestion.class);
+            Intent intent = new Intent(Search2.this, Suggestion.class);
             intent.putExtra("medicineName", selectedMedicine);
             intent.putExtra("drugId", drugId);
             startActivity(intent);
@@ -130,7 +138,13 @@ public class Search extends AppCompatActivity {
         suggestions.clear();
         adapter.notifyDataSetChanged();
 
-        String url = getString(R.string.api_suggestion) + query;
+        // Split the query into individual keywords
+        String[] queryArray = query.split(" "); // Splits by space, adjust if you need other delimiters
+
+        // Build the query string by joining the array elements with commas or whatever separator you prefer
+        String queryString = String.join(",", queryArray);
+
+        String url = getString(R.string.api_suggestion2) + "?query=" + queryString; // Send the query string as a parameter
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 response -> {
                     try {
@@ -157,14 +171,15 @@ public class Search extends AppCompatActivity {
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        Toast.makeText(Search.this, "Error parsing response", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Search2.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                     }
                 },
                 error -> {
-                    Toast.makeText(Search.this, "Error fetching suggestions", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Search2.this, "Error fetching suggestions", Toast.LENGTH_SHORT).show();
                     suggestionsList.setVisibility(View.GONE);
                 });
 
         requestQueue.add(request);
     }
+
 }

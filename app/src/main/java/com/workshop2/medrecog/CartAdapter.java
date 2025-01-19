@@ -63,7 +63,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             int newQuantity = cart.getQuantity() - 1;
 
             if (newQuantity >= 1) {
-                updateQuantity(cart.getCartItemID(), newQuantity, position);
+                checkAvailableQuantity(cart, newQuantity, position);
             } else {
                 deleteCartItem(cart.getCartItemID(), position);
             }
@@ -72,7 +72,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         // Set click listener for the plus button
         holder.imagePlus.setOnClickListener(v -> {
             int newQuantity = cart.getQuantity() + 1;
-            updateQuantity(cart.getCartItemID(), newQuantity, position);
+            checkAvailableQuantity(cart, newQuantity, position);
         });
     }
 
@@ -138,7 +138,57 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         queue.add(stringRequest);
     }
 
+    // Method to check available quantity before updating
+    private void checkAvailableQuantity(Cart cart, int newQuantity, int position) {
+        String url = context.getString(R.string.api_cart_item); // API URL to check quantity
 
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            String status = jsonResponse.getString("status");
+
+                            if ("success".equals(status)) {
+                                // Get the available quantity from the response
+                                int availableQuantity = jsonResponse.getInt("available_quantity");
+
+                                if (newQuantity > availableQuantity) {
+                                    // If the new quantity exceeds the available quantity, show a toast
+                                    Toast.makeText(context, "Cannot add more than the available quantity", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // If it's within the available quantity, update the cart
+                                    updateQuantity(cart.getCartItemID(), newQuantity, position);
+                                }
+                            } else {
+                                Toast.makeText(context, "Failed to check available quantity", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            Log.e("CartError", "JSON Parsing error", e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("CartError", "Volley error", error);
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "check_available_quantity");
+                params.put("DrugID", cart.getDrugID()); // Send the DrugID to check the available quantity
+                return params;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(stringRequest);
+    }
+
+    // Method to update the quantity of the cart item
     private void updateQuantity(String cartItemID, int newQuantity, int position) {
         String url = context.getString(R.string.api_cart_item); // API URL
 
@@ -184,7 +234,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(stringRequest);
     }
-
 
     @Override
     public int getItemCount() {
