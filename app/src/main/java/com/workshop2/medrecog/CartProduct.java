@@ -214,7 +214,7 @@ public class CartProduct extends AppCompatActivity {
 
         txtZero.setText(String.valueOf(totalQuantity));  // Update the number of items
         String totalPriceFormatted = String.format("%.2f", totalPrice);
-        textSubTotal.setText("RM" + totalPriceFormatted);  // Update the subtotal price
+        textSubTotal.setText(" RM" + totalPriceFormatted);  // Update the subtotal price
         btnPay.setText("RM" + totalPriceFormatted);  // Update the subtotal price
 
         updatePayButtonState(totalPriceFormatted); // Check if the total price is 0 or not

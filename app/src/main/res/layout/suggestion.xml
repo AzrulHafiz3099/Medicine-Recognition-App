@@ -5,69 +5,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container_med_suggestion"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
 
+    <!-- Header Section -->
+    <FrameLayout
+        android:id="@+id/container_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="top"
+        android:background="@drawable/container_link"
+        android:elevation="6dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="center_vertical|start"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            android:tint="@android:color/black"
+            android:contentDescription="Back Button" />
+
+        <TextView
+            android:id="@+id/text_drug_suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Drug Suggestion"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <!-- Medication Description -->
     <TextView
         android:id="@+id/text_medication_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="6dp"
+        android:text="Here is the preferred medication based on your symptoms:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_regular" />
+
+    <!-- Medicine Image -->
+    <ImageView
+        android:id="@+id/medicineImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="160dp"
         android:layout_gravity="center_horizontal"
-        android:includeFontPadding="false"
-        android:lineHeight="26.63dp"
-        android:text="Here is the medication detail based on your search:"
-        android:textColor="#FF000000"
-        android:textSize="22dp" />
+        android:src="@drawable/logo"
+        android:scaleType="centerCrop"
+        android:contentDescription="Medicine Image" />
 
-    <FrameLayout
-        android:id="@+id/container_search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_gravity="top|left">
-
-        <ImageView
-            android:id="@+id/image_rectangle3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rectangle_3"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/text_drug_suggestion"
-            android:layout_width="match_parent"
-            android:layout_height="26dp"
-            android:layout_marginTop="80dp"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Drug Suggestion"
-            android:fontFamily="@font/nunito_bold"
-            android:textColor="#FF000000"
-            android:textSize="18dp" />
-
-        <ImageView
-            android:id="@+id/img_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="80dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/baseline_arrow_back_ios_24" />
-    </FrameLayout>
-
+    <!-- Details Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/medicineDetailsCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
-        android:visibility="gone"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
+        android:layout_marginTop="380dp"
+        android:layout_marginHorizontal="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,39 +84,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Medicine Name"
-                android:textColor="#1E88E5"
+                android:text="Paracetamol"
+                android:textColor="@android:color/holo_blue_dark"
                 android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/medicineImage"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="16dp"
-                android:scaleType="centerCrop" />
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:id="@+id/medicineDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="Details will appear here"
-                android:textColor="#333333"
-                android:textSize="16sp" />
+                android:layout_marginBottom="16dp"
+                android:lineSpacingExtra="6dp"
+                android:text="Dosage: 500mg\nForm: Tablet\nRecommended Usage: 1 dose up to 4 times a day"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/nunito_regular" />
 
             <Button
-                android:background="@drawable/image_orange"
                 android:id="@+id/text_buy_now"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center"
+                android:layout_height="50dp"
+                android:background="@drawable/image_orange"
                 android:text="BUY NOW"
-                android:textColor="#000"
-                android:textSize="16dp"
-                android:layout_marginTop="15dp"/>
-
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/nunito_bold"
+                android:elevation="4dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 </FrameLayout>

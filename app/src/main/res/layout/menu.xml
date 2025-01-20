@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
-    android:layout_width="220dp"
+    android:layout_width="290dp"
     android:layout_height="650dp">
 
     <FrameLayout
@@ -15,8 +15,8 @@
 
         <FrameLayout
             android:id="@+id/container_iphone"
-            android:layout_width="276dp"
-            android:layout_height="672dp"
+            android:layout_width="match_parent"
+            android:layout_height="664dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
             android:layout_marginBottom="0dp"
@@ -24,7 +24,7 @@
 
             <FrameLayout
                 android:id="@+id/container_home_screen_one"
-                android:layout_width="198dp"
+                android:layout_width="match_parent"
                 android:layout_height="657dp"
                 android:layout_gravity="top|left"
                 android:layout_marginLeft="10dp"
@@ -153,7 +153,7 @@
 
 
                 <FrameLayout
-                    android:layout_width="275dp"
+                    android:layout_width="match_parent"
                     android:layout_height="567dp"
                     android:layout_gravity="top|left"
                     android:layout_marginLeft="-10dp"
@@ -173,7 +173,7 @@
 
                         <LinearLayout
                             android:id="@+id/container_navigation"
-                            android:layout_width="226dp"
+                            android:layout_width="match_parent"
                             android:layout_height="572dp"
                             android:layout_gravity="start"
                             android:layout_margin="0dp"
@@ -201,13 +201,14 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginTop="-1dp"
                                     android:layout_marginBottom="-1dp"
+                                    android:background="@drawable/container_link"
                                     android:gravity="left|center_vertical"
                                     android:includeFontPadding="false"
                                     android:maxLines="1"
                                     android:singleLine="true"
                                     android:text="Main"
                                     android:textColor="#FF5C5E64"
-                                    android:textSize="10dp" />
+                                    android:textSize="20dp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -215,7 +216,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:background="@drawable/container_link"
                                 android:clipToPadding="false"
                                 android:gravity="left|center_vertical"
                                 android:orientation="horizontal"
@@ -244,20 +244,13 @@
                                     android:singleLine="true"
                                     android:text="Profile"
                                     android:textColor="#FF000000"
-                                    android:textSize="14dp" />
+                                    android:textSize="20dp" />
 
-                                <ImageView
-                                    android:id="@+id/image_icon_chevron"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="16dp"
-                                    android:layout_marginLeft="12dp"
-                                    android:scaleType="centerInside"
-                                    android:src="@drawable/baseline_keyboard_arrow_up_24" />
                             </LinearLayout>
 
                             <FrameLayout
                                 android:layout_width="172dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="0dp"
                                 android:layout_marginTop="12dp">
 
                                 <LinearLayout
@@ -267,60 +260,6 @@
                                     android:gravity="left|top"
                                     android:orientation="vertical">
 
-                                    <LinearLayout
-                                        android:id="@+id/container_link1"
-                                        android:layout_width="172dp"
-                                        android:layout_height="wrap_content"
-                                        android:background="@drawable/container_link1"
-                                        android:clipToPadding="false"
-                                        android:gravity="left|center_vertical"
-                                        android:orientation="horizontal"
-                                        android:paddingLeft="12dp"
-                                        android:paddingTop="8dp"
-                                        android:paddingRight="12dp"
-                                        android:paddingBottom="8dp">
-
-                                        <TextView
-                                            android:id="@+id/text_update_profile"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="16dp"
-                                            android:layout_weight="1"
-                                            android:gravity="left|center_vertical"
-                                            android:includeFontPadding="false"
-                                            android:maxLines="1"
-                                            android:singleLine="true"
-                                            android:text="Update Profile"
-                                            android:textColor="#FF5C5E64"
-                                            android:textSize="12dp" />
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:id="@+id/container_link2"
-                                        android:layout_width="172dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="4dp"
-
-                                        android:clipToPadding="false"
-                                        android:gravity="left|center_vertical"
-                                        android:orientation="horizontal"
-                                        android:paddingLeft="12dp"
-                                        android:paddingTop="8dp"
-                                        android:paddingRight="12dp"
-                                        android:paddingBottom="8dp">
-
-                                        <TextView
-                                            android:id="@+id/text_delete_account"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="16dp"
-                                            android:layout_weight="1"
-                                            android:gravity="left|center_vertical"
-                                            android:includeFontPadding="false"
-                                            android:maxLines="1"
-                                            android:singleLine="true"
-                                            android:text="Delete account"
-                                            android:textColor="#FF000000"
-                                            android:textSize="12dp" />
-                                    </LinearLayout>
                                 </LinearLayout>
 
                                 <ImageView
@@ -340,14 +279,14 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:background="@drawable/container_link3"
+                                android:clickable="true"
                                 android:clipToPadding="false"
+                                android:focusable="true"
                                 android:gravity="left|center_vertical"
                                 android:orientation="horizontal"
                                 android:paddingLeft="12dp"
                                 android:paddingTop="10dp"
                                 android:paddingRight="12dp"
-                                android:clickable="true"
-                                android:focusable="true"
                                 android:paddingBottom="10dp">
 
                                 <ImageView
@@ -355,12 +294,12 @@
                                     android:layout_width="20dp"
                                     android:layout_height="20dp"
                                     android:scaleType="centerInside"
-                                    android:src="@drawable/baseline_calendar_month_24" />
+                                    android:src="@drawable/manage_patient" />
 
                                 <TextView
                                     android:id="@+id/text_patient"
                                     android:layout_width="match_parent"
-                                    android:layout_height="20dp"
+                                    android:layout_height="22dp"
                                     android:layout_marginLeft="12dp"
                                     android:layout_weight="1"
                                     android:gravity="left|center_vertical"
@@ -369,7 +308,7 @@
                                     android:singleLine="true"
                                     android:text="Manage Patient"
                                     android:textColor="#FF5C5E64"
-                                    android:textSize="14dp" />
+                                    android:textSize="20dp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -396,7 +335,7 @@
                                 <TextView
                                     android:id="@+id/text_drug_reminder"
                                     android:layout_width="match_parent"
-                                    android:layout_height="20dp"
+                                    android:layout_height="22dp"
                                     android:layout_marginLeft="12dp"
                                     android:layout_weight="1"
                                     android:gravity="left|center_vertical"
@@ -405,7 +344,7 @@
                                     android:singleLine="true"
                                     android:text="Drug reminder"
                                     android:textColor="#FF5C5E64"
-                                    android:textSize="14dp" />
+                                    android:textSize="20dp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -432,7 +371,7 @@
                                 <TextView
                                     android:id="@+id/text_symptoms_detector"
                                     android:layout_width="match_parent"
-                                    android:layout_height="20dp"
+                                    android:layout_height="22dp"
                                     android:layout_marginLeft="12dp"
                                     android:layout_weight="1"
                                     android:gravity="left|center_vertical"
@@ -441,7 +380,7 @@
                                     android:singleLine="true"
                                     android:text="Symptoms detector"
                                     android:textColor="#FF5C5E64"
-                                    android:textSize="14dp" />
+                                    android:textSize="20dp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -463,7 +402,7 @@
                                     android:layout_width="24dp"
                                     android:layout_height="24dp"
                                     android:scaleType="centerInside"
-                                    android:src="@drawable/baseline_document_scanner_24" />
+                                    android:src="@drawable/search" />
 
                                 <TextView
                                     android:id="@+id/text_drug_search"
@@ -477,7 +416,7 @@
                                     android:singleLine="true"
                                     android:text="Search Medicine"
                                     android:textColor="#FF5C5E64"
-                                    android:textSize="14dp" />
+                                    android:textSize="20dp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -513,12 +452,12 @@
                                     android:singleLine="true"
                                     android:text="Medicine Recognition"
                                     android:textColor="#FF5C5E64"
-                                    android:textSize="14dp" />
+                                    android:textSize="20dp" />
                             </LinearLayout>
 
                             <LinearLayout
                                 android:id="@+id/container_vendor"
-                                android:layout_width="251dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:background="@drawable/container_link6"
@@ -549,7 +488,7 @@
                                     android:singleLine="true"
                                     android:text="Pharmacy"
                                     android:textColor="#FF5C5E64"
-                                    android:textSize="14dp" />
+                                    android:textSize="20dp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -585,7 +524,7 @@
                                     android:singleLine="true"
                                     android:text="Your Orders"
                                     android:textColor="#FF5C5E64"
-                                    android:textSize="14dp" />
+                                    android:textSize="20dp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -593,7 +532,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:background="@drawable/container_link8"
                                 android:clipToPadding="false"
                                 android:gravity="left|center_vertical"
                                 android:orientation="horizontal"
@@ -607,10 +545,10 @@
                                     android:layout_width="20dp"
                                     android:layout_height="20dp"
                                     android:scaleType="centerInside"
-                                    android:src="@drawable/baseline_phonelink_setup_24" />
+                                    android:src="@drawable/terms" />
 
                                 <TextView
-                                    android:id="@+id/text_settings"
+                                    android:id="@+id/terms"
                                     android:layout_width="match_parent"
                                     android:layout_height="20dp"
                                     android:layout_marginLeft="12dp"
@@ -619,22 +557,16 @@
                                     android:includeFontPadding="false"
                                     android:maxLines="1"
                                     android:singleLine="true"
-                                    android:text="Settings"
+                                    android:text="Terms and Conditions"
                                     android:textColor="#FF000000"
-                                    android:textSize="14dp" />
+                                    android:textSize="20dp" />
 
-                                <ImageView
-                                    android:id="@+id/image_icon_chevron1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="16dp"
-                                    android:layout_marginLeft="12dp"
-                                    android:scaleType="centerInside"
-                                    android:src="@drawable/baseline_keyboard_arrow_up_24" />
+
                             </LinearLayout>
 
                             <FrameLayout
                                 android:layout_width="172dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="0dp"
                                 android:layout_marginTop="12dp">
 
                                 <LinearLayout
@@ -644,32 +576,6 @@
                                     android:gravity="left|top"
                                     android:orientation="vertical">
 
-                                    <LinearLayout
-                                        android:id="@+id/container_link9"
-                                        android:layout_width="172dp"
-                                        android:layout_height="wrap_content"
-                                        android:background="@drawable/container_link9"
-                                        android:clipToPadding="false"
-                                        android:gravity="left|center_vertical"
-                                        android:orientation="horizontal"
-                                        android:paddingLeft="12dp"
-                                        android:paddingTop="8dp"
-                                        android:paddingRight="12dp"
-                                        android:paddingBottom="8dp">
-
-                                        <TextView
-                                            android:id="@+id/text_change_password"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="16dp"
-                                            android:layout_weight="1"
-                                            android:gravity="left|center_vertical"
-                                            android:includeFontPadding="false"
-                                            android:maxLines="1"
-                                            android:singleLine="true"
-                                            android:text="Change Password"
-                                            android:textColor="#FF5C5E64"
-                                            android:textSize="12dp" />
-                                    </LinearLayout>
                                 </LinearLayout>
 
                                 <ImageView
@@ -683,13 +589,6 @@
                                     android:scaleType="centerInside" />
                             </FrameLayout>
 
-                            <ImageView
-                                android:id="@+id/image_divider"
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginTop="8dp"
-                                android:background="@drawable/image_divider"
-                                android:scaleType="centerCrop" />
 
                             <Button
                                 android:id="@+id/image_rectangle6"
@@ -697,33 +596,12 @@
                                 android:layout_height="41dp"
                                 android:layout_gravity="top|left"
                                 android:backgroundTint="#FF0000"
+                                android:layout_marginLeft="60dp"
                                 android:scaleType="centerInside"
                                 android:text="Logout" />
                         </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/container_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|right"
-                        android:layout_marginTop="59dp"
-                        android:layout_marginRight="-14dp"
-                        android:background="@drawable/container_button"
-                        android:gravity="left|top"
-                        android:orientation="horizontal"
-                        android:paddingLeft="6dp"
-                        android:paddingTop="6dp"
-                        android:paddingRight="6dp"
-                        android:paddingBottom="6dp">
-
-                        <ImageView
-                            android:id="@+id/image_icon_separate"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/baseline_menu_open_24" />
-                    </LinearLayout>
                 </FrameLayout>
 
                 <FrameLayout

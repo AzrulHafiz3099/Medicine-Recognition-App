@@ -26,13 +26,13 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="302dp"
+                    android:layout_height="212dp"
                     android:layout_marginTop="160dp"
                     android:src="@drawable/rectangle_22" />
 
                 <ImageView
                     android:layout_width="639dp"
-                    android:layout_height="339dp"
+                    android:layout_height="297dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="80dp"
                     android:src="@drawable/rectangle_11" />
@@ -49,12 +49,12 @@
                 <ImageView
                     android:layout_width="453dp"
                     android:layout_height="169dp"
-                    android:layout_marginLeft="160dp"
-                    android:layout_marginTop="200dp"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="240dp"
                     android:src="@drawable/logo" />
 
                 <ImageView
-                    android:id="@+id/imageButton"
+                    android:id="@+id/img_back"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="190dp"
@@ -65,14 +65,14 @@
 
             <!-- Register Form -->
             <FrameLayout
-                android:layout_width="505dp"
+                android:layout_width="300dp"
                 android:layout_height="798dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="340dp"
                 android:background="@drawable/drawable_shape_1">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="59.29dp"
                     android:layout_gravity="top"
                     android:layout_marginLeft="0dp"
@@ -101,7 +101,7 @@
 
                 <EditText
                     android:id="@+id/full_name"
-                    android:layout_width="330dp"
+                    android:layout_width="300dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="90dp"
                     android:background="@drawable/drawable_shape_2"
@@ -123,7 +123,7 @@
 
                 <EditText
                     android:id="@+id/email"
-                    android:layout_width="330dp"
+                    android:layout_width="300dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="165dp"
                     android:background="@drawable/drawable_shape_2"
@@ -145,7 +145,7 @@
 
                 <EditText
                     android:id="@+id/password"
-                    android:layout_width="330dp"
+                    android:layout_width="300dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="240dp"
                     android:background="@drawable/drawable_shape_2"
@@ -167,7 +167,7 @@
 
                 <EditText
                     android:id="@+id/phone_number"
-                    android:layout_width="330dp"
+                    android:layout_width="300dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="315dp"
                     android:background="@drawable/drawable_shape_2"
@@ -189,7 +189,7 @@
 
                 <EditText
                     android:id="@+id/date_of_birth"
-                    android:layout_width="330dp"
+                    android:layout_width="300dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="390dp"
                     android:background="@drawable/drawable_shape_2"
@@ -213,7 +213,7 @@
                     android:textSize="14dp" />
 
                 <FrameLayout
-                    android:layout_width="330dp"
+                    android:layout_width="300dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="465dp"
                     android:background="@drawable/drawable_shape_3">
@@ -248,9 +248,9 @@
 
                 <Button
                     android:id="@+id/register_button"
-                    android:layout_width="280dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="3dp"
                     android:backgroundTint="#FFD580"
                     android:fontFamily="@font/nunito_bold"
                     android:text="Register"
@@ -261,7 +261,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="70dp"
-                    android:layout_marginLeft="80dp"
+                    android:layout_marginLeft="50dp"
                     android:fontFamily="@font/nunito_bold"
                     android:text="Already Member? Login"
                     android:onClick="backLogin"

@@ -2,257 +2,236 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/drawable_shape">
+    android:layout_height="match_parent">
 
-    <!-- Wrap everything inside a ScrollView to allow scrolling -->
+    <!-- Header Section -->
+    <LinearLayout
+        android:id="@+id/header_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="27dp"
+            android:layout_marginTop="12dp"
+            android:layout_height="27dp"
+            android:src="@drawable/arrow_back"
+            android:contentDescription="Back Button" />
+
+        <TextView
+            android:id="@+id/text_recent_orders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="8dp"
+            android:text="Drug Reminder"
+            android:textSize="18sp"
+            android:fontFamily="@font/nunito_bold" />
+    </LinearLayout>
+
+    <!-- Scrollable Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
         android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <ImageView
-                android:id="@+id/img_ellipse"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-425dp"
-                android:layout_gravity="top|left"
-                android:background="@drawable/img_ellipse"
-                android:scaleType="centerInside" />
-
-            <FrameLayout
-                android:id="@+id/container_group"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="top">
-
-                <ImageView
-                    android:id="@+id/img_group_rectangle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/image_rectangle2"
-                    android:scaleType="centerCrop" />
-
-                <TextView
-                    android:id="@+id/text_recent_orders"
-                    android:layout_width="match_parent"
-                    android:layout_height="25.33dp"
-                    android:layout_marginLeft="118.37dp"
-                    android:layout_marginRight="117.27dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginBottom="16.12dp"
-                    android:layout_gravity="top|center"
-                    android:gravity="center"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="Drug Reminder"
-                    android:textColor="#FF000000"
-                    android:textSize="18dp" />
-
-                <ImageView
-                    android:id="@+id/img_back"
-                    android:layout_width="24.66dp"
-                    android:layout_height="25.9dp"
-                    android:layout_marginLeft="16.17dp"
-                    android:layout_marginRight="370.17dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginBottom="11.22dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/arrow_back" />
-            </FrameLayout>
-
-            <!-- Content Section -->
+            <!-- Patient Selection -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="110dp">
-
-                    <TextView
-                        android:id="@+id/txtPatient"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:gravity="right"
-                        android:paddingRight="20dp"
-                        android:text="Patient"
-                        android:textColor="#000000" />
-
-                    <Spinner
-                        android:id="@+id/patient_spinner"
-                        android:layout_width="250dp"
-                        android:layout_height="50dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/image_rectangle2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="180dp">
-
-                    <TextView
-                        android:id="@+id/txtTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:gravity="right"
-                        android:paddingRight="20dp"
-                        android:text="Title"
-                        android:textColor="#000000" />
-
-                    <EditText
-                        android:id="@+id/edtTextTitle"
-                        android:layout_width="250dp"
-                        android:layout_height="50dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/image_rectangle2"
-                        android:hint="Alarm Title"
-                        android:inputType="text"
-                        android:paddingLeft="10dp"
-                        android:textSize="12dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="250dp">
-
-                    <TextView
-                        android:id="@+id/txtDesc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:gravity="right"
-                        android:paddingRight="20dp"
-                        android:text="Description"
-                        android:textColor="#000000" />
-
-                    <EditText
-                        android:id="@+id/edtTextDesc"
-                        android:layout_width="250dp"
-                        android:layout_height="50dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/image_rectangle2"
-                        android:hint="Drug Description"
-                        android:inputType="text"
-                        android:paddingLeft="10dp"
-                        android:textSize="12dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
-
-                    <!-- Date TextView -->
-                    <TextView
-                        android:id="@+id/dateTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/drawable_shape_6"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:text="Select Date"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp" />
-
-                    <!-- Time TextView -->
-                    <TextView
-                        android:id="@+id/timeTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/drawable_shape_6"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:text="Select Time"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="300dp"
-                    android:layout_height="380dp"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_marginTop="410dp"
-                    android:backgroundTint="@color/white"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/image_rectangle3"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <!-- Group Image -->
-                        <ImageView
-                            android:id="@+id/img_group"
-                            android:layout_width="220dp"
-                            android:layout_height="220dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/img_calendar" />
-
-                        <!-- "No Order Found" Text -->
-                        <TextView
-                            android:id="@+id/text_no_order_found"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:gravity="center"
-                            android:text="MONITOR YOUR MEDICINE SCHEDULE"
-                            android:textColor="#FF000000"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <!-- "Looks like you haven’t made your order yet" Text -->
-                        <TextView
-                            android:id="@+id/text_no_order_yet"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:gravity="center"
-                            android:text="View your daily schedule and \nmark your meds when taken"
-                            android:textColor="#FF000000"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <Button
-                    android:id="@+id/button_next"
-                    android:layout_width="400dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="810dp"
-                    android:background="@drawable/rounded_button"
-                    android:layout_gravity="top|center"
-                    android:text="NEXT"
-                    android:textAllCaps="true"
-                    android:textColor="#FFFFFF"
+                    android:text="Patient"
+                    android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:fontFamily="@font/nunito_bold" />
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <Spinner
+                    android:id="@+id/patient_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="31dp"
+                    android:background="@drawable/rounded_edittext" />
             </LinearLayout>
 
+            <!-- Alarm Title -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <EditText
+                    android:id="@+id/edtTextTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="50dp"
+                    android:background="@drawable/rounded_edittext"
+                    android:hint="Enter Alarm Title"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Description -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <EditText
+                    android:id="@+id/edtTextDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_edittext"
+                    android:hint="Enter Description"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Date and Time Selectors -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:padding="12dp">
+
+                <!-- Date TextView -->
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/image_orange"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="Select Date"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:gravity="center" />
+
+                <!-- Time TextView -->
+                <TextView
+                    android:id="@+id/timeTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/image_orange"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="Select Time"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+
+            <!-- Reminder Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                android:backgroundTint="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/img_group"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:src="@drawable/img_calendar" />
+
+                    <TextView
+                        android:id="@+id/text_no_order_found"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Monitor Your Medicine Schedule"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_no_order_yet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="View your daily schedule and mark your meds when taken"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:gravity="center" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Next Button -->
+            <Button
+                android:id="@+id/button_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/image_orange"
+                android:text="Next"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:padding="12dp" />
         </LinearLayout>
     </ScrollView>
-
-
 </FrameLayout>

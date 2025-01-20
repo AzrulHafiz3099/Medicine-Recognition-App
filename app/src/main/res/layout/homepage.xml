@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Homepage">
+    android:layout_height="match_parent">
 
     <!-- Main Content -->
     <ScrollView
@@ -32,8 +31,8 @@
                     <!-- Menu Icon -->
                     <ImageView
                         android:id="@+id/image_group"
-                        android:layout_width="22dp"
-                        android:layout_height="11dp"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="58dp"
                         android:scaleType="centerInside"
@@ -121,7 +120,7 @@
                             android:layout_gravity="center_horizontal|bottom"
                             android:gravity="center"
                             android:includeFontPadding="false"
-                            android:text="My basket"
+                            android:text="My Cart"
                             android:textColor="#FF27214D"
                             android:textSize="10sp" />
                     </FrameLayout>

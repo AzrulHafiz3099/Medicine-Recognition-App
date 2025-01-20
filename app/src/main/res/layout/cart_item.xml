@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/container_frame3"
-        android:layout_width="325dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="16dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/search_background"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:gravity="left|center_vertical"
@@ -22,7 +26,7 @@
 
         <LinearLayout
             android:id="@+id/container_frame4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:orientation="vertical">
@@ -37,7 +41,7 @@
 
             <LinearLayout
                 android:id="@+id/container_frame6"
-                android:layout_width="206dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:orientation="horizontal"
@@ -46,7 +50,7 @@
                 <!-- Price Section -->
                 <LinearLayout
                     android:id="@+id/container_frame7"
-                    android:layout_width="60dp"
+                    android:layout_width="65dp"
                     android:layout_height="wrap_content"
                     android:gravity="left|center_vertical"
                     android:orientation="horizontal">
@@ -80,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:background="@drawable/container_link4"
+                    android:background="@drawable/black_border"
                     android:gravity="center"
                     android:padding="4dp">
 
@@ -89,7 +93,7 @@
                         android:id="@+id/container_minus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/container_link"
+                        android:background="#FFFFFF"
                         android:gravity="center"
                         android:padding="10dp">
 
@@ -98,6 +102,7 @@
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:scaleType="centerInside"
+                            android:layout_marginBottom="5dp"
                             android:src="@drawable/image_minus" />
                     </LinearLayout>
 
@@ -115,6 +120,7 @@
                             android:layout_height="24dp"
                             android:gravity="center"
                             android:text="1"
+                            android:background="@drawable/black_border"
                             android:textColor="#FF000000"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -124,7 +130,7 @@
                         android:id="@+id/container_plus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/container_link"
+                        android:background="#FFFFFF"
                         android:gravity="center"
                         android:padding="10dp">
 
@@ -136,27 +142,24 @@
                             android:src="@drawable/baseline_add_24" />
                     </LinearLayout>
 
-                        <!-- Trash Icon -->
-                        <LinearLayout
-                            android:id="@+id/container_frame_trash"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:padding="10dp"
-                            android:layout_marginLeft="8dp">
+                    <!-- Trash Icon -->
+                    <LinearLayout
+                        android:id="@+id/container_frame_trash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:layout_marginLeft="8dp">
 
-                            <ImageView
-                                android:id="@+id/image_trash"
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:scaleType="centerInside"
-                                android:src="@drawable/image_delete" />
-                        </LinearLayout>
+                        <ImageView
+                            android:id="@+id/image_trash"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/image_delete" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-
-
 </LinearLayout>

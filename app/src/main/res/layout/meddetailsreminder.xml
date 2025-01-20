@@ -1,262 +1,183 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container_med_details_reminder"
     android:layout_width="match_parent"
-    android:layout_height="844dp">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"> <!-- Subtle gradient background -->
 
+    <!-- Top Bar -->
+    <FrameLayout
+        android:id="@+id/container_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="top"
+        android:background="@drawable/container_link"
+        android:elevation="6dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center_vertical|start"
+            android:src="@drawable/arrow_back"
+            android:tint="@android:color/black"
+            android:contentDescription="Back Button" />
+
+        <TextView
+            android:id="@+id/text_add_your_med"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Your Medicine"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="28dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="18sp" />
+    </FrameLayout>
+
+    <!-- Upper Section -->
     <FrameLayout
         android:id="@+id/container_group"
-        android:layout_width="390dp"
-        android:layout_height="354dp"
-        android:layout_marginTop="-16dp"
-        android:layout_gravity="top|left">
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="70dp"
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/image_rectangle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/image_rectangle"
-            android:scaleType="centerCrop" />
+            android:src="@drawable/image_rectangle"
+            android:scaleType="centerCrop"
+            android:alpha="0.8" />
+
+        <ImageView
+            android:id="@+id/img_drugImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/logo"
+            android:contentDescription="Drug Logo" />
 
         <TextView
             android:id="@+id/text_medication_details"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginLeft="108dp"
-            android:layout_marginRight="108dp"
-            android:layout_marginTop="262.5dp"
-            android:layout_marginBottom="66.5dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:gravity="center"
             android:text="Medication Details:"
-            android:textColor="#FF000000"
-            android:textSize="20dp" />
-
-        <ImageView
-            android:id="@+id/image_rb"
-            android:layout_width="135dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="123dp"
-            android:layout_marginTop="122dp"
-            android:layout_marginBottom="91dp"
-            android:layout_gravity="left"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo" />
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/nunito_bold"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4" />
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/image_rectangle1"
-        android:layout_width="390dp"
-        android:layout_height="533dp"
-        android:layout_marginTop="311dp"
-        android:layout_gravity="top|left"
-        android:background="@drawable/image_rectangle1"
-        android:scaleType="centerInside" />
-
-    <LinearLayout
-        android:id="@+id/container_button"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-    android:layout_marginLeft="27dp"
-    android:layout_marginTop="500dp"
-    android:layout_gravity="top|left"
-    android:clipToPadding="false"
-    android:gravity="center"
-    android:orientation="horizontal"
-    android:paddingBottom="7.5dp"
-    android:paddingLeft="12dp"
-    android:paddingRight="12dp"
-    android:paddingTop="7.5dp">
-
-    <Button
-    android:id="@+id/btnAdd"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:background="@drawable/image_orange"
-    android:text="ADD REMINDER"
-    android:textColor="#000"
-    android:textSize="16sp" />
-</LinearLayout>
-
+    <!-- Details Section -->
     <FrameLayout
         android:id="@+id/container_group1"
-        android:layout_width="306dp"
-        android:layout_height="425dp"
-        android:layout_marginLeft="38dp"
-        android:layout_marginTop="0dp"
-        android:layout_gravity="top|left"
-        android:background="@drawable/container_link">
-
-        <ImageView
-            android:id="@+id/image_rectangle2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/textView_dosage"
-            android:layout_width="265dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="230dp"
-            android:layout_marginBottom="124dp"
-            android:layout_gravity="left"
-            android:gravity="center_horizontal|top"
-            android:includeFontPadding="false"
-            android:lineHeight="22dp"
-            android:text="Dosage"
-            android:textStyle="bold"
-            android:textColor="#FF544C4C"
-            android:textSize="12dp" />
-        <TextView
-            android:id="@+id/txt_Dosage"
-            android:layout_width="265dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="250dp"
-            android:layout_marginBottom="124dp"
-            android:layout_gravity="left"
-            android:gravity="center_horizontal|top"
-            android:includeFontPadding="false"
-            android:lineHeight="22dp"
-            android:text="660 mg"
-            android:textColor="#FF544C4C"
-            android:textSize="12dp" />
-
-        <TextView
-            android:id="@+id/textView_dosageForm"
-            android:layout_width="265dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="270dp"
-            android:layout_marginBottom="124dp"
-            android:layout_gravity="left"
-            android:gravity="center_horizontal|top"
-            android:includeFontPadding="false"
-            android:lineHeight="22dp"
-            android:text="Dosage Form"
-            android:textStyle="bold"
-            android:textColor="#FF544C4C"
-            android:textSize="12dp" />
-        <TextView
-            android:id="@+id/txt_DosageForm"
-            android:layout_width="265dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="290dp"
-            android:layout_marginBottom="124dp"
-            android:layout_gravity="left"
-            android:gravity="center_horizontal|top"
-            android:includeFontPadding="false"
-            android:lineHeight="22dp"
-            android:text="Tablet"
-            android:textColor="#FF544C4C"
-            android:textSize="12dp" />
-
-        <TextView
-            android:id="@+id/textView_dosageUsage"
-            android:layout_width="265dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="310dp"
-            android:layout_marginBottom="124dp"
-            android:layout_gravity="left"
-            android:gravity="center_horizontal|top"
-            android:includeFontPadding="false"
-            android:lineHeight="22dp"
-            android:text="Recommended Usage"
-            android:textStyle="bold"
-            android:textColor="#FF544C4C"
-            android:textSize="12dp" />
-        <TextView
-            android:id="@+id/txt_DosageUsage"
-            android:layout_width="265dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="330dp"
-            android:layout_marginBottom="124dp"
-            android:layout_gravity="left"
-            android:gravity="center_horizontal|top"
-            android:includeFontPadding="false"
-            android:lineHeight="22dp"
-            android:text="1 dose up to 4 times"
-            android:textColor="#FF544C4C"
-            android:textSize="12dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="380dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/container_link"
+        android:elevation="8dp"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/txtGenericName"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginLeft="97dp"
-            android:layout_marginRight="90dp"
-            android:layout_marginTop="193.5dp"
-            android:layout_marginBottom="-1.5dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:gravity="center_horizontal|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
+            android:gravity="center"
             android:text="Paracetamol"
-            android:textColor="#FF000000"
-            android:textSize="20dp" />
-    </FrameLayout>
-
-    <ImageView
-        android:id="@+id/img_drugImage"
-        android:layout_width="181dp"
-        android:layout_height="153dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginTop="323dp"
-        android:layout_gravity="top|left"
-        android:scaleType="centerInside"
-        android:src="@drawable/logo" />
-
-    <FrameLayout
-        android:id="@+id/container_search_bar"
-        android:layout_width="399dp"
-        android:layout_height="100.56dp"
-        android:layout_marginLeft="-9dp"
-        android:layout_gravity="top|left">
-
-        <ImageView
-            android:id="@+id/image_rectangle3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/image_orange"
-            android:scaleType="centerCrop" />
+            android:textColor="@android:color/black"
+            android:textSize="22sp"
+            android:fontFamily="@font/nunito_bold" />
 
         <TextView
-            android:id="@+id/text_add_your_med"
-            android:layout_width="match_parent"
-            android:layout_height="26dp"
-            android:layout_marginLeft="144dp"
-            android:layout_marginRight="135dp"
-            android:layout_marginTop="63dp"
-            android:layout_marginBottom="11.56dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Add Your Med"
-            android:textColor="#FF000000"
-            android:textSize="18dp" />
+            android:id="@+id/textView_dosage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Dosage:"
+            android:textStyle="bold"
+            android:textColor="#FF544C4C"
+            android:textSize="14sp" />
 
-        <ImageView
-            android:id="@+id/img_back"
-            android:layout_width="31.92dp"
-            android:layout_height="35.08dp"
-            android:layout_marginLeft="20.22dp"
-            android:layout_marginTop="58.46dp"
-            android:layout_marginBottom="7.02dp"
-            android:layout_gravity="left"
-            android:scaleType="centerInside"
-            android:src="@drawable/arrow_back" />
+        <TextView
+            android:id="@+id/txt_Dosage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="660 mg"
+            android:textColor="#FF000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textView_dosageForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="Dosage Form:"
+            android:textStyle="bold"
+            android:textColor="#FF544C4C"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txt_DosageForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:text="Tablet"
+            android:textColor="#FF000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textView_dosageUsage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:text="Recommended Usage:"
+            android:textStyle="bold"
+            android:textColor="#FF544C4C"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txt_DosageUsage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"
+            android:text="1 dose up to 4 times"
+            android:textColor="#FF000000"
+            android:textSize="14sp" />
     </FrameLayout>
+
+    <!-- Button Section -->
+    <LinearLayout
+        android:id="@+id/container_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="600dp"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/image_orange"
+            android:text="ADD REMINDER"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_bold" />
+    </LinearLayout>
 </FrameLayout>
