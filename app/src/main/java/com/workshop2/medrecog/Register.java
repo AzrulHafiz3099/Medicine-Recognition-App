@@ -11,8 +11,10 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,6 +47,7 @@ public class Register extends AppCompatActivity {
     private String profilePicFileName; // Store the file name
 
     private Uri profilePicUri; // Add this as a member variable
+    private CheckBox agreeCheckbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,13 @@ public class Register extends AppCompatActivity {
 
         // Set onClick listener for the Upload button (profile picture upload)
         binding.uploadButton.setOnClickListener(v -> openImagePicker());
+
+        // Initialize the "Terms and Conditions" TextView and set its onClick listener
+        TextView termsConditions = findViewById(R.id.terms_conditions);
+        termsConditions.setOnClickListener(v -> {
+            Intent intent = new Intent(Register.this, TermAndCondition.class);
+            startActivity(intent);
+        });
 
     }
 
@@ -93,10 +103,31 @@ public class Register extends AppCompatActivity {
         String phoneNumber = binding.phoneNumber.getText().toString().trim();
         String dateOfBirth = binding.dateOfBirth.getText().toString().trim();
 
-        if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() || dateOfBirth.isEmpty()) {
-            Toast.makeText(Register.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+        if (fullName.isEmpty()) {
+            Toast.makeText(Register.this, "Please fill in your Full Name", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if (email.isEmpty()) {
+            Toast.makeText(Register.this, "Please fill in your Email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (password.isEmpty()) {
+            Toast.makeText(Register.this, "Please fill in your Password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (phoneNumber.isEmpty()) {
+            Toast.makeText(Register.this, "Please fill in your Phone Number", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (dateOfBirth.isEmpty()) {
+            Toast.makeText(Register.this, "Please fill in your Date of Birth", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(Register.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
@@ -105,6 +136,13 @@ public class Register extends AppCompatActivity {
 
         if (profilePicFileName == null || profilePicFileName.isEmpty()) {
             Toast.makeText(Register.this, "Please upload a profile picture", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check if the "I agree" checkbox is checked
+        CheckBox agreeCheckbox = findViewById(R.id.checkbox_agree);
+        if (!agreeCheckbox.isChecked()) {
+            Toast.makeText(Register.this, "You must agree to the Terms and Conditions", Toast.LENGTH_SHORT).show();
             return;
         }
 

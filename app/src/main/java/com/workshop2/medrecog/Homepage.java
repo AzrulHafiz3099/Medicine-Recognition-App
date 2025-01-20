@@ -1,5 +1,6 @@
 package com.workshop2.medrecog;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -52,7 +54,8 @@ public class Homepage extends AppCompatActivity {
     private String vendorIdFromIntent; // To store VendorID passed from the previous activity
     private String userID;
 
-    private LinearLayout container_profile, container_patient, container_drugReminder, container_symptomsDetector, container_drugSearch, container_medRecognition, container_vendor, container_yourOrder;
+    private LinearLayout container_profile, container_patient, container_drugReminder, container_symptomsDetector, container_drugSearch, container_medRecognition, container_vendor, container_yourOrder, container_tnc;
+    private Button btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +146,8 @@ public class Homepage extends AppCompatActivity {
         container_vendor = findViewById(R.id.container_vendor);
         container_yourOrder = findViewById(R.id.container_yourOrder);
         container_patient = findViewById(R.id.container_patient);
+        container_tnc = findViewById(R.id.container_tnc);
+        btnLogout = findViewById(R.id.btn_logout);
 
 
         // Set click listeners for each LinearLayout
@@ -192,6 +197,36 @@ public class Homepage extends AppCompatActivity {
             startActivity(intent2);
         });
 
+        container_tnc.setOnClickListener(view -> {
+            Intent intent2 = new Intent(Homepage.this, TermAndCondition.class);
+            startActivity(intent2);
+        });
+
+        btnLogout.setOnClickListener(view -> {
+            // Create the AlertDialog
+            new AlertDialog.Builder(Homepage.this)
+                    .setTitle("Logout")
+                    .setMessage("Are you sure you want to logout?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        // If Yes is clicked, navigate to the Login screen
+                        Intent intent2 = new Intent(Homepage.this, Login.class);
+                        startActivity(intent2);
+                        finish(); // Optional: Close the current activity if you want to remove it from the back stack
+                    })
+                    .setNegativeButton("No", (dialog, which) -> {
+                        // If No is clicked, dismiss the dialog and stay on the current screen
+                        dialog.dismiss();
+                    })
+                    .create()
+                    .show(); // Show the dialog
+        });
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Do nothing, back button is disabled
     }
 
     private void getUserProfile() {
@@ -228,7 +263,7 @@ public class Homepage extends AppCompatActivity {
                                 JSONObject data = jsonResponse.getJSONObject("data");
                                 userID = data.getString("UserID");
                                 String fullName = data.getString("Fullname");
-                                String greetingMessage = "Hello " + fullName + ", what type of medicine do you need today?";
+                                String greetingMessage = "Hello " + fullName + " ,\nwhat type of medicine do you need today?";
                                 profileName.setText(greetingMessage);
 
                                 // Save the userID to SharedPreferences

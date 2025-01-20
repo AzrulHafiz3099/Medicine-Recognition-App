@@ -7,13 +7,12 @@
     android:id="@+id/container_my_wishlist"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/container_my_wishlist">
+    android:background="@drawable/gradient_background">
 
     <FrameLayout
         android:id="@+id/container_iphone_pro_x"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/container_iphone_pro_x">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/container_title"
@@ -53,7 +52,7 @@
             android:id="@+id/btn_add_new"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="80dp"
             android:layout_marginHorizontal="20dp"
             android:gravity="center"
             android:paddingVertical="10dp"
@@ -65,7 +64,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="150dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:cardCornerRadius="20dp" />

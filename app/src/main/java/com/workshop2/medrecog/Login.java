@@ -42,6 +42,11 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        // Do nothing, back button is disabled
+    }
+
     // Function to handle login button click
     public void onLoginButtonClick(View view) {
         String email = binding.emailInput.getText().toString().trim();
@@ -124,17 +129,16 @@ public class Login extends AppCompatActivity {
         Volley.newRequestQueue(Login.this).add(stringRequest);
     }
 
+    public void onForgetButtonClick(View view) {
+        // Navigate to ForgotPasswordEmail activity
+        Intent intent = new Intent(Login.this, ForgotPasswordEmail.class);
+        startActivity(intent);
+    }
+
     // Function to handle Sign Up button click
     public void onSignupButtonClick(View view) {
         // Intent to navigate to the SignUpActivity (make sure the SignUpActivity is declared in AndroidManifest.xml)
         Intent intent = new Intent(Login.this, Register.class);
-        startActivity(intent);
-    }
-
-    // Function to handle Forget Password button click
-    public void onForgetButtonClick(View view) {
-        // Intent to navigate to the ForgetPass activity
-        Intent intent = new Intent(Login.this, ForgetPass.class);
         startActivity(intent);
     }
 }

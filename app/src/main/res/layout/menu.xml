@@ -528,7 +528,7 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/container_link8"
+                                android:id="@+id/container_tnc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
@@ -591,7 +591,7 @@
 
 
                             <Button
-                                android:id="@+id/image_rectangle6"
+                                android:id="@+id/btn_logout"
                                 android:layout_width="131.5dp"
                                 android:layout_height="41dp"
                                 android:layout_gravity="top|left"

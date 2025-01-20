@@ -72,6 +72,9 @@
         <activity android:name=".Addremindertimepick" android:exported="true" />
         <activity android:name=".Delete" />
         <activity android:name=".Drugreminder" android:exported="true" />
+        <activity android:name=".ForgotPasswordEmail" />
+        <activity android:name=".ForgotPasswordPins" />
+        <activity android:name=".ForgotPasswordReset" />
         <activity android:name=".Homepage" android:exported="true" />
         <activity android:name=".VendorMap" android:exported="true" />
         <activity android:name=".CartProduct" android:exported="true" />
@@ -83,6 +86,7 @@
         <activity android:name=".Search2" />
         <activity android:name=".Suggestion" />
         <activity android:name=".Symptom" />
+        <activity android:name=".TermAndCondition" />
         <activity android:name=".Wishlist" />
         <activity android:name=".YourOrder" android:exported="true" />
         <activity android:name=".StoreSelect" android:exported="true" />
