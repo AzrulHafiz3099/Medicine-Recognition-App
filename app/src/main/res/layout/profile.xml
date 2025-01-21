@@ -117,29 +117,29 @@
         </LinearLayout>
 
         <!-- Password Section -->
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical"-->
-<!--            android:layout_marginTop="16dp">-->
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical"-->
+        <!--            android:layout_marginTop="16dp">-->
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Password"-->
-<!--                android:textColor="@android:color/black"-->
-<!--                android:textSize="16sp" />-->
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Password"-->
+        <!--                android:textColor="@android:color/black"-->
+        <!--                android:textSize="16sp" />-->
 
-<!--            <EditText-->
-<!--                android:id="@+id/Password"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:background="@drawable/rounded_edittext"-->
-<!--                android:hint="Enter your password"-->
-<!--                android:paddingStart="16dp"-->
-<!--                android:paddingEnd="16dp" />-->
-<!--        </LinearLayout>-->
+        <!--            <EditText-->
+        <!--                android:id="@+id/Password"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="48dp"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:background="@drawable/rounded_edittext"-->
+        <!--                android:hint="Enter your password"-->
+        <!--                android:paddingStart="16dp"-->
+        <!--                android:paddingEnd="16dp" />-->
+        <!--        </LinearLayout>-->
 
         <!-- Date of Birth Section -->
         <LinearLayout
@@ -227,13 +227,7 @@
                 android:text="Save"
                 android:textColor="@android:color/black" />
 
-            <Button
-                android:id="@+id/DeleteAccountButton"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:background="@drawable/image_orange"
-                android:text="Delete Account"
-                android:textColor="@android:color/black" />
+
         </LinearLayout>
 
     </LinearLayout>

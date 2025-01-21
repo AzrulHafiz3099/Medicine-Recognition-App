@@ -62,8 +62,8 @@ public class ReminderWorker extends Worker {
 
         Notification notification = new NotificationCompat.Builder(getApplicationContext(), "reminder_channel")
                 .setContentTitle(title)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(description + "\nReminder for : " + name + "\nPlease take medication immediately." + "\nMedicine : " + geenericName + "\nRecommended Dosage : " + dosageUsage))
-                .setSmallIcon(R.drawable.ic_notification)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(description + "\nReminder for : " + name + " ❗\nPlease take medication immediately. \uD83D\uDC8A" + "\nMedicine : " + geenericName + "\nRecommended Dosage : " + dosageUsage))
+                .setSmallIcon(R.drawable.medrecogapp)
                 .build();
 
         notificationManager.notify(0, notification);
