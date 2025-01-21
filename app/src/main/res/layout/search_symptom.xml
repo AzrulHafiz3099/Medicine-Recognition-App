@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_add_reminder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Container for the background image and text -->
+    <FrameLayout
+        android:id="@+id/container_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/rectangle_12" />
+
+        <TextView
+            android:id="@+id/text_meds_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:layout_marginStart="30dp"
+            android:gravity="left"
+            android:text="Symptoms Search"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="#FF000000"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/image_rb"
+            android:layout_width="59dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/med_logo" />
+    </FrameLayout>
+
+    <!-- Container for the search bar and related UI -->
+    <FrameLayout
+        android:id="@+id/container_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="240dp">
+
+        <!-- Background Image for Search Bar -->
+        <ImageView
+            android:id="@+id/image_rectangle1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/image_rectangle1" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="12sp"
+            android:text="Enter the symptoms that you have experienced
+            \nfor the past few days:" />
+
+        <!-- Search Bar Frame -->
+        <FrameLayout
+            android:id="@+id/search_bar_frame"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/drawable_shape_6">
+
+            <EditText
+                android:id="@+id/edit_search_symptom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:hint="Search for symptom"
+                android:background="@null"
+                android:textColorHint="#FF86869E"
+                android:textColor="#FF000000"
+                android:paddingLeft="50dp"
+                android:textSize="18sp" />
+
+            <!-- Search Icon -->
+            <ImageView
+                android:id="@+id/image_search_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/image_search_icon" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:layout_marginStart="20dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Note: It is advisable to specify the symptoms and put more
+            \nthan 1 symptom so that the system will be able to perfectly
+            \nsuggest the medicine for you." />
+
+        <!-- RecyclerView for suggestions -->
+        <!--        <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewSuggestions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="250dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:paddingTop="10dp"
+                    tools:listitem="@android:layout/simple_list_item_1" />-->
+
+        <ListView
+            android:id="@+id/recyclerViewSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="180dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:paddingTop="10dp"
+            tools:listitem="@android:layout/simple_list_item_1"/>
+
+        <TextView
+            android:id="@+id/selected_symptom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="130dp"
+            android:layout_gravity="bottom|center"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="16sp"
+            android:text="" />
+
+        <!-- Add Symptoms Button -->
+        <Button
+            android:id="@+id/button_add_symptoms"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/rounded_button1"
+            android:layout_gravity="bottom|center"
+            android:text="ADD SYMPTOMS"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_bold" />
+
+        <Button
+            android:id="@+id/button_submit_symptoms"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT SYMPTOMS"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="bottom|center"
+            android:background="@drawable/rounded_button2"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_bold"/>
+
+    </FrameLayout>
+
+    <!-- Container for Drug Suggestion Heading -->
+    <FrameLayout
+        android:id="@+id/container_search_bar1"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/image_rectangle2">
+
+        <TextView
+            android:id="@+id/text_add_your_med"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            android:text="Drug Suggestion"
+            android:textColor="#FF000000"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/image_arrow_left"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/arrow_back" />
+    </FrameLayout>
+</FrameLayout>

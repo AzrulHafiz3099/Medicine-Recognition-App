@@ -7,13 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <!-- Declare camera hardware as not required -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Declare camera hardware as not required -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-
 
     <application
         android:allowBackup="true"
@@ -27,58 +24,85 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-
-        <activity android:name=".Receipt"
+        <activity
+            android:name=".SearchSymptom"
+            android:exported="false" />
+        <activity
+            android:name=".Receipt"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="yourapp" android:host="payment-complete" />
-            </intent-filter>
-        </activity>
 
-        <!-- CameraX Metadata -->
+                <data
+                    android:host="payment-complete"
+                    android:scheme="yourapp" />
+            </intent-filter>
+        </activity> <!-- CameraX Metadata -->
         <meta-data
             android:name="androidx.camera.default.*"
-            android:value="default" />
-
-        <!-- Google Maps API Key -->
+            android:value="default" /> <!-- Google Maps API Key -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAlY83QdgcqNP2Ba5w0NLSjX5K9BGyZw2k" />
-
-        <!-- Login Activity - Entry Point -->
+            android:value="AIzaSyAlY83QdgcqNP2Ba5w0NLSjX5K9BGyZw2k" /> <!-- Login Activity - Entry Point -->
         <activity
             android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Other Activities -->
-        <activity android:name=".OrderList" android:exported="true" />
-        <activity android:name=".RegisterPatient" android:exported="false" />
-        <activity android:name=".UpdatePatient" android:exported="false" />
-        <activity android:name=".AddPatient" android:exported="true" />
-        <activity android:name=".PaymentMethod" android:exported="false" />
-        <activity android:name=".Cart" android:exported="false" />
-        <activity android:name=".ProductDesc" android:exported="false" />
+        </activity> <!-- Other Activities -->
+        <activity
+            android:name=".OrderList"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterPatient"
+            android:exported="false" />
+        <activity
+            android:name=".UpdatePatient"
+            android:exported="false" />
+        <activity
+            android:name=".AddPatient"
+            android:exported="true" />
+        <activity
+            android:name=".PaymentMethod"
+            android:exported="false" />
+        <activity
+            android:name=".Cart"
+            android:exported="false" />
+        <activity
+            android:name=".ProductDesc"
+            android:exported="false" />
         <activity android:name=".AddCart" />
-        <activity android:name=".Addreminder" android:exported="true" />
-        <activity android:name=".Addremindertimepick" android:exported="true" />
+        <activity
+            android:name=".Addreminder"
+            android:exported="true" />
+        <activity
+            android:name=".Addremindertimepick"
+            android:exported="true" />
         <activity android:name=".Delete" />
-        <activity android:name=".Drugreminder" android:exported="true" />
+        <activity
+            android:name=".Drugreminder"
+            android:exported="true" />
         <activity android:name=".ForgotPasswordEmail" />
         <activity android:name=".ForgotPasswordPins" />
         <activity android:name=".ForgotPasswordReset" />
-        <activity android:name=".Homepage" android:exported="true" />
-        <activity android:name=".VendorMap" android:exported="true" />
-        <activity android:name=".CartProduct" android:exported="true" />
-        <activity android:name=".MedicineReco" android:exported="true" />
+        <activity
+            android:name=".Homepage"
+            android:exported="true" />
+        <activity
+            android:name=".VendorMap"
+            android:exported="true" />
+        <activity
+            android:name=".CartProduct"
+            android:exported="true" />
+        <activity
+            android:name=".MedicineReco"
+            android:exported="true" />
         <activity android:name=".Menu" />
         <activity android:name=".Profile" />
         <activity android:name=".Register" />
@@ -88,10 +112,15 @@
         <activity android:name=".Symptom" />
         <activity android:name=".TermAndCondition" />
         <activity android:name=".Wishlist" />
-        <activity android:name=".YourOrder" android:exported="true" />
-        <activity android:name=".StoreSelect" android:exported="true" />
-        <activity android:name=".MedDetailsReminder" android:exported="true" />
-
+        <activity
+            android:name=".YourOrder"
+            android:exported="true" />
+        <activity
+            android:name=".StoreSelect"
+            android:exported="true" />
+        <activity
+            android:name=".MedDetailsReminder"
+            android:exported="true" />
     </application>
 
 </manifest>
