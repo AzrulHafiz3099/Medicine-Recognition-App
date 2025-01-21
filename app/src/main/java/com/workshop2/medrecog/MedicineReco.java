@@ -130,7 +130,8 @@ public class MedicineReco extends AppCompatActivity {
                                     .setPositiveButton("Yes", (dialog, which) -> {
                                         // If the user clicks "Yes", pass the extracted text to Search2
                                         Intent intent = new Intent(MedicineReco.this, Search2.class);
-                                        intent.putExtra("extractedText", "Panadol ActiFast esk Pa 12 tau-Dwata S9sPEERSL RM7"); // Pass the cleaned text
+                                        intent.putExtra("extractedText", cleanedText); // Pass the cleaned text
+                                        Log.d("TextRecognition", "Extracted Text sent to Search2: " + cleanedText);
                                         startActivity(intent);
                                     })
                                     .setNegativeButton("No", (dialog, which) -> {

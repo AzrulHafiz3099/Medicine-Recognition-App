@@ -56,6 +56,8 @@ public class Search2 extends AppCompatActivity {
         medicineImage = findViewById(R.id.medicineImage);
         medicineDetailsCard = findViewById(R.id.medicineDetailsCard);
 
+        searchQuery.setEnabled(false);
+
         // Initialize Volley RequestQueue
         requestQueue = Volley.newRequestQueue(this);
 
@@ -139,7 +141,7 @@ public class Search2 extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
         // Split the query into individual keywords
-        String[] queryArray = query.split(" "); // Splits by space, adjust if you need other delimiters
+        String[] queryArray = query.split("\n"); // Splits by space, adjust if you need other delimiters
 
         // Build the query string by joining the array elements with commas or whatever separator you prefer
         String queryString = String.join(",", queryArray);
