@@ -8,8 +8,9 @@ public class Patient {
     private String address;
     private String medicalHistory;
     private String phoneNumber;
+    private String symptomID;
 
-    public Patient(String patientID, String name, int age, String gender, String address, String medicalHistory, String phoneNumber) {
+    public Patient(String patientID, String name, int age, String gender, String address, String medicalHistory, String phoneNumber, String symptomID) {
         this.patientID = patientID;
         this.name = name;
         this.age = age;
@@ -17,6 +18,7 @@ public class Patient {
         this.address = address;
         this.medicalHistory = medicalHistory;
         this.phoneNumber = phoneNumber;
+        this.symptomID = symptomID;
     }
 
     public String getPatientID() {
@@ -45,6 +47,9 @@ public class Patient {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+    public String getSymptomID() {
+        return symptomID;
     }
 }
 

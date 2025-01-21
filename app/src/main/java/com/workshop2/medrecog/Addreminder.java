@@ -101,6 +101,10 @@ public class Addreminder extends AppCompatActivity {
     }
 
     private void fetchDrugs(String symptomID) {
+        // Check if there's only one SymptomID or multiple
+        String[] symptomIDs = symptomID.split(",");
+
+        // Prepare API endpoint
         String url = getString(R.string.api_drug_header);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -112,23 +116,29 @@ public class Addreminder extends AppCompatActivity {
                         if ("success".equals(status)) {
                             JSONArray drugsArray = jsonResponse.getJSONArray("drugs");
 
+                            // Create lists to store drug names and IDs
                             List<String> genericNames = new ArrayList<>();
-                            genericNames.add("Search for medicine"); // Placeholder item
+                            drugIDs = new ArrayList<>();
+
+                            genericNames.add("Search for medicine"); // Placeholder
 
                             for (int i = 0; i < drugsArray.length(); i++) {
                                 JSONObject drug = drugsArray.getJSONObject(i);
                                 String genericName = drug.getString("GenericName");
                                 String drugID = drug.getString("DrugID");
-                                genericNames.add(genericName);
-                                drugIDs.add(drugID);
-                                Log.d("AddReminder", "Drug ID: " + drugID);
+
+                                // Avoid duplicates
+                                if (!drugIDs.contains(drugID)) {
+                                    genericNames.add(genericName);
+                                    drugIDs.add(drugID);
+                                }
                             }
 
+                            // Update the spinner adapter
                             ArrayAdapter<String> adapter = new ArrayAdapter<>(Addreminder.this,
                                     android.R.layout.simple_spinner_item, genericNames);
                             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             spinnerDrug.setAdapter(adapter);
-
                         } else {
                             String message = jsonResponse.getString("message");
                             Toast.makeText(Addreminder.this, "Error: " + message, Toast.LENGTH_SHORT).show();
@@ -143,11 +153,23 @@ public class Addreminder extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("action", "getDrugsBySymptomID");
-                params.put("symptomID", symptomID);
+
+
+                // If single ID, pass it directly; otherwise, join multiple IDs with commas
+                if (symptomIDs.length == 1) {
+                    params.put("symptomID", symptomIDs[0].trim());
+                } else {
+                    params.put("symptomID", String.join(",", symptomIDs));
+                }
+
+                Log.d("Params", "symptomID: " + (symptomIDs.length == 1 ? symptomIDs[0].trim() : String.join(",", symptomIDs)));
+
                 return params;
             }
         };
 
         Volley.newRequestQueue(this).add(stringRequest);
     }
+
+
 }

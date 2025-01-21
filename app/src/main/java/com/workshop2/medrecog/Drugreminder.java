@@ -125,6 +125,7 @@ public class Drugreminder extends AppCompatActivity {
             ).show();
         });
 
+        // When button is clicked, pass the correct SymptomID of the selected patient
         buttonNext.setOnClickListener(v -> {
 
             // Validate that all fields are filled
@@ -146,9 +147,10 @@ public class Drugreminder extends AppCompatActivity {
             Patient selectedPatient = (Patient) patientSpinner.getSelectedItem();
             String patientID = selectedPatient != null ? selectedPatient.getPatientID() : "";
             String patientName = selectedPatient != null ? selectedPatient.getName() : "";
-            Log.d("Drugreminder", "Patient ID in drug reminder : " + patientID);
-            Log.d("Drugreminder", "Patient Name in drug reminder: " + patientName);
-
+            String patientSymptomID = selectedPatient != null ? selectedPatient.getSymptomID() : ""; // Get the selected patient's SymptomID
+            Log.d("Drugreminder", "Patient ID: " + patientID);
+            Log.d("Drugreminder", "Patient Name: " + patientName);
+            Log.d("Drugreminder", "Symptom ID: " + patientSymptomID);
 
             // Create the intent and pass the data to the next activity
             Intent intent = new Intent(Drugreminder.this, Addreminder.class);
@@ -158,7 +160,7 @@ public class Drugreminder extends AppCompatActivity {
             intent.putExtra("description", description);
             intent.putExtra("date", date);
             intent.putExtra("time", time);
-            intent.putExtra("symptomID", symptomID);
+            intent.putExtra("symptomID", patientSymptomID); // Pass only the selected patient's SymptomID
 
             // Start the Addreminder activity
             startActivity(intent);
@@ -167,6 +169,7 @@ public class Drugreminder extends AppCompatActivity {
     }
 
     // Method to fetch patients data from API
+    // Fetch patients and store their SymptomID with the Patient object
     private void fetchPatients() {
         String url = getString(R.string.api_patient);  // Use your actual API endpoint
 
@@ -195,10 +198,11 @@ public class Drugreminder extends AppCompatActivity {
                                     String gender = patientObj.getString("Gender");
                                     String address = patientObj.getString("Address");
                                     String medicalHistory = patientObj.getString("MedicalHistory");
-                                    symptomID = patientObj.getString("SymptomID");
+                                    String symptomID = patientObj.getString("SymptomID"); // Get SymptomID here
                                     String phoneNumber = patientObj.getString("Phonenumber");
 
-                                    Patient patient = new Patient(patientID, name, age, gender, address, medicalHistory, phoneNumber);
+                                    // Pass SymptomID along with other patient details
+                                    Patient patient = new Patient(patientID, name, age, gender, address, medicalHistory, phoneNumber, symptomID);
                                     patientList.add(patient);
                                 }
 

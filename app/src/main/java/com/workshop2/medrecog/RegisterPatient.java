@@ -168,7 +168,7 @@ public class RegisterPatient extends AppCompatActivity {
                 params.put("address", address);
                 params.put("medicalHistory", medicalHistory);
                 params.put("phone", phone);
-                params.put("symptoms", TextUtils.join(",", selectedSymptomIds)); // Use symptom IDs instead of descriptions
+                params.put("symptomID", TextUtils.join(",", selectedSymptomIds)); // Use symptom IDs instead of descriptions
                 return params;
             }
         };

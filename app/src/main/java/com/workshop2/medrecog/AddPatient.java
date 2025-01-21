@@ -29,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -137,6 +138,15 @@ public class AddPatient extends AppCompatActivity {
                                     String gender = patientObj.getString("Gender");
                                     String address = patientObj.getString("Address");
                                     String ageString = patientObj.getString("Age");
+                                    String symptomID = patientObj.getString("SymptomID");
+
+                                    // Check if symptomID contains a comma (indicating multiple symptoms)
+                                    if (symptomID.contains(",")) {
+                                        // Split the string into a list of symptom IDs
+                                        String[] symptoms = symptomID.split(",");
+                                        // You could do something with the array of symptoms, like storing them as a list
+                                        symptomID = Arrays.toString(symptoms); // Optional, or you can process it as a list
+                                    }
 
                                     // Try to parse age as integer
                                     int age = 0;
@@ -147,7 +157,7 @@ public class AddPatient extends AppCompatActivity {
                                         age = -1;  // You could set a default or error value here
                                     }
 
-                                    patientList.add(new Patient(patientID, name, age, gender, address, medicalHistory, phoneNumber));
+                                    patientList.add(new Patient(patientID, name, age, gender, address, medicalHistory, phoneNumber, symptomID));
                                 }
 
                                 // Notify the adapter about data changes
@@ -161,6 +171,7 @@ public class AddPatient extends AppCompatActivity {
                             Toast.makeText(AddPatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                         }
                     }
+
 
                 },
                 new Response.ErrorListener() {
