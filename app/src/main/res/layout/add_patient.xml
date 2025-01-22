@@ -14,34 +14,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Header Section -->
         <LinearLayout
-            android:id="@+id/container_title"
+            android:id="@+id/header_section"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:background="@drawable/image_rectangle2"
             android:orientation="horizontal"
-            android:paddingBottom="16dp"
-            android:paddingLeft="18dp"
-            android:paddingRight="18dp"
-            android:paddingTop="16dp">
+            android:background="@drawable/image_rectangle2"
+            android:gravity="center_vertical"
+            android:padding="16dp">
 
             <ImageView
                 android:id="@+id/img_back"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="12dp"
-                android:src="@drawable/arrow_back" />
+                android:layout_width="27dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_back"
+                android:contentDescription="Back Button" />
 
             <TextView
-                android:id="@+id/container_title1"
-                android:layout_width="match_parent"
+                android:id="@+id/text_recent_orders"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Add patient"
-                android:textColor="#FF000000"
-                android:textSize="18dp" />
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:text="Add Patient"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:fontFamily="@font/nunito_bold" />
         </LinearLayout>
 
         <Button

@@ -17,7 +17,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -35,8 +34,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 public class VendorMap extends FragmentActivity implements OnMapReadyCallback {
 
@@ -82,6 +81,23 @@ public class VendorMap extends FragmentActivity implements OnMapReadyCallback {
         });
 
         imageBack.setOnClickListener(v -> onBackPressed()); // Set OnClickListener for back button
+
+        // Add ScrollListener to RecyclerView
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                // Get the position of the item currently at the center of the RecyclerView
+                int centerItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager())
+                        .findFirstVisibleItemPosition();
+
+                // Focus the camera on the marker of the item at the center
+                if (centerItemPosition != RecyclerView.NO_POSITION) {
+                    LocationItem item = locationList.get(centerItemPosition);
+                    focusOnVendorMarker(item);
+                }
+            }
+        });
     }
 
     private void fetchVendors() {
@@ -139,9 +155,13 @@ public class VendorMap extends FragmentActivity implements OnMapReadyCallback {
                                         LatLng selectedPosition = locationList.get(position).getLatLng();
                                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(selectedPosition, 18));
 
-                                        // Update the map markers based on the selected vendor
+                                        // Optionally, add a marker at the selected position
+                                        mMap.clear(); // Clear existing markers
+                                        mMap.addMarker(new MarkerOptions().position(selectedPosition).title(locationList.get(position).getName()));
+
+                                        // Update the map to reflect the selected vendor
                                         String clickedVendorId = locationList.get(position).getVendorId();
-                                        updateMarkersForVendor(clickedVendorId);
+                                        updateMarkersForVendor(clickedVendorId); // Show the selected vendor's marker
                                     }
 
                                     @Override
@@ -215,7 +235,6 @@ public class VendorMap extends FragmentActivity implements OnMapReadyCallback {
         Volley.newRequestQueue(this).add(stringRequest);
     }
 
-
     // Function to update markers based on selected vendor
     private void updateMarkersForVendor(String vendorId) {
         mMap.clear(); // Clear existing markers
@@ -225,27 +244,8 @@ public class VendorMap extends FragmentActivity implements OnMapReadyCallback {
                 mMap.addMarker(new MarkerOptions()
                         .position(locationItem.getLatLng())
                         .title(locationItem.getName()));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locationItem.getLatLng(), 18)); // Focus on the selected marker
             }
-        }
-
-        // Optionally zoom into the first marker
-        if (!locationList.isEmpty()) {
-            LatLng initialLocation = locationList.get(0).getLatLng();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 15));
-        }
-    }
-
-
-    private void addMarkersToMap() {
-        for (LocationItem locationItem : locationList) {
-            mMap.addMarker(new MarkerOptions()
-                    .position(locationItem.getLatLng())
-                    .title(locationItem.getName()));
-        }
-
-        if (!locationList.isEmpty()) {
-            LatLng initialLocation = locationList.get(0).getLatLng();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 15));
         }
     }
 
@@ -257,7 +257,27 @@ public class VendorMap extends FragmentActivity implements OnMapReadyCallback {
             addMarkersToMap(); // Add markers if data is already fetched
         }
     }
+
+    // Add markers for all vendors
+    private void addMarkersToMap() {
+        mMap.clear(); // Clear existing markers
+
+        for (LocationItem locationItem : locationList) {
+            mMap.addMarker(new MarkerOptions()
+                    .position(locationItem.getLatLng())
+                    .title(locationItem.getName()));
+        }
+
+        if (!locationList.isEmpty()) {
+            LatLng initialLocation = locationList.get(0).getLatLng();
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 15)); // Move camera to the first vendor's location by default
+        }
+    }
+
+    // Focus the map on the selected vendor's marker when scrolling
+    private void focusOnVendorMarker(LocationItem item) {
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(item.getLatLng(), 17)); // Zoom in on the marker
+        mMap.clear(); // Clear existing markers
+        mMap.addMarker(new MarkerOptions().position(item.getLatLng()).title(item.getName())); // Add the marker for the selected item
+    }
 }
-
-
-

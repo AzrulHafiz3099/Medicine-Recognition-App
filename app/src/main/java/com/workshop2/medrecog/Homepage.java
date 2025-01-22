@@ -54,7 +54,7 @@ public class Homepage extends AppCompatActivity {
     private String vendorIdFromIntent; // To store VendorID passed from the previous activity
     private String userID;
 
-    private LinearLayout container_profile, container_patient, container_drugReminder, container_symptomsDetector, container_drugSearch, container_medRecognition, container_vendor, container_yourOrder, container_tnc;
+    private LinearLayout container_profile, container_patient, container_drugReminder, container_drugSearch, container_medRecognition, container_vendor, container_yourOrder, container_tnc;
     private Button btnLogout;
 
     @Override
@@ -140,7 +140,7 @@ public class Homepage extends AppCompatActivity {
 
         container_profile = findViewById(R.id.container_profile);
         container_drugReminder = findViewById(R.id.container_drugReminder);
-        container_symptomsDetector = findViewById(R.id.container_symptomsDetector);
+        /*container_symptomsDetector = findViewById(R.id.container_symptomsDetector);*/
         container_drugSearch = findViewById(R.id.container_drugSearch);
         container_medRecognition = findViewById(R.id.container_medRecognition);
         container_vendor = findViewById(R.id.container_vendor);
@@ -171,10 +171,10 @@ public class Homepage extends AppCompatActivity {
             startActivity(intent2);
         });
 
-        container_symptomsDetector.setOnClickListener(view -> {
+        /*container_symptomsDetector.setOnClickListener(view -> {
 //            Intent intent2 = new Intent(Menu.this, SymptomsDetectorActivity.class);
 //            startActivity(intent2);
-        });
+        });*/
 
         container_drugSearch.setOnClickListener(view -> {
             Intent intent2 = new Intent(Homepage.this, Search.class);

@@ -47,10 +47,10 @@
 
     <!-- Login Form -->
     <FrameLayout
-        android:layout_width="341dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
         android:layout_marginTop="340dp"
+        android:padding="20dp"
         android:background="@drawable/drawable_shape_1">
 
         <TextView
@@ -84,7 +84,7 @@
 
         <EditText
             android:id="@+id/email_input"
-            android:layout_width="300dp"
+            android:layout_width="320dp"
             android:layout_height="35dp"
             android:layout_marginTop="90dp"
             android:background="@drawable/drawable_shape_2"
@@ -107,7 +107,7 @@
 
         <EditText
             android:id="@+id/password_input"
-            android:layout_width="301dp"
+            android:layout_width="320dp"
             android:layout_height="42dp"
             android:layout_marginTop="165dp"
             android:background="@drawable/drawable_shape_2"
@@ -119,7 +119,7 @@
             android:id="@+id/forget_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="200dp"
             android:layout_marginTop="215dp"
             android:fontFamily="@font/nunito_bold"
             android:onClick="onForgetButtonClick"

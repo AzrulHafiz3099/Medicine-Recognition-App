@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -38,6 +40,7 @@ public class SearchSymptom extends AppCompatActivity {
     private ArrayList<String> selectedSymptoms;
     private ArrayList<String> selectedSymptomIds; // Store symptom IDs
     private RequestQueue requestQueue;
+    private ImageView imageBack;
 
     private Map<String, String> selectedSymptomMap;
 
@@ -58,6 +61,8 @@ public class SearchSymptom extends AppCompatActivity {
         selectedSymptomMap = new HashMap<>();
         suggestionAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, suggestions);
         suggestionsList.setAdapter(suggestionAdapter);
+
+        imageBack = findViewById(R.id.img_back);
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -119,6 +124,17 @@ public class SearchSymptom extends AppCompatActivity {
             String clickedSymptom = suggestions.get(position);
             editSearchSymptom.setText(clickedSymptom);
         });
+
+        // Handle back button behavior
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish(); // Close the activity
+            }
+        });
+
+        // Set an OnClickListener for the back button
+        imageBack.setOnClickListener(v -> onBackPressed()); // Call the overridden onBackPressed method
     }
 
     private void updateSelectedSymptomsTextView() {
