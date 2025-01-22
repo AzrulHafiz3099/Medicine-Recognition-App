@@ -48,6 +48,8 @@
     <string name="api_suggestion2">https://www.etourmersing.com/BackEnd-APi/MedRec/api_suggestion2.php?query=</string>
     <string name="api_search">https://www.etourmersing.com/BackEnd-APi/MedRec/api_search.php</string>
     <string name="api_send_email">https://www.etourmersing.com/BackEnd-APi/MedRec/send_email.php</string>
+    <string name="api_search_symptom">https://www.etourmersing.com/BackEnd-APi/MedRec/api_search_symptom.php?query=</string>
+    <!--<string name="api_patient">http://192.168.0.16/BackEnd-APi/MedRec/api_patient.php</string>-->
 
 
     <string name="store_name_placeholder">Farmasi Placeholder</string>

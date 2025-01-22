@@ -163,6 +163,7 @@
             android:background="@drawable/drawable_shape_3"
             android:text="Select Symptom ID"
             android:textColor="#676767"
+            android:visibility="gone"
             android:textSize="18sp" />
 </LinearLayout>
     </ScrollView>

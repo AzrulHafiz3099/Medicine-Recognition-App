@@ -31,7 +31,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="16dp"
                 android:layout_weight="1"
-                android:text="Update patient"
+                android:text="Update Patient"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -111,13 +111,25 @@
             android:layout_marginTop="30dp" />
 
         <!-- Symptoms Dropdown -->
-        <Spinner
-            android:id="@+id/symptom_spinner"
+        <!--    <Spinner
+                android:id="@+id/symptom_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/drawable_shape_3"
+            android:layout_marginTop="30dp" />-->
+
+        <TextView
+            android:id="@+id/symptom_select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/drawable_shape_3"
-            android:layout_marginTop="30dp" />
+            android:text="Select Symptom"
+            android:textColor="#676767"
+            android:clickable="true"
+            android:textSize="18sp" />
 
         <!-- Phone Number -->
         <EditText
@@ -141,5 +153,16 @@
             android:padding="12dp"
             android:layout_marginTop="30dp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/symptom_select_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/drawable_shape_3"
+            android:text="Select Symptom ID"
+            android:textColor="#676767"
+            android:textSize="18sp" />
     </LinearLayout>
 </ScrollView>

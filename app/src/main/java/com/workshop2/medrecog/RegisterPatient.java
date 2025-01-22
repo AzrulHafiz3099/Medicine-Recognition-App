@@ -1,6 +1,7 @@
 package com.workshop2.medrecog;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -100,6 +101,7 @@ public class RegisterPatient extends AppCompatActivity {
         // Concatenate symptoms into a single string, separated by a comma or newline
         String displayText = TextUtils.join(", ", selectedSymptoms);
         tvSelectSymptom.setText(displayText); // Display selected descriptions in the TextView
+        tvSelectSymptom.setTextColor(Color.BLACK);
 
         // Concatenate symptom IDs into a single string, separated by a comma or newline
         String displayIdText = TextUtils.join(", ", selectedSymptomIds);
