@@ -1,6 +1,7 @@
 package com.workshop2.medrecog;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -39,12 +40,15 @@ public class UpdatePatient extends AppCompatActivity {
     private Button buttonSave;
     private RadioGroup genderGroup;
     private ImageView imageBack;
+    private ArrayList<String> selectedSymptoms;
+    private ArrayList<String> selectedSymptomIds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_patient);
 
+        // Initialize views
         inputName = findViewById(R.id.input_name);
         inputAge = findViewById(R.id.input_age);
         inputAddress = findViewById(R.id.input_address);
@@ -56,6 +60,9 @@ public class UpdatePatient extends AppCompatActivity {
         genderGroup = findViewById(R.id.gender_group);
         imageBack = findViewById(R.id.img_back);
 
+        selectedSymptoms = new ArrayList<>();
+        selectedSymptomIds = new ArrayList<>();
+
         // Get PatientID from Intent
         patientID = getIntent().getStringExtra("PatientID");
         Log.d("PatientID", patientID);
@@ -63,22 +70,13 @@ public class UpdatePatient extends AppCompatActivity {
         // Fetch and populate patient information
         getPatientUpdate();
 
-
         // Save updated patient data
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updatePatientInformation();
-            }
-        });
+        buttonSave.setOnClickListener(v -> updatePatientInformation());
 
         // Set an OnClickListener to open a symptom selection activity
-        symptomTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent symptomIntent = new Intent(UpdatePatient.this, SearchSymptom.class);
-                startActivityForResult(symptomIntent, 1); // 1 is the request code for the symptom activity
-            }
+        symptomTextView.setOnClickListener(v -> {
+            Intent symptomIntent = new Intent(UpdatePatient.this, SearchSymptom.class);
+            startActivityForResult(symptomIntent, 1); // 1 is the request code for the symptom activity
         });
 
         // Handle back button behavior
@@ -89,74 +87,52 @@ public class UpdatePatient extends AppCompatActivity {
             }
         });
 
-        // Handle back button behavior with the new API
-        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-                // Custom logic for back press
-                finish(); // Close the activity
-            }
-        });
-
         // Set an OnClickListener for the back button
-        imageBack.setOnClickListener(v -> {
-            onBackPressed(); // Call the overridden onBackPressed method
-        });
-
+        imageBack.setOnClickListener(v -> onBackPressed()); // Call the overridden onBackPressed method
     }
 
     private void getPatientUpdate() {
         String url = getString(R.string.api_patient);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            String status = jsonResponse.getString("status");
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
 
-                            if ("success".equals(status)) {
-                                JSONObject patient = jsonResponse.getJSONObject("patient");
+                        if ("success".equals(status)) {
+                            JSONObject patient = jsonResponse.getJSONObject("patient");
 
-                                // Populate the input fields
-                                inputName.setText(patient.getString("Name"));
-                                inputAge.setText(String.valueOf(patient.getInt("Age")));
-                                inputAddress.setText(patient.getString("Address"));
-                                inputMedicalHistory.setText(patient.getString("MedicalHistory"));
-                                inputPhone.setText(patient.getString("Phonenumber"));
+                            // Populate the input fields
+                            inputName.setText(patient.getString("Name"));
+                            inputAge.setText(String.valueOf(patient.getInt("Age")));
+                            inputAddress.setText(patient.getString("Address"));
+                            inputMedicalHistory.setText(patient.getString("MedicalHistory"));
+                            inputPhone.setText(patient.getString("Phonenumber"));
 
-                                // Set the gender RadioButton
-                                String gender = patient.getString("Gender");
-                                if ("Male".equalsIgnoreCase(gender)) {
-                                    ((RadioButton) findViewById(R.id.male)).setChecked(true);
-                                } else if ("Female".equalsIgnoreCase(gender)) {
-                                    ((RadioButton) findViewById(R.id.female)).setChecked(true);
-                                }
-
-                                // Populate the symptom TextView
-                                //symptomTextView.setText(patient.getString("Description"));
-                                // After setting the SymptomID to symptomIdTextView, call searchSymptom
-                                symptomIdTextView.setText(patient.getString("SymptomID"));
-                                String symptomId = patient.getString("SymptomID");
-
-                                // Call searchSymptom with SymptomID
-                                searchSymptom(symptomId);
-
-                            } else {
-                                Toast.makeText(UpdatePatient.this, "Error fetching patient data", Toast.LENGTH_SHORT).show();
+                            // Set the gender RadioButton
+                            String gender = patient.getString("Gender");
+                            if ("Male".equalsIgnoreCase(gender)) {
+                                ((RadioButton) findViewById(R.id.male)).setChecked(true);
+                            } else if ("Female".equalsIgnoreCase(gender)) {
+                                ((RadioButton) findViewById(R.id.female)).setChecked(true);
                             }
-                        } catch (JSONException e) {
-                            Toast.makeText(UpdatePatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
+
+                            // Populate the symptom TextView
+                            symptomIdTextView.setText(patient.getString("SymptomID"));
+                            String symptomId = patient.getString("SymptomID");
+
+                            // Call searchSymptom with SymptomID
+                            searchSymptom(symptomId);
+
+                        } else {
+                            Toast.makeText(UpdatePatient.this, "Error fetching patient data", Toast.LENGTH_SHORT).show();
                         }
+                    } catch (JSONException e) {
+                        Toast.makeText(UpdatePatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(UpdatePatient.this, "Error fetching patient data", Toast.LENGTH_SHORT).show();
-                    }
-                }) {
+                error -> Toast.makeText(UpdatePatient.this, "Error fetching patient data", Toast.LENGTH_SHORT).show()) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -170,113 +146,53 @@ public class UpdatePatient extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    /*private void fetchSymptoms() {
-        String url = getString(R.string.api_symptom);
+    private void searchSymptom(String symptomIds) {
+        String url = "https://www.etourmersing.com/BackEnd-APi/MedRec/api_symptom.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            String status = jsonResponse.getString("status");
+                response -> {
+                    try {
+                        Log.d("API_Response", response);
 
-                            if ("success".equals(status)) {
-                                JSONArray symptomsArray = jsonResponse.getJSONArray("symptoms");
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
 
-                                if (symptomsArray.length() > 0) {
-                                    // Assuming you want to display the first symptom in the TextViews
-                                    JSONObject symptom = symptomsArray.getJSONObject(0);
+                        if ("success".equals(status)) {
+                            JSONArray symptomsArray = jsonResponse.getJSONArray("symptoms");
 
-                                    // Get data from the first symptom object
-                                    String description = symptom.getString("Description");
-                                    String symptomID = symptom.getString("SymptomID");
-
-                                    // Update the TextViews
-                                    symptomTextView.setText(description);
-                                    symptomIdTextView.setText(symptomID);
-                                } else {
-                                    // No symptoms found, show a default message
-                                    symptomTextView.setText("No symptoms available");
-                                    symptomIdTextView.setText("N/A");
-                                }
-                            } else {
-                                Toast.makeText(UpdatePatient.this, "Error fetching symptoms", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            Toast.makeText(UpdatePatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(UpdatePatient.this, "Error fetching symptoms", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }*/
-
-    private void searchSymptom(String symptomId) {
-        // Corrected URL (no query parameters in URL)
-        //String url = "http://192.168.0.16/BackEnd-APi/MedRec/api_symptom.php";
-        String url = "http://10.131.77.114/BackEnd-APi/MedRec/api_symptom.php";
-
-        // Create a new StringRequest
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            // Log the response to check its content
-                            Log.d("API_Response", response); // Add this line to log the response
-
-                            // Parse the JSON response
-                            JSONObject jsonResponse = new JSONObject(response);
-                            String status = jsonResponse.getString("status");
-
-                            if ("success".equals(status)) {
-                                JSONObject symptom = jsonResponse.getJSONObject("symptom");
-
-                                // Get and display the symptom details
+                            StringBuilder descriptions = new StringBuilder();
+                            for (int i = 0; i < symptomsArray.length(); i++) {
+                                JSONObject symptom = symptomsArray.getJSONObject(i);
                                 String description = symptom.getString("Description");
-                                String id = symptom.getString("SymptomID");
 
-                                symptomTextView.setText(description);  // Set the description to symptomTextView
-                                symptomIdTextView.setText(id);  // Optionally, set the ID to symptomIdTextView
-                            } else {
-                                // Show error message from API
-                                String message = jsonResponse.getString("message");
-                                Toast.makeText(UpdatePatient.this, message, Toast.LENGTH_SHORT).show();
+                                descriptions.append(description);
+                                if (i < symptomsArray.length() - 1) {
+                                    descriptions.append(", "); // Separate descriptions with a comma
+                                }
                             }
-                        } catch (JSONException e) {
-                            // Handle JSON parsing error
-                            Toast.makeText(UpdatePatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
-                            e.printStackTrace();
+                            symptomTextView.setText(descriptions.toString()); // Display descriptions
+                        } else {
+                            String message = jsonResponse.getString("message");
+                            Toast.makeText(UpdatePatient.this, message, Toast.LENGTH_SHORT).show();
                         }
+                    } catch (JSONException e) {
+                        Log.e("JSON_Parsing_Error", "Raw response: " + response, e);
+                        Toast.makeText(UpdatePatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Handle Volley error
-                        Toast.makeText(UpdatePatient.this, "Error fetching symptom", Toast.LENGTH_SHORT).show();
-                        error.printStackTrace();
-                    }
+                error -> {
+                    Toast.makeText(UpdatePatient.this, "Error fetching symptom", Toast.LENGTH_SHORT).show();
+                    error.printStackTrace();
                 }) {
             @Override
             protected Map<String, String> getParams() {
-                // Pass parameters to the PHP API
                 Map<String, String> params = new HashMap<>();
                 params.put("action", "searchSymptom");
-                params.put("SymptomID", symptomId);  // Use the symptomId
+                params.put("SymptomIDs", symptomIds);
                 return params;
             }
         };
 
-        // Add the request to the Volley RequestQueue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
@@ -285,30 +201,22 @@ public class UpdatePatient extends AppCompatActivity {
         String url = getString(R.string.api_patient);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            String status = jsonResponse.getString("status");
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String status = jsonResponse.getString("status");
 
-                            if ("success".equals(status)) {
-                                Toast.makeText(UpdatePatient.this, "Patient updated successfully", Toast.LENGTH_SHORT).show();
-                                finish(); // Close activity after saving
-                            } else {
-                                Toast.makeText(UpdatePatient.this, "Failed to update patient", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            Toast.makeText(UpdatePatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
+                        if ("success".equals(status)) {
+                            Toast.makeText(UpdatePatient.this, "Patient updated successfully", Toast.LENGTH_SHORT).show();
+                            finish(); // Close activity after saving
+                        } else {
+                            Toast.makeText(UpdatePatient.this, "Failed to update patient", Toast.LENGTH_SHORT).show();
                         }
+                    } catch (JSONException e) {
+                        Toast.makeText(UpdatePatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(UpdatePatient.this, "Error updating patient", Toast.LENGTH_SHORT).show();
-                    }
-                }) {
+                error -> Toast.makeText(UpdatePatient.this, "Error updating patient", Toast.LENGTH_SHORT).show()) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -326,7 +234,7 @@ public class UpdatePatient extends AppCompatActivity {
                 params.put("gender", selectedGender.getText().toString());
 
                 // Symptoms
-                params.put("symptomID", symptomIdTextView.getText().toString());
+                params.put("symptomID", TextUtils.join(",", selectedSymptomIds));
 
                 return params;
             }
@@ -341,13 +249,25 @@ public class UpdatePatient extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            // Retrieve selected symptoms
-            String selectedSymptoms = data.getStringExtra("selectedSymptoms");
-            String selectedSymptomIDs = data.getStringExtra("selectedSymptomIDs");
+            // Retrieve selected symptoms and their corresponding IDs
+            ArrayList<String> selectedSymptomList = data.getStringArrayListExtra("selectedSymptoms");
+            ArrayList<String> selectedSymptomIdList = data.getStringArrayListExtra("selectedSymptomIds");
 
-            // Display them in the TextViews
-            symptomTextView.setText(selectedSymptoms);
-            symptomIdTextView.setText(selectedSymptomIDs);
+            if (selectedSymptomList != null && selectedSymptomIdList != null) {
+                selectedSymptoms = selectedSymptomList;
+                selectedSymptomIds = selectedSymptomIdList;
+                updateSymptomsDisplay();
+            }
         }
+    }
+
+    private void updateSymptomsDisplay() {
+        // Concatenate symptoms into a single string, separated by a comma or newline
+        String displayText = TextUtils.join(", ", selectedSymptoms);
+        symptomTextView.setText(displayText);
+
+        // Set the symptom IDs in the corresponding TextView for reference
+        String symptomIds = TextUtils.join(",", selectedSymptomIds);
+        symptomIdTextView.setText(symptomIds);
     }
 }

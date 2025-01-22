@@ -28,7 +28,7 @@
                 <FrameLayout
                     android:id="@+id/container_iphone_x"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <!-- Menu Icon -->
                     <ImageView
@@ -58,7 +58,7 @@
                             android:id="@+id/image_icon"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp"
                             android:contentDescription="Search Icon"
                             android:src="@drawable/icc_search" />
 
@@ -92,10 +92,10 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="280dp"
-                        android:paddingEnd="8dp"
                         android:background="@drawable/container"
+                        android:paddingEnd="8dp"
                         app:cardCornerRadius="38dp" />
 
                     <FrameLayout

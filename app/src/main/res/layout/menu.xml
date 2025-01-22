@@ -339,7 +339,7 @@
                                     android:textSize="20dp" />
                             </LinearLayout>
 
-                            <LinearLayout
+                            <!--<LinearLayout
                                 android:id="@+id/container_symptomsDetector"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -373,7 +373,7 @@
                                     android:text="Symptoms detector"
                                     android:textColor="#FF5C5E64"
                                     android:textSize="20dp" />
-                            </LinearLayout>
+                            </LinearLayout>-->
 
                             <LinearLayout
                                 android:id="@+id/container_drugSearch"

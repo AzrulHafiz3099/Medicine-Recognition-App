@@ -10,32 +10,35 @@
 
     <!-- Title -->
 
+    <!-- Header Section -->
     <LinearLayout
+        android:id="@+id/header_section"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/white">
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="@drawable/image_rectangle2"
+        android:gravity="center_vertical"
+        android:padding="16dp">
 
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="27dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_back"
+            android:contentDescription="Back Button" />
+
+        <TextView
+            android:id="@+id/text_recent_orders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
+            android:text="Scan Your Drug"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:fontFamily="@font/nunito_bold" />
     </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/text_scan_your_drug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="Scan your drug"
-        android:textColor="#FF423D3D"
-        android:textSize="24sp"
-        android:fontFamily="sans-serif-medium"
-        android:shadowColor="#A6000000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2" />
 
     <!-- Button Container -->
     <FrameLayout
@@ -117,16 +120,5 @@
         android:layout_marginBottom="775.75dp"
         android:scaleType="centerInside" />
 
-    <!-- Back Icon -->
-    <ImageView
-        android:id="@+id/img_back"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="349.75dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="770.75dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/baseline_arrow_back_ios_24" />
 
 </FrameLayout>
