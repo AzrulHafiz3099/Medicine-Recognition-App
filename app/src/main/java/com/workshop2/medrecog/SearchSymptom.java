@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,9 +36,9 @@ public class SearchSymptom extends AppCompatActivity {
     private ArrayAdapter<String> suggestionAdapter;
     private ArrayList<String> suggestions;
     private ArrayList<String> selectedSymptoms;
+    private ArrayList<String> selectedSymptomIds; // Store symptom IDs
     private RequestQueue requestQueue;
 
-    // Store both ID and Description in a Map
     private Map<String, String> selectedSymptomMap;
 
     @Override
@@ -47,21 +46,19 @@ public class SearchSymptom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_symptom);
 
-        // Initialize views
         editSearchSymptom = findViewById(R.id.edit_search_symptom);
         suggestionsList = findViewById(R.id.recyclerViewSuggestions);
         btnAddSymptom = findViewById(R.id.button_add_symptoms);
         btnSubmitSymptoms = findViewById(R.id.button_submit_symptoms);
         selectedSymptomTextView = findViewById(R.id.selected_symptom);
 
-        // Initialize symptoms lists and map
         suggestions = new ArrayList<>();
         selectedSymptoms = new ArrayList<>();
+        selectedSymptomIds = new ArrayList<>();
         selectedSymptomMap = new HashMap<>();
         suggestionAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, suggestions);
         suggestionsList.setAdapter(suggestionAdapter);
 
-        // Volley RequestQueue
         requestQueue = Volley.newRequestQueue(this);
 
         // TextWatcher for search query updates
@@ -90,11 +87,20 @@ public class SearchSymptom extends AppCompatActivity {
         // Handle adding selected symptom to the list
         btnAddSymptom.setOnClickListener(v -> {
             String symptom = editSearchSymptom.getText().toString().trim();
-            if (!symptom.isEmpty() && !selectedSymptoms.contains(symptom)) {
-                selectedSymptoms.add(symptom);
-                updateSelectedSymptomsTextView(); // Update the display of selected symptoms
-                Toast.makeText(SearchSymptom.this, "Symptom added: " + symptom, Toast.LENGTH_SHORT).show();
-                editSearchSymptom.setText(""); // Clear input field
+
+            if (suggestions.contains(symptom) && !selectedSymptoms.contains(symptom)) {
+                String symptomID = getSymptomIDByDescription(symptom);
+                if (symptomID != null) {
+                    selectedSymptoms.add(symptom);
+                    selectedSymptomIds.add(symptomID); // Add symptom ID to the list
+                    updateSelectedSymptomsTextView();
+                    Toast.makeText(SearchSymptom.this, "Symptom added: " + symptom, Toast.LENGTH_SHORT).show();
+                    editSearchSymptom.setText(""); // Clear input
+                } else {
+                    Toast.makeText(SearchSymptom.this, "Symptom not found in suggestions. Please try again.", Toast.LENGTH_SHORT).show();
+                }
+            } else if (!suggestions.contains(symptom)) {
+                Toast.makeText(SearchSymptom.this, "Please select a symptom from the suggestions", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(SearchSymptom.this, "Symptom already added or invalid", Toast.LENGTH_SHORT).show();
             }
@@ -102,31 +108,16 @@ public class SearchSymptom extends AppCompatActivity {
 
         // Handle submitting symptoms
         btnSubmitSymptoms.setOnClickListener(v -> {
-            if (!selectedSymptomMap.isEmpty()) {
-                // Collect the selected symptoms in the map
-                ArrayList<String> selectedSymptomDetails = new ArrayList<>();
-                ArrayList<String> selectedSymptomIds = new ArrayList<>();
-                for (Map.Entry<String, String> entry : selectedSymptomMap.entrySet()) {
-                    selectedSymptomDetails.add(entry.getValue()); // Description
-                    selectedSymptomIds.add(entry.getKey()); // ID
-                }
-
-                // Send selected symptoms back
-                Intent resultIntent = new Intent();
-                resultIntent.putStringArrayListExtra("selectedSymptoms", selectedSymptomDetails); // Send descriptions
-                resultIntent.putStringArrayListExtra("selectedSymptomIds", selectedSymptomIds); // Send IDs
-                setResult(RESULT_OK, resultIntent); // Return result to MainActivity
-                finish(); // Close SearchSymptom activity
-            } else {
-                Toast.makeText(SearchSymptom.this, "No symptoms selected", Toast.LENGTH_SHORT).show();
-            }
+            Intent resultIntent = new Intent();
+            resultIntent.putStringArrayListExtra("selectedSymptoms", selectedSymptoms);
+            resultIntent.putStringArrayListExtra("selectedSymptomIds", selectedSymptomIds); // Pass IDs
+            setResult(RESULT_OK, resultIntent);
+            finish(); // Close the current activity and return to MainActivity
         });
 
-        // Set up item click listener for suggestions
         suggestionsList.setOnItemClickListener((parent, view, position, id) -> {
-            // When a suggestion is clicked, fill the EditText with the clicked symptom
             String clickedSymptom = suggestions.get(position);
-            editSearchSymptom.setText(clickedSymptom); // Fill the EditText with the selected suggestion
+            editSearchSymptom.setText(clickedSymptom);
         });
     }
 
@@ -138,12 +129,10 @@ public class SearchSymptom extends AppCompatActivity {
         selectedSymptomTextView.setText(displayText.toString().trim());
     }
 
-    // SearchSymptom.java
     private void fetchSuggestions(String query) {
         suggestions.clear();
-        suggestionAdapter.notifyDataSetChanged();
 
-        String url = "http://192.168.0.16/BackEnd-APi/MedRec/api_search_symptom.php?query=" + query;
+        String url = "https://www.etourmersing.com/BackEnd-APi/MedRec/api_search_symptom.php?query=" + query;
 
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 response -> {
@@ -155,11 +144,10 @@ public class SearchSymptom extends AppCompatActivity {
                                 String symptomDescription = symptomObject.getString("description");
                                 String symptomID = symptomObject.getString("id");
 
-                                // Add only the description to the display list
-                                suggestions.add(symptomDescription);
-
-                                // Store the ID and Description in the map
-                                selectedSymptomMap.put(symptomID, symptomDescription);
+                                if (!suggestions.contains(symptomDescription)) {
+                                    suggestions.add(symptomDescription);
+                                    selectedSymptomMap.put(symptomID, symptomDescription); // Keep mapping
+                                }
                             }
                             suggestionAdapter.notifyDataSetChanged();
                         }
@@ -172,5 +160,14 @@ public class SearchSymptom extends AppCompatActivity {
         );
 
         requestQueue.add(request);
+    }
+
+    private String getSymptomIDByDescription(String description) {
+        for (Map.Entry<String, String> entry : selectedSymptomMap.entrySet()) {
+            if (entry.getValue().trim().equalsIgnoreCase(description.trim())) {
+                return entry.getKey(); // Return the ID
+            }
+        }
+        return null;
     }
 }
