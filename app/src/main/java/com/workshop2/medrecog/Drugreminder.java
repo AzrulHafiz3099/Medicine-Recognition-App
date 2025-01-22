@@ -199,6 +199,7 @@ public class Drugreminder extends AppCompatActivity {
                                     String address = patientObj.getString("Address");
                                     String medicalHistory = patientObj.getString("MedicalHistory");
                                     String symptomID = patientObj.getString("SymptomID"); // Get SymptomID here
+                                    Log.d("SymptomID", "SymptomID: " + symptomID);
                                     String phoneNumber = patientObj.getString("Phonenumber");
 
                                     // Pass SymptomID along with other patient details

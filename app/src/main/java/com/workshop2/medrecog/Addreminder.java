@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -101,17 +102,24 @@ public class Addreminder extends AppCompatActivity {
     }
 
     private void fetchDrugs(String symptomID) {
+        // Log the received symptomID for debugging
+        Log.d("fetchDrugs", "Received SymptomID: " + symptomID);
+
         // Check if there's only one SymptomID or multiple
         String[] symptomIDs = symptomID.split(",");
+        Log.d("fetchDrugs", "Parsed SymptomIDs: " + Arrays.toString(symptomIDs));
 
         // Prepare API endpoint
         String url = getString(R.string.api_drug_header);
+        Log.d("fetchDrugs", "API Endpoint: " + url);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 response -> {
+                    Log.d("fetchDrugs", "API Response: " + response); // Log raw response
                     try {
                         JSONObject jsonResponse = new JSONObject(response);
                         String status = jsonResponse.getString("status");
+                        Log.d("fetchDrugs", "Response Status: " + status);
 
                         if ("success".equals(status)) {
                             JSONArray drugsArray = jsonResponse.getJSONArray("drugs");
@@ -127,12 +135,19 @@ public class Addreminder extends AppCompatActivity {
                                 String genericName = drug.getString("GenericName");
                                 String drugID = drug.getString("DrugID");
 
+                                // Log each drug for debugging
+                                Log.d("fetchDrugs", "DrugID: " + drugID + ", GenericName: " + genericName);
+
                                 // Avoid duplicates
                                 if (!drugIDs.contains(drugID)) {
                                     genericNames.add(genericName);
                                     drugIDs.add(drugID);
                                 }
                             }
+
+                            // Log the final lists for debugging
+                            Log.d("fetchDrugs", "Final Generic Names: " + genericNames);
+                            Log.d("fetchDrugs", "Final Drug IDs: " + drugIDs);
 
                             // Update the spinner adapter
                             ArrayAdapter<String> adapter = new ArrayAdapter<>(Addreminder.this,
@@ -141,19 +156,23 @@ public class Addreminder extends AppCompatActivity {
                             spinnerDrug.setAdapter(adapter);
                         } else {
                             String message = jsonResponse.getString("message");
+                            Log.e("fetchDrugs", "Error Message: " + message);
                             Toast.makeText(Addreminder.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
+                        Log.e("fetchDrugs", "Error parsing response", e);
                         Toast.makeText(Addreminder.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                     }
                 },
-                error -> Toast.makeText(Addreminder.this, "Error fetching drug data", Toast.LENGTH_SHORT).show()
+                error -> {
+                    Log.e("fetchDrugs", "Error fetching drug data", error);
+                    Toast.makeText(Addreminder.this, "Error fetching drug data", Toast.LENGTH_SHORT).show();
+                }
         ) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("action", "getDrugsBySymptomID");
-
 
                 // If single ID, pass it directly; otherwise, join multiple IDs with commas
                 if (symptomIDs.length == 1) {
@@ -162,7 +181,8 @@ public class Addreminder extends AppCompatActivity {
                     params.put("symptomID", String.join(",", symptomIDs));
                 }
 
-                Log.d("Params", "symptomID: " + (symptomIDs.length == 1 ? symptomIDs[0].trim() : String.join(",", symptomIDs)));
+                // Log the parameters being sent to the API
+                Log.d("fetchDrugs", "API Parameters: " + params.toString());
 
                 return params;
             }
@@ -170,6 +190,7 @@ public class Addreminder extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(stringRequest);
     }
+
 
 
 }

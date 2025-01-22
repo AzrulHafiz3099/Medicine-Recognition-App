@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class Suggestion extends AppCompatActivity {
     private RequestQueue requestQueue;
     private View medicineDetailsCard;
     private ImageView imageBack;
+    private Button buyNow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class Suggestion extends AppCompatActivity {
         medicineDetails = findViewById(R.id.medicineDetails);
         medicineImage = findViewById(R.id.medicineImage);
         medicineDetailsCard = findViewById(R.id.medicineDetailsCard);
+        buyNow = findViewById(R.id.text_buy_now);
 
         // Initialize Volley RequestQueue
         requestQueue = Volley.newRequestQueue(this);
@@ -71,6 +74,11 @@ public class Suggestion extends AppCompatActivity {
         });
 
         imageBack.setOnClickListener(v -> onBackPressed());
+        buyNow.setOnClickListener(view -> {
+            Intent intent2 = new Intent(Suggestion.this, Homepage.class);
+            startActivity(intent2);
+        });
+
     }
 
 

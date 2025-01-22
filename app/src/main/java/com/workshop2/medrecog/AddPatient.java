@@ -164,11 +164,11 @@ public class AddPatient extends AppCompatActivity {
                                 patientAdapter.notifyDataSetChanged();
                             } else {
                                 String message = jsonResponse.getString("message");
-                                Toast.makeText(AddPatient.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(AddPatient.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             Log.e("PatientsResponseError", "JSON Parsing error", e);
-                            Toast.makeText(AddPatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(AddPatient.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                         }
                     }
 
